@@ -53,13 +53,13 @@
       <Project>{0a326781-5f8e-418c-acaf-f7f3ef16a434}</Project>
       <Name>DBManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ShellTrasferServer\ShellTrasferServer.csproj">
-      <Project>{a0755d37-471d-48ff-8672-14d31c6b3a38}</Project>
-      <Name>ShellTrasferServer</Name>
+    <ProjectReference Include="..\ServiceLoader\ServiceLoader.csproj">
+      <Project>{ec61fa64-4635-49aa-b487-41a2e5c9a9bd}</Project>
+      <Name>ServiceLoader</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UserAuthentication\UserAuthentication.csproj">
-      <Project>{df53e995-01bb-4691-8a72-6d8abe6aa2b2}</Project>
-      <Name>UserAuthentication</Name>
+    <ProjectReference Include="..\UserLoader\UserLoader.csproj">
+      <Project>{76c8d3aa-fbad-4b36-9b40-a77fbfaf0199}</Project>
+      <Name>UserLoader</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

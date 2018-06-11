@@ -16,9 +16,9 @@ namespace DBManager
             sql.Connect();
         }
 
-        ~CreateDBHandler()
+        public void Exit()
         {
-            if(sql != null)
+            if (sql != null)
                 sql.Disconnect();
         }
 

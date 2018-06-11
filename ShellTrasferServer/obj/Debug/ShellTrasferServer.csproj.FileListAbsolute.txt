@@ -15,4 +15,3 @@ C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Shel
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\ShellTrasferServer\obj\Debug\ShellTrasferServer.csproj.CoreCompileInputs.cache
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\ShellTrasferServer\obj\Debug\ShellTrasferServer.dll
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\ShellTrasferServer\obj\Debug\ShellTrasferServer.pdb
-C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\ShellTrasferServer\obj\Debug\ShellTrasferServer.csprojAssemblyReference.cache

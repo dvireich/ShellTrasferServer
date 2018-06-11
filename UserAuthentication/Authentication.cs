@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBManager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,7 +13,10 @@ namespace UserAuthentication
     {
         public string Authenticate(string userName, string password)
         {
-            throw new NotImplementedException();
+            var userDBManager = new UserDBManager();
+            if (!userDBManager.CheckUserNameAndPassword(userName, password, out User user)) return null;
+
+            return user.Id;
         }
     }
 }

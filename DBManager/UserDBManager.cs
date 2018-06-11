@@ -23,7 +23,7 @@ namespace DBManager
             sql.Connect();
         }
 
-        ~UserDBManager()
+        public void Exit()
         {
             if(sql != null)
                 sql.Disconnect();

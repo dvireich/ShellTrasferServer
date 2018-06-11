@@ -15,3 +15,9 @@ C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Prog
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Program\obj\Debug\Program.csproj.CopyComplete
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Program\obj\Debug\Program.exe
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Program\obj\Debug\Program.pdb
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Program\bin\Debug\ServiceLoader.exe
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Program\bin\Debug\UserLoader.dll
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Program\bin\Debug\ServiceLoader.pdb
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Program\bin\Debug\ServiceLoader.exe.config
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Program\bin\Debug\UserLoader.pdb
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Program\bin\Debug\UserLoader.dll.config

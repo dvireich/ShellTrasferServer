@@ -4,16 +4,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UserLoader;
 
 namespace Program
 {
-    class Program
+    public static class Program
     {
 
-        public static void CreateDataBase()
+        private static void CreateDataBase()
         {
             CreateDBHandler createdb = new CreateDBHandler();
             createdb.CreateDataBase();
+            createdb.Exit();
+        }
+
+        private static void RunAsConsole()
+        {
+            ServiceLoader.LoadBasicServices();
+
+
+            while (true)
+            {
+                if (!TaskQueue.Instance.Any()) continue;
+
+                var id = TaskQueue.Instance.GetNextTask();
+                ServiceLoader.LoadShellTransferServices(id);
+            }
         }
 
         static void Main(string[] args)
@@ -34,13 +50,16 @@ namespace Program
                     if (arg.ToLower() == @"/CreateDB".ToLower())
                     {
                         CreateDataBase();
+                        return;
                     }
-                }
-                return;
-            }
+                    if (arg.ToLower() == @"/Console".ToLower())
+                    {
+                        RunAsConsole();
+                        return;
+                    }
 
-            //UserDBManager db = new UserDBManager();
-            
+                }
+            }
         }
     }
 }

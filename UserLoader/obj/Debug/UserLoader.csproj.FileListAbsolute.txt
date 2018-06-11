@@ -1,0 +1,6 @@
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserLoader\obj\Debug\UserLoader.csproj.CoreCompileInputs.cache
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserLoader\bin\Debug\UserLoader.dll.config
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserLoader\bin\Debug\UserLoader.dll
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserLoader\bin\Debug\UserLoader.pdb
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserLoader\obj\Debug\UserLoader.dll
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserLoader\obj\Debug\UserLoader.pdb
