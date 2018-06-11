@@ -18,5 +18,21 @@ namespace UserAuthentication
 
             return user.Id;
         }
+
+        public bool SignIn(string userName, string password)
+        {
+            var userDBManager = new UserDBManager();
+            if (userDBManager.CheckUserNameAndPassword(userName, password, out User user)) return false;
+
+
+            userDBManager.SaveUserInDB(new User()
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserName = userName,
+                Password = password
+            });
+
+            return true;
+        }
     }
 }

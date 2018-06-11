@@ -43,15 +43,17 @@ namespace DBManager
 
         public bool CheckUserNameAndPassword(string userName, string password, out User user)
         {
+            user = null;
+            if (!CheckUserNameExists(userName)) return false;
             var userList = new List<User>();
             var resp = sql.GetRecord(Schema.Tables.Users.ToString(), Schema.Columns.User_Name.ToString(), userName);
             for(int i = 0; i < resp.Length; i = i + 3)
             {
                 userList.Add(new User()
                 {
-                    Id = resp[i],
-                    UserName = resp[i + 1],
-                    Password = resp[i + 2]
+                    Id = resp[i].Trim(),
+                    UserName = resp[i + 1].Trim(),
+                    Password = resp[i + 2].Trim()
                 });
             }
 

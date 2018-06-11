@@ -14,6 +14,9 @@ namespace UserAuthentication
     {
         [OperationContract]
         string Authenticate(string userName, string password);
+
+        [OperationContract]
+        bool SignIn(string userName, string password);
     }
 
 
