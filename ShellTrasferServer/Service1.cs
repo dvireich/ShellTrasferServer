@@ -1198,7 +1198,7 @@ namespace Data
     public HashSet<string> DeletedTasks { get { return _deletedTasks; } }
 
 
-        private string _selectedClient;
+    private string _selectedClient;
     public string SelectedClient
         {
             get
@@ -1367,4 +1367,5 @@ namespace Data
         }
 
     }
+
 }

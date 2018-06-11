@@ -1,0 +1,7 @@
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserAuthentication\bin\Debug\UserAuthentication.dll.config
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserAuthentication\bin\Debug\UserAuthentication.dll
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserAuthentication\bin\Debug\UserAuthentication.pdb
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserAuthentication\obj\Debug\UserAuthentication.csprojAssemblyReference.cache
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserAuthentication\obj\Debug\UserAuthentication.csproj.CoreCompileInputs.cache
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserAuthentication\obj\Debug\UserAuthentication.dll
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserAuthentication\obj\Debug\UserAuthentication.pdb
