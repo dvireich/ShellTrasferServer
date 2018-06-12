@@ -13,10 +13,22 @@ namespace UserAuthentication
     public interface IAuthentication
     {
         [OperationContract]
-        string Authenticate(string userName, string password);
+        string Authenticate(string userName, string password, out string error);
 
         [OperationContract]
-        bool SignIn(string userName, string password);
+        bool SignIn(string userName, string password, out string error);
+
+        [OperationContract]
+        bool ChangeUserPassword(string userName, string oldPassword, string newPassword, out string error);
+
+        [OperationContract]
+        bool SetSecurityQuestionAndAnswer(string userName, string password, string question, string answer, out string error);
+
+        [OperationContract]
+        string GetSecurityQuestion(string userName, out string error);
+
+        [OperationContract]
+        string RestorePasswordFromUserNameAndSecurityQuestion(string userName, string answer, out string error);
     }
 
 

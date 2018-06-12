@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBManager
 {
-     public class UserDBManager
+     public class UserDBManager : IDisposable
     {
         SqlManager sql;
 
@@ -15,6 +15,8 @@ namespace DBManager
             Schema.Columns.Id.ToString(),
             Schema.Columns.User_Name.ToString(),
             Schema.Columns.Password.ToString(),
+            Schema.Columns.SecurityQuestion.ToString(),
+            Schema.Columns.SecurityAnswer.ToString(),
         };
 
         public UserDBManager()
@@ -25,8 +27,8 @@ namespace DBManager
 
         public void Exit()
         {
-            if(sql != null)
-                sql.Disconnect();
+            if (sql != null)
+                sql.Dispose();
         }
 
         public bool CheckUserNameExists(string userName)
@@ -47,13 +49,15 @@ namespace DBManager
             if (!CheckUserNameExists(userName)) return false;
             var userList = new List<User>();
             var resp = sql.GetRecord(Schema.Tables.Users.ToString(), Schema.Columns.User_Name.ToString(), userName);
-            for(int i = 0; i < resp.Length; i = i + 3)
+            for(int i = 0; i < resp.Length; i = i + 5)
             {
                 userList.Add(new User()
                 {
                     Id = resp[i].Trim(),
                     UserName = resp[i + 1].Trim(),
-                    Password = resp[i + 2].Trim()
+                    Password = resp[i + 2].Trim(),
+                    SecurityAnswer = resp[i + 3].Trim(),
+                    SecurityQuestion = resp[i + 4].Trim(),
                 });
             }
 
@@ -79,6 +83,28 @@ namespace DBManager
             if (!CheckUserExists(user)) return;
 
             sql.DeleteRecord(Schema.Tables.Users.ToString(), user.Id);
+        }
+
+        public User GetUserByUserName(string userName)
+        {
+            if (!CheckUserNameExists(userName)) return null;
+
+            var resp = sql.GetRecord(Schema.Tables.Users.ToString(), Schema.Columns.User_Name.ToString(), userName);
+
+            return new User()
+            {
+                Id = resp[0].Trim(),
+                UserName = resp[1].Trim(),
+                Password = resp[2].Trim(),
+                SecurityAnswer = resp[3].Trim(),
+                SecurityQuestion = resp[4].Trim()
+            };
+        }
+
+        public void Dispose()
+        {
+            Exit();
+            sql = null;
         }
     }
 }

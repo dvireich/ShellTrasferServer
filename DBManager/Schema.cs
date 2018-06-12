@@ -17,8 +17,9 @@ namespace DBManager
         {
             Id,
             User_Name,
-            Password
-
+            Password,
+            SecurityQuestion,
+            SecurityAnswer
         }
 
         public enum ColumnType
@@ -31,7 +32,8 @@ namespace DBManager
             new SchemaEntry{TableName = Tables.Users.ToString(), ColumnName = Columns.Id.ToString(), ColumnType = ColumnType.Char.ToString() ,ColumnLength = "50"},
             new SchemaEntry{TableName = Tables.Users.ToString(), ColumnName = Columns.User_Name.ToString(), ColumnType = ColumnType.Char.ToString() ,ColumnLength = "50"},
             new SchemaEntry{TableName = Tables.Users.ToString(), ColumnName = Columns.Password.ToString(), ColumnType = ColumnType.Char.ToString() ,ColumnLength = "50"},
-            
+            new SchemaEntry{TableName = Tables.Users.ToString(), ColumnName = Columns.SecurityQuestion.ToString(), ColumnType = ColumnType.Char.ToString() ,ColumnLength = "50"},
+            new SchemaEntry{TableName = Tables.Users.ToString(), ColumnName = Columns.SecurityAnswer.ToString(), ColumnType = ColumnType.Char.ToString() ,ColumnLength = "50"},
         };
 
         public static Dictionary<string, List<SchemaEntry>> TableNameToSchema = new Dictionary<string, List<SchemaEntry>>()

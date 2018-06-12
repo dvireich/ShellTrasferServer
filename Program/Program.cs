@@ -13,9 +13,10 @@ namespace Program
 
         private static void CreateDataBase()
         {
-            CreateDBHandler createdb = new CreateDBHandler();
-            createdb.CreateDataBase();
-            createdb.Exit();
+            using (var createdb = new CreateDBHandler())
+            {
+                createdb.CreateDataBase();
+            }
         }
 
         private static void RunAsConsole()

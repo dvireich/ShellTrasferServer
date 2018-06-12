@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBManager
 {
-    public class CreateDBHandler
+    public class CreateDBHandler : IDisposable
     {
         private SqlManager sql;
 
@@ -25,6 +25,12 @@ namespace DBManager
         public void CreateDataBase()
         {
             sql.CreateDataBase();
+        }
+
+        public void Dispose()
+        {
+            Exit();
+            sql = null;
         }
     }
 }

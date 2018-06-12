@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DBManager
 {
-    internal class SqlManager
+    internal class SqlManager : IDisposable
     {
         private SqlConnection cnn;
 
@@ -22,6 +22,8 @@ namespace DBManager
 
         public void Connect()
         {
+            ValidateNoConnectionBeforeConnect();
+
             var connectionString = @"Data Source=localhost;Initial Catalog=master;Integrated Security=True;";
             cnn = new SqlConnection(connectionString);
             try
@@ -43,9 +45,8 @@ namespace DBManager
 
         public void CreateDataBase(string path = null)
         {
-            if (cnn == null)
-                throw new Exception("Trying to Create database but need to connect to database first!");
-
+            ValidateDBConnection();
+            
             var createDatabaseStr = string.IsNullOrEmpty(path) ?
                   string.Format("CREATE DATABASE {0}", dbName) :
                   string.Format("CREATE DATABASE {0} ON PRIMARY ", dbName) +
@@ -105,16 +106,11 @@ namespace DBManager
 
         public void InsertIntoDataBase(string tableName, string[] values)
         {
-            if (cnn == null)
-                throw new Exception("Trying to save to database but need to connect to database first!");
+            ValidateDBConnection();
+            ValidateTableName(tableName);
+            ValidateNumberOfValsMatchColNum(values.Length, tableName);
+            ValidateValsLengthByCol(values, tableName);
 
-            if (!Schema.TableNameToSchema.ContainsKey(tableName))
-                throw new Exception("No sutch table!");
-
-            if(values.Length < Schema.TableNameToSchema[tableName].Count)
-                throw new Exception("Too less values to that table!");
-
-            //var tableCols = Schema.TableNameToSchema[tableName].Select(se => "'" + se.ColumnName + "'").ToArray();
             var tableCols = Schema.TableNameToSchema[tableName].Select(se =>se.ColumnName).ToArray();
             values = values.Select(val => "'" + val + "'").ToArray();
             var saveValuestr = string.Format("INSERT INTO {0} ", TableNameFormat(tableName)) +
@@ -130,14 +126,10 @@ namespace DBManager
 
         public void UpdateDataBaseRecord(string tableName, string id, string[] columns, string[] values)
         {
-            if (columns.Length != values.Length)
-                throw new Exception("Columns number and values number are not the same!");
-
-            if (columns.Length == 0 || values.Length == 0)
-                throw new Exception("Cannot update 0 columns or 0 values!");
-
-            if (!Schema.TableNameToSchema.ContainsKey(tableName))
-                throw new Exception("No sutch table!");
+            ValidateDBConnection();
+            ValidateNumberModifiedColEqualToNumberOfVals(columns, values);
+            ValidateNumOfColsOrValsNotZero(columns, values);
+            ValidateTableName(tableName);
 
             StringBuilder command = new StringBuilder();
             command.AppendFormat("UPDATE {0} ", TableNameFormat(tableName));
@@ -160,13 +152,9 @@ namespace DBManager
 
         public string[] GetRecord(string tableName, string colName, string colVal)
         {
-            if (cnn == null)
-                throw new Exception("Trying to delete from database but need to connect to database first!");
-
-
-            if (!Schema.TableNameToSchema.ContainsKey(tableName))
-                throw new Exception("No sutch table!");
-
+            ValidateDBConnection();
+            ValidateTableName(tableName);
+            
             var SelectRecord = string.Format("SELECT * FROM {0} ", TableNameFormat(tableName)) +
                                string.Format("WHERE {0} = '{1}'", colName, colVal);
 
@@ -194,12 +182,8 @@ namespace DBManager
 
         public void DeleteRecord(string tableName, string id)
         {
-            if (cnn == null)
-                throw new Exception("Trying to delete from database but need to connect to database first!");
-
-
-            if (!Schema.TableNameToSchema.ContainsKey(tableName))
-                throw new Exception("No sutch table!");
+            ValidateDBConnection();
+            ValidateTableName(tableName);
 
             var deleteStr = string.Format("DELETE FROM {0} ", TableNameFormat(tableName)) +
                             string.Format("WHERE Id = '{0}'", id);
@@ -213,6 +197,8 @@ namespace DBManager
 
         private bool CheckDatabaseExists(string databaseName)
         {
+            ValidateDBConnection();
+           
             bool result = false;
 
             try
@@ -243,6 +229,8 @@ namespace DBManager
 
         private bool CheckIfTableExsits(string tableName)
         {
+            ValidateDBConnection();
+
             bool exists;
 
             try
@@ -279,6 +267,62 @@ namespace DBManager
         public string ToSeperatedCommaList(string[] values)
         {
             return string.Join(", ", values);
+        }
+
+        //Validations
+
+        private void ValidateNumberModifiedColEqualToNumberOfVals(string[] columns, string[] values)
+        {
+            if (columns.Length != values.Length)
+                throw new Exception("Columns number and values number are not the same!");
+        }
+
+        private void ValidateNumOfColsOrValsNotZero(string[] columns, string[] values)
+        {
+            if (columns.Length == 0 || values.Length == 0)
+                throw new Exception("Cannot update 0 columns or 0 values!");
+        }
+
+        private void ValidateTableName(string tableName)
+        {
+            if (!Schema.TableNameToSchema.ContainsKey(tableName))
+                throw new Exception(string.Format("No sutch table!. Table: {0}", tableName));
+        }
+
+        private void ValidateDBConnection()
+        {
+            if (cnn == null)
+                throw new Exception("Trying to do operation on database but need to connect to database first!");
+        }
+
+        private void ValidateNumberOfValsMatchColNum(int valLen, string tableName)
+        {
+            if (valLen > Schema.TableNameToSchema[tableName].Count)
+                throw new Exception(string.Format("Too less values to this table!. Table: {0} Got: {1} Need: {2}",
+                    tableName, valLen, Schema.TableNameToSchema[tableName].Count));
+        }
+
+        private void ValidateValsLengthByCol(string[] values, string tableName)
+        {
+            var colLength = Schema.TableNameToSchema[tableName].Select(se => se.ColumnLength).ToArray();
+            for (int i = 0; i < colLength.Length; i++)
+            {
+                if (int.Parse(colLength[i]) < values[i].Length)
+                    throw new Exception(string.Format("Value for this column is too long. Value: {0} Value Length: {1} Table: {2} Column Number: {3}",
+                        values[i], values[i].Length, tableName, i));
+            }
+        }
+
+        private void ValidateNoConnectionBeforeConnect()
+        {
+            if (cnn != null)
+                throw new Exception("Trying open connection to database but a connection is already open!");
+        }
+
+        public void Dispose()
+        {
+            Disconnect();
+            cnn = null;
         }
     }
 }
