@@ -82,11 +82,11 @@ namespace DBManager
                 var lastElement = schema.Value.Last();
                 foreach (var col in schema.Value)
                 {
-                    command.AppendFormat("{0} {1} ({2}) ", col.ColumnName, col.ColumnType, col.ColumnLength);
+                    command.AppendFormat("{0} {1} ({2}) NOT NULL ", col.ColumnName, col.ColumnType, col.ColumnLength);
                     if (col != lastElement)
                         command.Append(",");
                 }
-                command.Append(")");
+                command.Append(") ");
 
                 if (CheckIfTableExsits(TableNameFormat(schema.Key)))
                 {
@@ -101,6 +101,22 @@ namespace DBManager
                 {
                     var res = createTableCommand.ExecuteNonQuery();
                 }
+
+                MakeColumnPrimeryKey(schema.Key, Schema.Columns.Id.ToString());
+            }
+        }
+
+        public void MakeColumnPrimeryKey(string tableName, string column)
+        {
+            ValidateDBConnection();
+            ValidateTableName(tableName);
+
+            var addPrimery = string.Format("ALTER TABLE  {0} ", TableNameFormat(tableName)) +
+                             string.Format("ADD PRIMARY KEY ({0}) ", column);
+
+            using (var saveCommand = new SqlCommand(addPrimery, cnn))
+            {
+                saveCommand.ExecuteNonQuery();
             }
         }
 
