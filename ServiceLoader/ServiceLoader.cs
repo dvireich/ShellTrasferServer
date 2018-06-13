@@ -13,7 +13,7 @@ namespace Program
 {
     public static class ServiceLoader
     {
-        private static List<ChannelFactory> OpenChnnels = new List<ChannelFactory>();
+        private static List<ServiceHost> OpenChnnels = new List<ServiceHost>();
         private static HashSet<string> OpenIds = new HashSet<string>();
 
         public static void LoadBasicServices()
@@ -53,7 +53,8 @@ namespace Program
 
             serviceHost.AddServiceEndpoint(typeof(TI), shellBinding, shellAdress);
             serviceHost.Open();
-            OpenIds.Add(id);
+            OpenIds.Add(id.Split('/').Last());
+            OpenChnnels.Add(serviceHost);
         }
 
         public static void InitializeTCPServiceReferences<TC,TI>(string path)

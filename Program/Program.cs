@@ -31,19 +31,12 @@ namespace Program
                 var id = TaskQueue.Instance.GetNextTask();
                 ServiceLoader.LoadShellTransferServices(id);
             }
+
+            //ServiceLoader.CloseAllChnnels();
         }
 
         static void Main(string[] args)
         {
-            //SqlManager a = new SqlManager();
-            //a.Connect("");
-            //a.CreateDataBase();
-            //a.InsertIntoDataBase("Users", new string[] { "a", "b", "c" });
-            ////a.UpdateDataBaseRecord("Users", "a", new string[] { "Id", "User_Name", "Password" }, new string[] { "b", "b", "b" });
-            //var ans = a.GetRecord("Users", "b");
-            //a.DeleteRecord("Users", "b");
-            //a.Disconnect();
-
             if(args.Length > 0)
             {
                 foreach(var arg in args)
