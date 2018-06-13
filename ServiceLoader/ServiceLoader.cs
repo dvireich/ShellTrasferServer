@@ -14,6 +14,7 @@ namespace Program
     public static class ServiceLoader
     {
         private static List<ChannelFactory> OpenChnnels = new List<ChannelFactory>();
+        private static HashSet<string> OpenIds = new HashSet<string>();
 
         public static void LoadBasicServices()
         {
@@ -23,12 +24,13 @@ namespace Program
 
         public static void LoadShellTransferServices(string id)
         {
+            if (OpenIds.Contains(id)) return;
             InitializeBasicHttpServiceReferences<ShellTransfer, IActiveShell>(string.Format("ActiveShell/{0}", id));
             InitializeBasicHttpServiceReferences<ShellTransfer, IPassiveShell>(string.Format("PassiveShell/{0}", id));
             InitializeTCPServiceReferences<ShellTransfer, IAletCallBack>(string.Format("CallBack/{0}", id));
         }
 
-        private static void InitializeBasicHttpServiceReferences<TC,TI>(string path)
+        private static void InitializeBasicHttpServiceReferences<TC,TI>(string id)
         {
             //Confuguring the Shell service
             var shellBinding = new BasicHttpBinding();
@@ -41,7 +43,7 @@ namespace Program
             shellBinding.MaxBufferPoolSize = int.MaxValue;
             shellBinding.MaxBufferSize = int.MaxValue;
             //Put Public ip of the server copmuter
-            var shellAdress = string.Format("http://localhost:80/ShellTrasferServer/{0}",path);
+            var shellAdress = string.Format("http://localhost:80/ShellTrasferServer/{0}",id);
             var shellUri = new Uri(shellAdress);
 
             var serviceHost = new ServiceHost(typeof(TC), shellUri);
@@ -51,7 +53,7 @@ namespace Program
 
             serviceHost.AddServiceEndpoint(typeof(TI), shellBinding, shellAdress);
             serviceHost.Open();
-
+            OpenIds.Add(id);
         }
 
         public static void InitializeTCPServiceReferences<TC,TI>(string path)
