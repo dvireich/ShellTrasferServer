@@ -25,7 +25,7 @@ namespace Program
         {
             InitializeBasicHttpServiceReferences<ShellTransfer, IActiveShell>(string.Format("ActiveShell/{0}", id));
             InitializeBasicHttpServiceReferences<ShellTransfer, IPassiveShell>(string.Format("PassiveShell/{0}", id));
-            InitializeTCPServiceReferences<IAletCallBack>(string.Format("CallBack/{0}", id));
+            InitializeTCPServiceReferences<ShellTransfer, IAletCallBack>(string.Format("CallBack/{0}", id));
         }
 
         private static void InitializeBasicHttpServiceReferences<TC,TI>(string path)
@@ -54,7 +54,7 @@ namespace Program
 
         }
 
-        public static void InitializeTCPServiceReferences<T>(string path)
+        public static void InitializeTCPServiceReferences<TC,TI>(string path)
         {
             Uri endPointAdress = new Uri(string.Format("net.tcp://localhost/ShellTrasferServer/{0}",path));
             NetTcpBinding wsd = new NetTcpBinding();
@@ -66,11 +66,11 @@ namespace Program
             EndpointAddress ea = new EndpointAddress(endPointAdress);
 
 
-            var serviceHost = new ServiceHost(typeof(T), endPointAdress);
+            var serviceHost = new ServiceHost(typeof(TC), endPointAdress);
             var smb = new ServiceMetadataBehavior();
             serviceHost.Description.Behaviors.Add(smb);
 
-            serviceHost.AddServiceEndpoint(typeof(T), wsd, endPointAdress);
+            serviceHost.AddServiceEndpoint(typeof(TI), wsd, endPointAdress);
             serviceHost.Open();
         }
 

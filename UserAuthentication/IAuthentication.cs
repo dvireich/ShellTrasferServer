@@ -16,7 +16,7 @@ namespace UserAuthentication
         string Authenticate(string userName, string password, out string error);
 
         [OperationContract]
-        bool SignIn(string userName, string password, out string error);
+        bool SignUp(string userName, string password, out string error);
 
         [OperationContract]
         bool ChangeUserPassword(string userName, string oldPassword, string newPassword, out string error);

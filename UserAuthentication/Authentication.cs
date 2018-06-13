@@ -25,7 +25,7 @@ namespace UserAuthentication
             }
         }
 
-        public bool SignIn(string userName, string password, out string error)
+        public bool SignUp(string userName, string password, out string error)
         {
             error = string.Empty;
             using (var userDBManager = new UserDBManager())

@@ -35,7 +35,7 @@ namespace UserLoader
 
         public bool Any()
         {
-            return taskQueue.Any();
+            return taskQueue.Count > 0;
         }
 
         private TaskQueue() { }
