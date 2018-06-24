@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Data;
 using System.IO;
 using ShellTrasferServer;
-using System.ServiceModel.Channels;
 using System.Threading;
 using System.Net.Http;
 using System.Collections.Concurrent;
-using System.Net.Http.Headers;
 using System.ServiceModel.Web;
 using System.Text.RegularExpressions;
 
@@ -31,16 +28,18 @@ namespace ShellTrasferServer
 
         public bool ActiveSetNickName(string id, string nickName)
         {
-            var temp = ClientManager.Instance.UserToUserClientManager.NickNames[id];
+            var temp = ClientManager.Instance.CurretUserClientManager.NickNames[id];
+            var curretUserClientManager = ClientManager.Instance.CurretUserClientManager;
             try
             {
-                ClientManager.Instance.UserToUserClientManager.NickNames[id] = nickName;
-                ClientManager.Instance.UserToUserClientManager.CallBacks[id].CallBackFunction(string.Format("nickName : {0}", nickName));
+                var curretUserCallbacks = curretUserClientManager.CallBacks[id];
+                curretUserClientManager.NickNames[id] = nickName;
+                curretUserCallbacks.CallBackFunction(string.Format("nickName : {0}", nickName));
                 return true;
             }
             catch
             {
-                ClientManager.Instance.UserToUserClientManager.NickNames[id] = temp;
+                curretUserClientManager.NickNames[id] = temp;
                 return false;
             }
         }
@@ -53,29 +52,33 @@ namespace ShellTrasferServer
         public static bool DeleteClientTask(string id, bool shellTask, int taksNumber,bool safeToPassLock = false)
         {
             return AtomicOperation.PerformAsAtomicFunction<bool>(() =>
-            { 
-            if(shellTask)
             {
-                if (TaskQueue.Instance.UserToUserTaskQueue.ShellQueue.ContainsKey(id) && TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].Count > taksNumber - 1)
+                if (shellTask)
                 {
-                    var deleted = TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].ElementAt(taksNumber - 1);
-                    TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id] = TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].DeleteAt(taksNumber - 1);
-                    ClientManager.Instance.UserToUserClientManager.DeletedTasks.Add(deleted.Item4);
-                    return true;
+                    var currentUserShellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
+                    var deletedTasks = ClientManager.Instance.CurretUserClientManager.DeletedTasks;
+                    if (currentUserShellQueue.ContainsKey(id) && currentUserShellQueue[id].Count > taksNumber - 1)
+                    {
+                        var deleted = currentUserShellQueue[id].ElementAt(taksNumber - 1);
+                        currentUserShellQueue[id] = currentUserShellQueue[id].DeleteAt(taksNumber - 1);
+                        deletedTasks.Add(deleted.TaskId);
+                        return true;
+                    }
                 }
-            }
-            else
-            {
-                if (TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.ContainsKey(id) && TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id].Count > taksNumber - 1)
+                else
                 {
-                    var deleted = TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id].ElementAt(taksNumber - 1);
-                    TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id] = TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id].DeleteAt(taksNumber - 1);
-                    //This is a hash set so it wont be added twice
-                    ClientManager.Instance.UserToUserClientManager.DeletedTasks.Add(deleted.Item2.taskId);
-                    ClientManager.Instance.UserToUserClientManager.DeletedTasks.Add(deleted.Item3.taskId);
-                    return true;
+                    var currentUserTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
+                    var deletedTasks = ClientManager.Instance.CurretUserClientManager.DeletedTasks;
+                    if (currentUserTransferQueue.ContainsKey(id) && currentUserTransferQueue[id].Count > taksNumber - 1)
+                    {
+                        var deleted = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue[id].ElementAt(taksNumber - 1);
+                        currentUserTransferQueue[id] = currentUserTransferQueue[id].DeleteAt(taksNumber - 1);
+                        //This is a hash set so it wont be added twice
+                        deletedTasks.Add(deleted.DownloadRequest.taskId);
+                        deletedTasks.Add(deleted.RemoteFileInfo.taskId);
+                        return true;
+                    }
                 }
-            }
             return false;
             }, safeToPassLock);
         }
@@ -84,17 +87,17 @@ namespace ShellTrasferServer
         {
           return AtomicOperation.PerformAsAtomicFunction<bool>(() =>
             {
-                ClientManager.Instance.UserToUserClientManager.Deleted.Clear();
-                ClientManager.Instance.UserToUserClientManager.SelectedClient = null;
-                foreach (var client in ClientManager.Instance.UserToUserClientManager.CallBacks.Keys)
+                ClientManager.Instance.CurretUserClientManager.Deleted.Clear();
+                ClientManager.Instance.CurretUserClientManager.SelectedClient = null;
+                foreach (var client in ClientManager.Instance.CurretUserClientManager.CallBacks.Keys)
                 {
                     RemoveClient(client);
                 }
-                ClientManager.Instance.UserToUserClientManager.NickNames.Clear();
-                ClientManager.Instance.UserToUserClientManager.CallBacks.Clear();
-                ClientManager.Instance.UserToUserClientManager.StatusCallBacks.Clear();
-                TaskQueue.Instance.UserToUserTaskQueue.ShellQueue.Clear();
-                TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.Clear();
+                ClientManager.Instance.CurretUserClientManager.NickNames.Clear();
+                ClientManager.Instance.CurretUserClientManager.CallBacks.Clear();
+                ClientManager.Instance.CurretUserClientManager.StatusCallBacks.Clear();
+                TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue.Clear();
+                TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue.Clear();
                 return true;
             });
         }
@@ -103,7 +106,7 @@ namespace ShellTrasferServer
         {
             return AtomicOperation.PerformAsAtomicFunction<bool>(() =>
             {
-                if (ClientManager.Instance.UserToUserClientManager.CallBacks.ContainsKey(id))
+                if (ClientManager.Instance.CurretUserClientManager.CallBacks.ContainsKey(id))
                 {
                     RemoveClient(id);
                     return true;
@@ -116,7 +119,7 @@ namespace ShellTrasferServer
         {
             return AtomicOperation.PerformAsAtomicFunction<bool>(() =>
             {
-                var clients = ClientManager.Instance.UserToUserClientManager.CallBacks;
+                var clients = ClientManager.Instance.CurretUserClientManager.CallBacks;
                 if (!clients.ContainsKey(id))
                     return false;
 
@@ -126,7 +129,7 @@ namespace ShellTrasferServer
                     return false;
                 }
                 //connect the slected client
-                ClientManager.Instance.UserToUserClientManager.SelectedClient = id;
+                ClientManager.Instance.CurretUserClientManager.SelectedClient = id;
                 return true;
             });
         }
@@ -135,7 +138,7 @@ namespace ShellTrasferServer
         {
             return AtomicOperation.PerformAsAtomicFunction<string>(() =>
             {
-                var clients = ClientManager.Instance.UserToUserClientManager.CallBacks.ToList();
+                var clients = ClientManager.Instance.CurretUserClientManager.CallBacks.ToList();
                 var status = new StringBuilder();
                 var clientCounter = 1;
                 status.AppendLine("The Status: ");
@@ -144,20 +147,20 @@ namespace ShellTrasferServer
                     foreach (var client in clients)
                     {
                         var isAlive = IsClientAlive(client.Key);
-                        var nickName = ClientManager.Instance.UserToUserClientManager.NickNames[client.Key];
+                        var nickName = ClientManager.Instance.CurretUserClientManager.NickNames[client.Key];
                         status.AppendLine(string.Format("Client number{0} id: {1}\tNickName:{3}\nIs Alive: {2}"
                                                           , clientCounter, client.Key, isAlive, nickName));
                         var taskCounter = 1;
-                        if (TaskQueue.Instance.UserToUserTaskQueue.ShellQueue.ContainsKey(client.Key))
+                        if (TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue.ContainsKey(client.Key))
                         {
                             status.AppendLine("Shell Tasks:");
-                            var clientTasks = TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[client.Key].ToList();
+                            var clientTasks = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue[client.Key].ToList();
                             if (clientTasks.Count > 0)
                             {
                                 foreach (var task in clientTasks)
                                 {
                                     status.AppendLine(string.Format("Task Number: {0}", taskCounter));
-                                    status.AppendLine(string.Format("{0} {1}", task.Item1, task.Item2));
+                                    status.AppendLine(string.Format("{0} {1}", task.Command, task.Args));
                                     taskCounter++;
                                 }
                             }
@@ -166,23 +169,31 @@ namespace ShellTrasferServer
                                 status.AppendLine("There is no shell tasks");
                             }
                         }
-                        if (TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.ContainsKey(client.Key))
+                        if (TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue.ContainsKey(client.Key))
                         {
                             taskCounter = 1;
                             status.AppendLine("Upload And Download Tasks:");
-                            var clientTasks = TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[client.Key].ToList();
+                            var clientTasks = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue[client.Key].ToList();
                             if (clientTasks.Count > 0)
                             {
                                 foreach (var task in clientTasks)
                                 {
                                     status.AppendLine(string.Format("Task Number: {0}", taskCounter));
-                                    if (task.Item1 == "Upload")
+
+                                    if (task.TaskType == TaskType.Upload)
                                     {
-                                        status.AppendLine(string.Format("{0} {1} {2}", task.Item1, task.Item3.FileName, task.Item3.PathToSaveOnServer));
+                                        status.AppendLine(string.Format("{0} {1} {2}", 
+                                                                         task.TaskType, 
+                                                                         task.RemoteFileInfo.FileName, 
+                                                                         task.RemoteFileInfo.PathToSaveOnServer));
                                     }
-                                    if (task.Item1 == "Download")
+                                    if (task.TaskType == TaskType.Download)
                                     {
-                                        status.AppendLine(string.Format("{0} {1} {2} {3}", task.Item1, task.Item2.FileName, task.Item2.PathInServer, task.Item2.PathToSaveInClient));
+                                        status.AppendLine(string.Format("{0} {1} {2} {3}", 
+                                                                        task.TaskType, 
+                                                                        task.DownloadRequest.FileName, 
+                                                                        task.DownloadRequest.PathInServer, 
+                                                                        task.DownloadRequest.PathToSaveInClient));
                                     }
 
                                     taskCounter++;
@@ -204,7 +215,8 @@ namespace ShellTrasferServer
                         */
                         clientCounter++;
                     }
-                    status.AppendLine(string.Format("The selected Client id is: {0}", ClientManager.Instance.UserToUserClientManager.SelectedClient));
+                    status.AppendLine(string.Format("The selected Client id is: {0}",
+                        ClientManager.Instance.CurretUserClientManager.SelectedClient));
                 }
                 else
                 {
@@ -218,18 +230,18 @@ namespace ShellTrasferServer
         {
             AtomicOperation.PerformAsAtomicFunction(() =>
             { 
-                foreach (var client in TaskQueue.Instance.UserToUserTaskQueue.ShellQueue.Keys)
+                foreach (var client in TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue.Keys)
                 {
                     //Sience the function is locked we do not need the delete task lock
                     DeleteClientTask(client, true, 1,true);
                 }
-                TaskQueue.Instance.UserToUserTaskQueue.ShellQueue.Clear();
-                foreach (var client in TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.Keys)
+                TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue.Clear();
+                foreach (var client in TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue.Keys)
                 {
                     //Sience the function is locked we do not need the delete task lock
                     DeleteClientTask(client, false, 1,true);
                 }
-                TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.Clear();
+                TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue.Clear();
             });
         }
 
@@ -245,22 +257,23 @@ namespace ShellTrasferServer
 
         public RemoteFileInfo ActiveDownloadFile(DownloadRequest request)
         {
-            if (FileMannager.Instance.UserToUserFileMannager.Error)
+            var currentFileManager = FileMannager.Instance.CurrentUserFileMannager;
+            if (currentFileManager.Error)
             {
-                FileMannager.Instance.UserToUserFileMannager.Error = false;
+                currentFileManager.Error = false;
                 return new RemoteFileInfo()
                 {
                     FileByteStream = new byte[0],
-                    FileName = string.Format("Error Download File: {0}", FileMannager.Instance.UserToUserFileMannager.ErrorMessage),
+                    FileName = string.Format("Error Download File: {0}", currentFileManager.ErrorMessage),
                     PathToSaveOnServer = ""
                 };
             }
             //Check if We still buffering in server
-            if (!request.NewStart && FileMannager.Instance.UserToUserFileMannager.Buffering)
+            if (!request.NewStart && currentFileManager.Buffering)
             {
-                var fileSize = FileMannager.Instance.UserToUserFileMannager.FileStream != null ? double.Parse(FileMannager.Instance.UserToUserFileMannager.FileSize) : 0;
-                var precent = FileMannager.Instance.UserToUserFileMannager.FileStream != null ?
-                              ((FileMannager.Instance.UserToUserFileMannager.FileStream.Position / fileSize) * 100) : 0;
+                
+                var fileSize = currentFileManager.FileStream != null ? double.Parse(currentFileManager.FileSize) : 0;
+                var precent = currentFileManager.FileStream != null ? ((currentFileManager.FileStream.Position / fileSize) * 100) : 0;
                 var messagePrecent = string.Format("Buffering File in Server Memory {0} %", (long)precent);
                 return new RemoteFileInfo()
                 {
@@ -270,12 +283,13 @@ namespace ShellTrasferServer
                 };
             }
             //Check if we We have still download in process and we still have chunks to read
-            if (!request.NewStart  && !(FileMannager.Instance.UserToUserFileMannager.IsDownloding && FileMannager.Instance.UserToUserFileMannager.EnumerableChunk.MoveNext()))
+            if (!request.NewStart  && !(currentFileManager.IsDownloding && currentFileManager.EnumerableChunk.MoveNext()))
             {
                 try
                 {
-                    if (File.Exists(FileMannager.Instance.UserToUserFileMannager.Path))
-                        File.Delete(FileMannager.Instance.UserToUserFileMannager.Path);
+                    var path = currentFileManager.Path;
+                    if (File.Exists(path))
+                        File.Delete(path);
                 }
                 catch { }
                 return new RemoteFileInfo()
@@ -287,32 +301,33 @@ namespace ShellTrasferServer
                 };
             }
             //We have still download in process and we have chunks to write
-            if (!request.NewStart && FileMannager.Instance.UserToUserFileMannager.IsDownloding)
+            if (!request.NewStart && currentFileManager.IsDownloding)
             {
                 return new RemoteFileInfo()
                 {
-                    FileByteStream = FileMannager.Instance.UserToUserFileMannager.EnumerableChunk.Current.Item1,
+                    FileByteStream = currentFileManager.EnumerableChunk.Current.Item1,
                     FileName = request.FileName,
                     PathToSaveOnServer = string.Empty,
                     FileEnded = false,
-                    Length = FileMannager.Instance.UserToUserFileMannager.EnumerableChunk.Current.Item2,
-                    FileSize = FileMannager.Instance.UserToUserFileMannager.FileSize
+                    Length = currentFileManager.EnumerableChunk.Current.Item2,
+                    FileSize = currentFileManager.FileSize
                 };
             }
             //there is no download in process, so get files from passive client
             //Clear the File in FileMannager
-            if(FileMannager.Instance.UserToUserFileMannager.FileStream != null)
+            if(currentFileManager.FileStream != null)
             {
-                FileMannager.Instance.UserToUserFileMannager.FileStream.Close();
-                FileMannager.Instance.UserToUserFileMannager.FileStream = null;
+                currentFileManager.FileStream.Close();
+                currentFileManager.FileStream = null;
             }
             try
             {
-                if (File.Exists(FileMannager.Instance.UserToUserFileMannager.Path))
-                    File.Delete(FileMannager.Instance.UserToUserFileMannager.Path);
+                var path = currentFileManager.Path;
+                if (File.Exists(path))
+                    File.Delete(path);
             }
             catch { }
-            var retAns = EnqueueWaitAndReturnBaseLine(download, request, new RemoteFileInfo());
+            var retAns = EnqueueWaitAndReturnBaseLine(TaskType.Download, request, new RemoteFileInfo());
             //Check if Error happended
             if (retAns != "Buffering")
             {
@@ -325,9 +340,8 @@ namespace ShellTrasferServer
             }
             else
             {
-                var fileSize = FileMannager.Instance.UserToUserFileMannager.FileStream != null ?  double.Parse(FileMannager.Instance.UserToUserFileMannager.FileSize) : 0;
-                var precent = FileMannager.Instance.UserToUserFileMannager.FileStream != null ?
-                              ((FileMannager.Instance.UserToUserFileMannager.FileStream.Position / fileSize) * 100) : 0;
+                var fileSize = currentFileManager.FileStream != null ?  double.Parse(currentFileManager.FileSize) : 0;
+                var precent = currentFileManager.FileStream != null ? ((currentFileManager.FileStream.Position / fileSize) * 100) : 0;
                 var messagePrecent = string.Format("Buffering File in Server Memory {0} %", (long)precent);
                 return new RemoteFileInfo()
                 {
@@ -340,21 +354,21 @@ namespace ShellTrasferServer
         
         public RemoteFileInfo ActiveUploadFile(RemoteFileInfo request)
         {
-
-            if (FileMannager.Instance.UserToUserFileMannager.Error)
+            var currentFileManager = FileMannager.Instance.CurrentUserFileMannager;
+            if (currentFileManager.Error)
             {
-                FileMannager.Instance.UserToUserFileMannager.Error = false;
+                currentFileManager.Error = false;
                 return new RemoteFileInfo()
                 {
                     FileByteStream = new byte[0],
-                    FileName = string.Format("Error Upload File: {0}", FileMannager.Instance.UserToUserFileMannager.ErrorMessage),
+                    FileName = string.Format("Error Upload File: {0}", currentFileManager.ErrorMessage),
                     PathToSaveOnServer = ""
                 };
             }
 
-            if (FileMannager.Instance.UserToUserFileMannager.UploadingEnded)
+            if (currentFileManager.UploadingEnded)
             {
-                FileMannager.Instance.UserToUserFileMannager.UploadingEnded = false;
+                currentFileManager.UploadingEnded = false;
                 return new RemoteFileInfo()
                 {
                     FileByteStream = new byte[0],
@@ -363,11 +377,11 @@ namespace ShellTrasferServer
                 };
             }
 
-            if (FileMannager.Instance.UserToUserFileMannager.Buffering)
+            if (currentFileManager.Buffering)
             {
-                var fileSize = double.Parse(FileMannager.Instance.UserToUserFileMannager.FileSize);
+                var fileSize = double.Parse(currentFileManager.FileSize);
                 fileSize = fileSize == 0 ? 1 : fileSize;
-                var precent = (FileMannager.Instance.UserToUserFileMannager.ReadSoFar / fileSize) * 100;
+                var precent = (currentFileManager.ReadSoFar / fileSize) * 100;
                 var messagePrecent = string.Format("Buffering File in passive client Memory {0} %", (long)precent);
                 return new RemoteFileInfo()
                 {
@@ -379,43 +393,48 @@ namespace ShellTrasferServer
                 //We will save all the byte chunks in temp file, its propebly will became to big with all the add actions
                 //for some data strcture so we probebly will get SystemOutOfMemory exception
 
-                if(request.FreshStart && FileMannager.Instance.UserToUserFileMannager.FileStream != null)
+                if(request.FreshStart && currentFileManager.FileStream != null)
                 {
-                    FileMannager.Instance.UserToUserFileMannager.FileStream.Close();
-                    FileMannager.Instance.UserToUserFileMannager.FileStream = null;
+                currentFileManager.FileStream.Close();
+                currentFileManager.FileStream = null;
                 try
                 {
-                    File.Delete(FileMannager.Instance.UserToUserFileMannager.Path);
+                    var path = currentFileManager.Path;
+                    File.Delete(path);
                 }
                 catch { }  
                 }
 
-            if (FileMannager.Instance.UserToUserFileMannager.FileStream == null)
+            if (currentFileManager.FileStream == null)
             {
                 var newGuid = Guid.NewGuid();
-                FileMannager.Instance.UserToUserFileMannager.Path = Path.Combine(Path.GetTempPath(), newGuid.ToString(), request.FileName);
+                currentFileManager.Path = Path.Combine(Path.GetTempPath(), newGuid.ToString(), request.FileName);
                 if (!Directory.Exists(Path.Combine(Path.GetTempPath(), newGuid.ToString())))
                     Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), newGuid.ToString()));
-                FileMannager.Instance.UserToUserFileMannager.FileStream = new FileStream(FileMannager.Instance.UserToUserFileMannager.Path, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
-                FileMannager.Instance.UserToUserFileMannager.FileSize = request.FileSize;
+                currentFileManager.FileStream = new FileStream(currentFileManager.Path, 
+                                                               FileMode.Create, 
+                                                               FileAccess.ReadWrite, 
+                                                               FileShare.ReadWrite);
+
+                currentFileManager.FileSize = request.FileSize;
             }
-                //When the passive client finish sending all the chumks he will signal with the request.FileEnded flag
-                if (!request.FileEnded)
-                {
-                    FileMannager.Instance.UserToUserFileMannager.FileStream.Write(request.FileByteStream, 0, request.FileByteStream.Length);
-                }
-                else
-                {
-                    //download from pasive client ended. now we need to notify the active client
-                    FileMannager.Instance.UserToUserFileMannager.FileSize = FileMannager.Instance.UserToUserFileMannager.FileStream.Length.ToString();
-                    FileMannager.Instance.UserToUserFileMannager.FileStream.Close();
-                    FileMannager.Instance.UserToUserFileMannager.FileStream = null;
-                }
+            //When the passive client finish sending all the chumks he will signal with the request.FileEnded flag
+            if (!request.FileEnded)
+            {
+                currentFileManager.FileStream.Write(request.FileByteStream, 0, request.FileByteStream.Length);
+            }
+            else
+            {
+                //download from pasive client ended. now we need to notify the active client
+                currentFileManager.FileSize = currentFileManager.FileStream.Length.ToString();
+                currentFileManager.FileStream.Close();
+                currentFileManager.FileStream = null;
+            }
             //If the still geting bytes from the active client
             if (!request.FileEnded)
                 return new RemoteFileInfo() { FileByteStream = new byte[0] };
 
-            var retAns = EnqueueWaitAndReturnBaseLine(upload, new DownloadRequest(), request);
+            var retAns = EnqueueWaitAndReturnBaseLine(TaskType.Upload, new DownloadRequest(), request);
 
             if (retAns != "Buffering")
             {
@@ -442,6 +461,11 @@ namespace ShellTrasferServer
         //we do not need to block the other users since the selected client preformed his action
         private static string EnqueueWaitAndReturnBaseLine(string command, string args)
         {
+            var currentUserCallbacks = ClientManager.Instance.CurretUserClientManager.CallBacks;
+            var currentUserManager = ClientManager.Instance.CurretUserClientManager;
+            var shellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
+            var deletedTasks = ClientManager.Instance.CurretUserClientManager.DeletedTasks;
+
             var clientNotExcecuetedCommand = true;
             var currentSelectedClient = string.Empty;
             var retBaseLine = string.Empty;
@@ -450,23 +474,23 @@ namespace ShellTrasferServer
             ICallBack clientCallBack = null;
             AtomicOperation.PerformAsAtomicFunction(() =>
             {
-                selectedClient = ClientManager.Instance.UserToUserClientManager.SelectedClient;
-                if (selectedClient == null || !ClientManager.Instance.UserToUserClientManager.CallBacks.ContainsKey(selectedClient))
+                selectedClient = currentUserManager.SelectedClient;
+                if (selectedClient == null || !currentUserCallbacks.ContainsKey(selectedClient))
                 {
                     retBaseLine = "Error: Client does not exsits";
                     clientNotExcecuetedCommand = false;
                     return;
                 }
                 taskId = Guid.NewGuid().ToString();
-                currentSelectedClient = ClientManager.Instance.UserToUserClientManager.SelectedClient;
-                TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[ClientManager.Instance.UserToUserClientManager.SelectedClient].Enqueue(new Tuple<string, string, Action<string>,string>(command, args,
+                currentSelectedClient = currentUserManager.SelectedClient;
+                shellQueue[currentUserManager.SelectedClient].Enqueue( new ShellTask(command, args,
                     (str) =>
                     {
                         retBaseLine = str;
                         clientNotExcecuetedCommand = false;
                     }, taskId));
 
-                clientCallBack = ClientManager.Instance.UserToUserClientManager.CallBacks[selectedClient];
+                clientCallBack = currentUserCallbacks[selectedClient];
             });
             
             if (clientCallBack != null)
@@ -482,7 +506,7 @@ namespace ShellTrasferServer
                 return "Client CallBack is Not Found";
             while (clientNotExcecuetedCommand)
             {
-                if (ClientManager.Instance.UserToUserClientManager.DeletedTasks.Contains(taskId))
+                if (deletedTasks.Contains(taskId))
                 {
                     clientNotExcecuetedCommand = false;
                     retBaseLine = "Task were deleted";
@@ -493,8 +517,13 @@ namespace ShellTrasferServer
 
         //This function should not be executed as paralel. after we got response from the passive client
         //we do not need to block the other users since the selected client preformed his action
-        private static string EnqueueWaitAndReturnBaseLine(string command, DownloadRequest downloadRequest, RemoteFileInfo uploadRequest)
+        private static string EnqueueWaitAndReturnBaseLine(TaskType command, DownloadRequest downloadRequest, RemoteFileInfo uploadRequest)
         {
+            var currentUserManager = ClientManager.Instance.CurretUserClientManager;
+            var currentUserFileManager = FileMannager.Instance.CurrentUserFileMannager;
+            var currentUserCallbacks = currentUserManager.CallBacks;
+            var currentUserTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
+
             object retRequest = null;
             var currentSelectedClient = string.Empty;
             var taskId = string.Empty;
@@ -502,8 +531,8 @@ namespace ShellTrasferServer
             ICallBack clientCallBack = null;
             AtomicOperation.PerformAsAtomicFunction(() => 
             {
-            selectedClient = currentSelectedClient = ClientManager.Instance.UserToUserClientManager.SelectedClient;
-            if (selectedClient == null || !ClientManager.Instance.UserToUserClientManager.CallBacks.ContainsKey(selectedClient))
+            selectedClient = currentSelectedClient = currentUserManager.SelectedClient;
+            if (selectedClient == null || !currentUserCallbacks.ContainsKey(selectedClient))
             {
                 retRequest = "Client does not exsits";
                 return;
@@ -513,29 +542,29 @@ namespace ShellTrasferServer
                     downloadRequest.taskId = taskId;
                 if (uploadRequest != null)
                     uploadRequest.taskId = taskId;
-                TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[ClientManager.Instance.UserToUserClientManager.SelectedClient].Enqueue(
-                new Tuple<string, DownloadRequest, RemoteFileInfo, Action<object>>(command, downloadRequest, uploadRequest,
+                currentUserTransferQueue[currentUserManager.SelectedClient].Enqueue(
+                    new TransferTask(command, downloadRequest, uploadRequest,
                 (obj) =>
                 {
                     retRequest = obj;
                     if (obj is string)
                     {
-                        FileMannager.Instance.UserToUserFileMannager.Error = true;
-                        FileMannager.Instance.UserToUserFileMannager.ErrorMessage = (string)obj;
+                        currentUserFileManager.Error = true;
+                        currentUserFileManager.ErrorMessage = (string)obj;
                     }
                     else
                     {
-                        FileMannager.Instance.UserToUserFileMannager.IsDownloding = true;
-                        FileMannager.Instance.UserToUserFileMannager.UploadingEnded = true;
-                        FileMannager.Instance.UserToUserFileMannager.IsUploading = false;
+                        currentUserFileManager.IsDownloding = true;
+                        currentUserFileManager.UploadingEnded = true;
+                        currentUserFileManager.IsUploading = false;
                     }
-                    FileMannager.Instance.UserToUserFileMannager.Buffering = false;
-                    FileMannager.Instance.UserToUserFileMannager.ReadSoFar = 0;
+                    currentUserFileManager.Buffering = false;
+                    currentUserFileManager.ReadSoFar = 0;
                 }));
-                clientCallBack = ClientManager.Instance.UserToUserClientManager.CallBacks[selectedClient];
-                FileMannager.Instance.UserToUserFileMannager.Buffering = true;
-                FileMannager.Instance.UserToUserFileMannager.IsUploading = true;
-                FileMannager.Instance.UserToUserFileMannager.UploadingEnded = false;
+                clientCallBack = currentUserCallbacks[selectedClient];
+                currentUserFileManager.Buffering = true;
+                currentUserFileManager.IsUploading = true;
+                currentUserFileManager.UploadingEnded = false;
             });
             if (clientCallBack != null)
                 try
@@ -559,44 +588,58 @@ namespace ShellTrasferServer
 
         public bool PassiveClientRun(string id,string taskId, string baseLine)
         {
+            var currentUserShellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
             if (!AllowOnlySelectedClient(id))
                 return false;
             //It possible that the active client deleted 1 or more missions. in that case we want to ignore the callback and 
             //return
-            if (!TaskQueue.Instance.UserToUserTaskQueue.ShellQueue.ContainsKey(id) || !TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].Any() ||
-                TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].Peek().Item4 != taskId)
+            if (!currentUserShellQueue.ContainsKey(id) || 
+                !currentUserShellQueue[id].Any() ||
+                currentUserShellQueue[id].Peek().TaskId != taskId)
                 return false;
-            var tuple = TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].Dequeue();
-            var callback = tuple.Item3;
+            var shellTask = currentUserShellQueue[id].Dequeue();
+            var callback = shellTask.Callback;
             callback(baseLine);
             return true;
         }
 
         public bool HasCommand(string id)
         {
-            if (ClientManager.Instance.UserToUserClientManager.Deleted.Contains(id))
+            var currentUserDeletedTasks = ClientManager.Instance.CurretUserClientManager.Deleted;
+            var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
+            var currentShellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
+
+            if (currentUserDeletedTasks.Contains(id))
             {
                 return true;
             }
-            return AllowOnlySelectedClient(id) ? TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.ContainsKey(id)
-                && TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].Count > 0 : false;
+            return AllowOnlySelectedClient(id) ? 
+                  currentTransferQueue.ContainsKey(id) && currentShellQueue[id].Count > 0 : 
+                  false;
         }
         public Tuple<string, string, string> PassiveNextCommand(string id)
         {
-            if (ClientManager.Instance.UserToUserClientManager.Deleted.Contains(id))
+            var currentUserDeletedTasks = ClientManager.Instance.CurretUserClientManager.Deleted;
+            var currentShellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
+
+            if (currentUserDeletedTasks.Contains(id))
             {
                 return new Tuple<string, string,string>(closeShell, "","");
             }
             //In case that between the has command and the passive client get command the task has been deleted
-            if (TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].Count == 0)
+            if (currentShellQueue[id].Count == 0)
                 return new Tuple<string, string, string>("", "", "");
 
-            var task = TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].Peek();
-            return new Tuple<string, string,string>(task.Item1, task.Item2,task.Item4);
+            var task = currentShellQueue[id].Peek();
+            return new Tuple<string, string,string>(task.Command, task.Args,task.TaskId);
         }
 
         public void CommandResponse(string id,string taskId, string baseLine)
         {
+            var currentUserDeletedTasks = ClientManager.Instance.CurretUserClientManager.Deleted;
+            var currentShellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
+
+
             if (baseLine == "CleanId")
             {
                 //unique case that the passive client got some exception and he want to start over, so he delete his
@@ -617,84 +660,97 @@ namespace ShellTrasferServer
             }
             //When passive client been deleted, he get a signal from the callback and in hasCommand get true
             //and in NextCommand he get new mission that is not in the missionQueue so we dont need to dequeue
-            if (ClientManager.Instance.UserToUserClientManager.Deleted.Contains(id))
+            if (currentUserDeletedTasks.Contains(id))
                 return;
             //In case that between the has command and the passive client get command the task has been deleted
             //It possible that the active client deleted 1 or more missions. in that case we want to ignore the callback and 
             //return
-            if (!TaskQueue.Instance.UserToUserTaskQueue.ShellQueue.ContainsKey(id) || !TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].Any() ||
-                TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].Peek().Item4 != taskId)
+            if (!currentShellQueue.ContainsKey(id) || 
+                !currentShellQueue[id].Any() ||
+                currentShellQueue[id].Peek().TaskId != taskId)
                 return;
-            var task = TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].Dequeue();
-            var callback = task.Item3;
+            var task = currentShellQueue[id].Dequeue();
+            var callback = task.Callback;
             callback(baseLine);
         }
 
         public bool HasUploadCommand(string id)
         {
-            return AllowOnlySelectedClient(id) ? TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.ContainsKey(id) 
-                && TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id].Count > 0 &&
-                   TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id].Peek().Item1 == "Upload" :
-                   false;
+            var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
+            return AllowOnlySelectedClient(id) ? 
+                currentTransferQueue.ContainsKey(id) && 
+                currentTransferQueue[id].Count > 0 &&
+                currentTransferQueue[id].Peek().TaskType == TaskType.Upload :
+                false;
         }
 
         public bool HasDownloadCommand(string id)
         {
-            return AllowOnlySelectedClient(id) ? TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.ContainsKey(id)
-                && TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id].Count > 0 &&
-                  TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id].Peek().Item1 == "Download" :
+            var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
+            return AllowOnlySelectedClient(id) ? 
+                   currentTransferQueue.ContainsKey(id) && 
+                   currentTransferQueue[id].Count > 0 &&
+                   currentTransferQueue[id].Peek().TaskType == TaskType.Download :
                    false;
         }
 
         public DownloadRequest PassiveGetDownloadFile(DownloadRequest id)
         {
+            var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
+
             //In case that between the has command and the passive client get command the task has been deleted
-            if (!TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.ContainsKey(id.id) || !TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id.id].Any())
+            if (!currentTransferQueue.ContainsKey(id.id) || !currentTransferQueue[id.id].Any())
             {
                 return new DownloadRequest()
                 {
                     taskId = Guid.Empty.ToString()
                 };
             }
-            var downloadTask = TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id.id].Peek();
-            var req = downloadTask.Item2;
+            var downloadTask = currentTransferQueue[id.id].Peek();
+            var req = downloadTask.DownloadRequest;
             return req;
         }
 
         public void PassiveDownloadedFile(RemoteFileInfo request)
         {
+            var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
+            var currentFileManager = FileMannager.Instance.CurrentUserFileMannager;
 
             //It possible that the active client deleted 1 or more missions. in that case we want to ignore the callback and 
             //return
-            if (!TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.ContainsKey(request.id) || !TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[request.id].Any() ||
-                TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[request.id].Peek().Item2.taskId != request.taskId)
+            if (!currentTransferQueue.ContainsKey(request.id) || 
+                !currentTransferQueue[request.id].Any() ||
+                currentTransferQueue[request.id].Peek().DownloadRequest.taskId != request.taskId)
                 return;
 
             //We will save all the byte chunks in temp file, its propebly will became to big with all the add actions
             //for some data strcture so we probebly will get SystemOutOfMemory exception
-            if (FileMannager.Instance.UserToUserFileMannager.FileStream == null)
+            if (currentFileManager.FileStream == null)
             {
                 var newGuid = Guid.NewGuid();
-                FileMannager.Instance.UserToUserFileMannager.Path = Path.Combine(Path.GetTempPath(), newGuid.ToString(), request.FileName);
+                currentFileManager.Path = Path.Combine(Path.GetTempPath(), newGuid.ToString(), request.FileName);
                 if (!Directory.Exists(Path.Combine(Path.GetTempPath(), newGuid.ToString())))
                     Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), newGuid.ToString()));
-                FileMannager.Instance.UserToUserFileMannager.FileStream = new FileStream(FileMannager.Instance.UserToUserFileMannager.Path, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
-                FileMannager.Instance.UserToUserFileMannager.FileSize = request.FileSize;
+                currentFileManager.FileStream = new FileStream(currentFileManager.Path, 
+                                                               FileMode.Create, 
+                                                               FileAccess.ReadWrite, 
+                                                               FileShare.ReadWrite);
+                currentFileManager.FileSize = request.FileSize;
             }
             //When the passive client finish sending all the chumks he will signal with the request.FileEnded flag
             if (!request.FileEnded)
             {
-                FileMannager.Instance.UserToUserFileMannager.FileStream.Write(request.FileByteStream, 0, request.FileByteStream.Length);
-                FileMannager.Instance.UserToUserFileMannager.FileStream.Flush();
+                currentFileManager.FileStream.Write(request.FileByteStream, 0, request.FileByteStream.Length);
+                currentFileManager.FileStream.Flush();
             }
             else
             {
                 //download from pasive client ended. now we need to notify the active client
-                FileMannager.Instance.UserToUserFileMannager.FileStream.Close();
-                FileMannager.Instance.UserToUserFileMannager.FileStream = null;
+                currentFileManager.FileStream.Close();
+                currentFileManager.FileStream = null;
 
-                var uploadTask = TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[request.id].Dequeue();
-                var callback = uploadTask.Item4;
+                var uploadTask = currentTransferQueue[request.id].Dequeue();
+                var callback = uploadTask.Callback;
                 callback(true);
             }
 
@@ -702,8 +758,11 @@ namespace ShellTrasferServer
 
         public RemoteFileInfo PassiveGetUploadFile(DownloadRequest id)
         {
+            var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
+            var currentFileManager = FileMannager.Instance.CurrentUserFileMannager;
+
             //In case that between the has command and the passive client get command the task has been deleted
-            if (!TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.ContainsKey(id.id) || !TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id.id].Any())
+            if (!currentTransferQueue.ContainsKey(id.id) || !currentTransferQueue[id.id].Any())
             {
                 return new RemoteFileInfo()
                 {
@@ -712,37 +771,37 @@ namespace ShellTrasferServer
                     FileByteStream = new byte[0],
                     FileEnded = true ,
                     id = id.id,
-                    FileSize = FileMannager.Instance.UserToUserFileMannager.FileSize
+                    FileSize = currentFileManager.FileSize
                 };
             }
 
-            var uploadTask = TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id.id].Peek();
-            var req = uploadTask.Item3;
+            var uploadTask = currentTransferQueue[id.id].Peek();
+            var req = uploadTask.RemoteFileInfo;
 
             //We dont want pices of byte in the wrong order
             return AtomicOperation.PerformAsAtomicUpload<RemoteFileInfo>(() =>
             {
                //We have still download in process and we have chunks to send
                //Must be in this order. the MoveNext() first in order to load the first chunk
-               if (FileMannager.Instance.UserToUserFileMannager.IsUploading && FileMannager.Instance.UserToUserFileMannager.EnumerableChunk.MoveNext())
+               if (currentFileManager.IsUploading && currentFileManager.EnumerableChunk.MoveNext())
                 {
                     return new RemoteFileInfo()
                     {
-                        FileByteStream = FileMannager.Instance.UserToUserFileMannager.EnumerableChunk.Current.Item1,
+                        FileByteStream = currentFileManager.EnumerableChunk.Current.Item1,
                         FileName = req.FileName,
                         PathToSaveOnServer = req.PathToSaveOnServer,
                         FileEnded = false,
-                        Length = FileMannager.Instance.UserToUserFileMannager.EnumerableChunk.Current.Item2,
+                        Length = currentFileManager.EnumerableChunk.Current.Item2,
                         taskId = req.taskId,
                         id = id.id,
-                        FileSize = FileMannager.Instance.UserToUserFileMannager.FileSize
+                        FileSize = currentFileManager.FileSize
                     };
                 }
 
                 //We dont have chunks to send so end the download 
                 try
                 {
-                    File.Delete(FileMannager.Instance.UserToUserFileMannager.Path);
+                    File.Delete(currentFileManager.Path);
                 }
                 catch { } 
                 return new RemoteFileInfo()
@@ -753,67 +812,78 @@ namespace ShellTrasferServer
                     FileEnded = true,
                     taskId = req.taskId,
                     id = id.id,
-                    FileSize = FileMannager.Instance.UserToUserFileMannager.FileSize
+                    FileSize = currentFileManager.FileSize
                 };
             });
         }
 
         public void PassiveUploadedFile(string id,string taskId)
         {
+            var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
+
             //It possible that the active client deleted 1 or more missions. in that case we want to ignore the callback and 
             //return
-            if (!TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.ContainsKey(id) || !TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id].Any() ||
-                TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id].Peek().Item3.taskId != taskId)
+            if (!currentTransferQueue.ContainsKey(id) || 
+                !currentTransferQueue[id].Any() ||
+                currentTransferQueue[id].Peek().RemoteFileInfo.taskId != taskId)
                 return;
-            var uploadTask = TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id].Dequeue();
-            var callback = uploadTask.Item4;
+            var uploadTask = currentTransferQueue[id].Dequeue();
+            var callback = uploadTask.Callback;
             callback(true);
         }
 
         public void ErrorUploadDownload(string id,string taskId, string response)
         {
+            var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
+            var currentFileManager = FileMannager.Instance.CurrentUserFileMannager;
+
             //It possible that the active client deleted 1 or more missions. in that case we want to ignore the callback and 
             //return
 
             //Delete the temp file
-            if (FileMannager.Instance.UserToUserFileMannager.FileStream != null)
+            if (currentFileManager.FileStream != null)
             {
-                FileMannager.Instance.UserToUserFileMannager.FileStream.Close();
-                FileMannager.Instance.UserToUserFileMannager.FileStream = null;
+                currentFileManager.FileStream.Close();
+                currentFileManager.FileStream = null;
             }
             try
             {
-                if (File.Exists(FileMannager.Instance.UserToUserFileMannager.Path))
-                    File.Delete(FileMannager.Instance.UserToUserFileMannager.Path);
+                if (File.Exists(currentFileManager.Path))
+                    File.Delete(currentFileManager.Path);
             }
             catch { }
-            if (!TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.ContainsKey(id) || !TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id].Any() ||
-                TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id].Peek().Item3.taskId != taskId)
+            if (!currentTransferQueue.ContainsKey(id) || 
+                !currentTransferQueue[id].Any() ||
+                currentTransferQueue[id].Peek().RemoteFileInfo.taskId != taskId)
                 return;
-            var task = TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id].Dequeue();
-            var callback = task.Item4;
+            var task = currentTransferQueue[id].Dequeue();
+            var callback = task.Callback;
             callback(response);
         }
 
         void IPassiveShell.ErrorNextCommand(string id,string taskId, string response)
         {
+            var currentShellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
+            var currentDeletedTasks = ClientManager.Instance.CurretUserClientManager.Deleted;
+
             //When passive client been deleted, he get a signal from the callback and in hasCommand get true
             //and in NextCommand he get new mission that is not in the missionQueue so we dont need to dequeue
 
             //If the PassiveClient was deleted the get signal and check if he has command to execute
             //then in NextCommand he get a CloseShell command, if something go wrong the client will end up here
             //but as far as the server concern the client deleted from his data.
-            if (ClientManager.Instance.UserToUserClientManager.Deleted.Contains(id))
+            if (currentDeletedTasks.Contains(id))
             {
                 return;
             }
             //It possible that the active client deleted 1 or more missions. in that case we want to ignore the callback and 
             //return
-            if (!TaskQueue.Instance.UserToUserTaskQueue.ShellQueue.ContainsKey(id) || !TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].Any() ||
-                TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].Peek().Item4 != taskId)
+            if (!currentShellQueue.ContainsKey(id) || 
+                !currentShellQueue[id].Any() ||
+                currentShellQueue[id].Peek().TaskId != taskId)
                 return;
-            var task = TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id].Dequeue();
-            var callback = task.Item3;
+            var task = currentShellQueue[id].Dequeue();
+            var callback = task.Callback;
             callback(response);
         }
 
@@ -823,13 +893,19 @@ namespace ShellTrasferServer
                 return false;
             return AtomicOperation.PerformAsAtomicSubscribe(() =>
              {
-                 if (!ClientManager.Instance.UserToUserClientManager.CallBacks.ContainsKey(id))
+                 var currentClientManager = ClientManager.Instance.CurretUserClientManager;
+                 var currentShellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
+                 var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
+                 var currentUserCallbacks = currentClientManager.CallBacks;
+                 
+
+                 if (!currentUserCallbacks.ContainsKey(id))
                  {
-                     ClientManager.Instance.UserToUserClientManager.CallBacks[id] = null;
-                     ClientManager.Instance.UserToUserClientManager.NickNames[id] = string.IsNullOrWhiteSpace(name) ? "None" : name;
-                     TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id] = new Queue<Tuple<string, string, Action<string>, string>>();
-                     TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id] = new Queue<Tuple<string, DownloadRequest, RemoteFileInfo, Action<object>>>();
-                     if (ClientManager.Instance.UserToUserClientManager.CallBacks.Count == 1)
+                     currentUserCallbacks[id] = null;
+                     currentClientManager.NickNames[id] = string.IsNullOrWhiteSpace(name) ? "None" : name;
+                     currentShellQueue[id] = new Queue<ShellTask>();
+                     currentTransferQueue[id] = new Queue<TransferTask>();
+                     if (currentUserCallbacks.Count == 1)
                          DefineSelectedClient(id);
                      return true;
                  }
@@ -861,28 +937,34 @@ namespace ShellTrasferServer
 
         private bool AllowOnlySelectedClient(string id)
         {
-            return ClientManager.Instance.UserToUserClientManager.SelectedClient == id;
+            return ClientManager.Instance.CurretUserClientManager.SelectedClient == id;
         }
 
         private void DefineSelectedClient(string id)
         {
-            ClientManager.Instance.UserToUserClientManager.SelectedClient = id;
+            ClientManager.Instance.CurretUserClientManager.SelectedClient = id;
         }
 
         private static void RemoveClient(string id,bool onlyFromServer = false)
         {
+            var currentClientManager = ClientManager.Instance.CurretUserClientManager;
+            var currentShellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
+            var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
+            var currentUserCallbacks = currentClientManager.CallBacks;
+            var currentUserStatusCallbacks = currentClientManager.StatusCallBacks;
+            var currentUserDeleted = ClientManager.Instance.CurretUserClientManager.Deleted;
 
-            if (id == null || !ClientManager.Instance.UserToUserClientManager.CallBacks.ContainsKey(id))
+            if (id == null || !currentUserCallbacks.ContainsKey(id))
             {
                 return;
             }
-            var selectedClient = ClientManager.Instance.UserToUserClientManager.SelectedClient;
-            var clientCallBack = ClientManager.Instance.UserToUserClientManager.CallBacks[id];
-            ClientManager.Instance.UserToUserClientManager.CallBacks.TryRemove(id, out ICallBack iCallBackObj);
-            ClientManager.Instance.UserToUserClientManager.StatusCallBacks.TryRemove(id,out iCallBackObj);
-            ClientManager.Instance.UserToUserClientManager.NickNames.Remove(id);
-            Queue<Tuple<string, string, Action<string>, string>> shelElement;
-            shelElement = TaskQueue.Instance.UserToUserTaskQueue.ShellQueue[id];
+            var selectedClient = currentClientManager.SelectedClient;
+            var clientCallBack = currentUserCallbacks[id];
+            currentUserCallbacks.TryRemove(id, out ICallBack iCallBackObj);
+            currentUserStatusCallbacks.TryRemove(id,out iCallBackObj);
+            currentClientManager.NickNames.Remove(id);
+            Queue<ShellTask> shelElement;
+            shelElement = currentShellQueue[id];
             if(shelElement != null)
                 foreach(var element in shelElement)
                 {
@@ -890,9 +972,9 @@ namespace ShellTrasferServer
                     //pass the lock
                     DeleteClientTask(id, true, 1,true);
                 }
-            TaskQueue.Instance.UserToUserTaskQueue.ShellQueue.TryRemove(id, out shelElement);
-            Queue<Tuple<string, DownloadRequest, RemoteFileInfo, Action<object>>> transferElement;
-            transferElement = TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue[id];
+            currentShellQueue.TryRemove(id, out shelElement);
+            Queue<TransferTask> transferElement;
+            transferElement = currentTransferQueue[id];
             if (transferElement != null)
                 foreach (var element in transferElement)
                 {
@@ -900,8 +982,8 @@ namespace ShellTrasferServer
                     //pass the lock
                     DeleteClientTask(id, false, 1,true);
                 }
-            TaskQueue.Instance.UserToUserTaskQueue.TransferTaskQueue.TryRemove(id, out transferElement);
-            ClientManager.Instance.UserToUserClientManager.Deleted.Add(id);
+            currentTransferQueue.TryRemove(id, out transferElement);
+            currentUserDeleted.Add(id);
             try
             {
                 if(!onlyFromServer)
@@ -915,32 +997,37 @@ namespace ShellTrasferServer
             catch { }
             finally
             {
-                if (ClientManager.Instance.UserToUserClientManager.CallBacks.Count > 0 && id== selectedClient)
+                if (currentUserCallbacks.Count > 0 && id== selectedClient)
                 {
-                    ClientManager.Instance.UserToUserClientManager.SelectedClient = ClientManager.Instance.UserToUserClientManager.CallBacks.First().Key;
+                    currentClientManager.SelectedClient = currentUserCallbacks.First().Key;
                 }
-                else if(ClientManager.Instance.UserToUserClientManager.CallBacks.Count == 0 && id == selectedClient)
+                else if(currentUserCallbacks.Count == 0 && id == selectedClient)
                 {
-                    ClientManager.Instance.UserToUserClientManager.SelectedClient = null;
+                    currentClientManager.SelectedClient = null;
                 }
             }
         }
 
         private bool IsClientAlive(string id)
         {
-                if (id == null || !ClientManager.Instance.UserToUserClientManager.CallBacks.ContainsKey(id))
+
+            var currentClientManager = ClientManager.Instance.CurretUserClientManager;
+            var currentUserCallbacks = currentClientManager.CallBacks;
+            var currentUserStatusCallbacks = currentClientManager.StatusCallBacks;
+
+            if (id == null || !currentUserCallbacks.ContainsKey(id))
                 {
                     return false;
                 }
             try
             {
-                var clientCallBack = ClientManager.Instance.UserToUserClientManager.StatusCallBacks[id];
+                var clientCallBack = currentUserStatusCallbacks[id];
                 clientCallBack.CallBackFunction("livnessCheck");
                 //Must check 2 times, first time go well also if the passiveClient is disconnected
                 clientCallBack.CallBackFunction("livnessCheck");
 
                 //Keep the connection with the taks callback alive 
-                clientCallBack = ClientManager.Instance.UserToUserClientManager.CallBacks[id];
+                clientCallBack = currentUserCallbacks[id];
                 clientCallBack.CallBackFunction("livnessCheck");
                 //Must check 2 times, first time go well also if the passiveClient is disconnected
                 clientCallBack.CallBackFunction("livnessCheck");
@@ -966,7 +1053,7 @@ namespace ShellTrasferServer
                 try
                 {
                     ICallBack callback = OperationContext.Current.GetCallbackChannel<ICallBack>();
-                    ClientManager.Instance.UserToUserClientManager.StatusCallBacks[id] = callback;
+                    ClientManager.Instance.CurretUserClientManager.StatusCallBacks[id] = callback;
                 }
                 catch
                 {} 
@@ -976,7 +1063,7 @@ namespace ShellTrasferServer
                 try
                 {
                     ICallBack callback = OperationContext.Current.GetCallbackChannel<ICallBack>();
-                    ClientManager.Instance.UserToUserClientManager.CallBacks[id] = callback;
+                    ClientManager.Instance.CurretUserClientManager.CallBacks[id] = callback;
                 }
                 catch
                 {}
@@ -988,8 +1075,8 @@ namespace ShellTrasferServer
             try
             {
                 //Send data through the connection pipe
-                if (ClientManager.Instance.UserToUserClientManager.CallBacks.ContainsKey(id))
-                    ClientManager.Instance.UserToUserClientManager.CallBacks[id].KeepCallbackALive();
+                if (ClientManager.Instance.CurretUserClientManager.CallBacks.ContainsKey(id))
+                    ClientManager.Instance.CurretUserClientManager.CallBacks[id].KeepCallbackALive();
             }
             catch {} 
         }
@@ -1156,7 +1243,7 @@ namespace Data
         private TaskQueue() { }
 
         private ConcurrentDictionary<string, UserTaskQueue> _userToUserTaskQueue = new ConcurrentDictionary<string, UserTaskQueue>();
-        public UserTaskQueue UserToUserTaskQueue
+        public UserTaskQueue CurrentUserTaskQueue
         {
             get
             {
@@ -1197,7 +1284,7 @@ namespace Data
         private ClientManager() { }
 
         private ConcurrentDictionary<string, UserClientManager> _userToUserClientManager = new ConcurrentDictionary<string, UserClientManager>();
-        public UserClientManager UserToUserClientManager
+        public UserClientManager CurretUserClientManager
         {
             get
             {
@@ -1298,7 +1385,7 @@ namespace Data
 
 
         private ConcurrentDictionary<string, UserFileManager> _userToUserFileMannager = new ConcurrentDictionary<string, UserFileManager>();
-        public UserFileManager UserToUserFileMannager
+        public UserFileManager CurrentUserFileMannager
         {
             get
             {

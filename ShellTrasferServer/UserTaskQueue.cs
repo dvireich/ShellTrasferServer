@@ -9,10 +9,11 @@ namespace ShellTrasferServer
 {
     public class UserTaskQueue
     {
-        private ConcurrentDictionary<string, Queue<Tuple<string, string, Action<string>, string>>> _shellTaskQueue = new ConcurrentDictionary<string, Queue<Tuple<string, string, Action<string>, string>>>();
-        private ConcurrentDictionary<string, Queue<Tuple<string, DownloadRequest, RemoteFileInfo, Action<object>>>> _transferTaskQueue =
-            new ConcurrentDictionary<string, Queue<Tuple<string, DownloadRequest, RemoteFileInfo, Action<object>>>>();
-        public ConcurrentDictionary<string, Queue<Tuple<string, string, Action<string>, string>>> ShellQueue { get { return _shellTaskQueue; } }
-        public ConcurrentDictionary<string, Queue<Tuple<string, DownloadRequest, RemoteFileInfo, Action<object>>>> TransferTaskQueue { get { return _transferTaskQueue; } }
+        private ConcurrentDictionary<string, Queue<ShellTask>> _shellTaskQueue = new ConcurrentDictionary<string, Queue<ShellTask>>();
+        public ConcurrentDictionary<string, Queue<ShellTask>> ShellQueue { get { return _shellTaskQueue; } }
+
+
+        private ConcurrentDictionary<string, Queue<TransferTask>> _transferTaskQueue =  new ConcurrentDictionary<string, Queue<TransferTask>>();
+        public ConcurrentDictionary<string, Queue<TransferTask>> TransferTaskQueue { get { return _transferTaskQueue; } }
     }
 }
