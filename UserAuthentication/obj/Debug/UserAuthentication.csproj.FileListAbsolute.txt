@@ -9,3 +9,6 @@ C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\User
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserAuthentication\bin\Debug\DBManager.pdb
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserAuthentication\bin\Debug\DBManager.exe.config
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserAuthentication\obj\Debug\UserAuthentication.csproj.CopyComplete
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserAuthentication\bin\Debug\Logger.pdb
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserAuthentication\bin\Debug\Logger.dll
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\UserAuthentication\bin\Debug\Logger.dll.config

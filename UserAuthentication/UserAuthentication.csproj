@@ -67,6 +67,10 @@
       <Project>{0a326781-5f8e-418c-acaf-f7f3ef16a434}</Project>
       <Name>DBManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{22ea23a9-9adc-4871-9304-8f4c284317c6}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

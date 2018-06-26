@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Logger;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Odbc;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,11 +32,11 @@ namespace DBManager
             try
             {
                 cnn.Open();
-                Console.WriteLine("Connection Open  !");
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                throw new Exception(string.Format("Could not open SQL connection with the connection string {0}", connectionString),e);
+                throw new Exception(string.Format("Could not open SQL connection with the connection string {0}", connectionString), e);
             }
         }
 
@@ -46,7 +49,7 @@ namespace DBManager
         public void CreateDataBase(string path = null)
         {
             ValidateDBConnection();
-            
+
             var createDatabaseStr = string.IsNullOrEmpty(path) ?
                   string.Format("CREATE DATABASE {0}", dbName) :
                   string.Format("CREATE DATABASE {0} ON PRIMARY ", dbName) +
@@ -127,7 +130,7 @@ namespace DBManager
             ValidateNumberOfValsMatchColNum(values.Length, tableName);
             ValidateValsLengthByCol(values, tableName);
 
-            var tableCols = Schema.TableNameToSchema[tableName].Select(se =>se.ColumnName).ToArray();
+            var tableCols = Schema.TableNameToSchema[tableName].Select(se => se.ColumnName).ToArray();
             values = values.Select(val => "'" + val + "'").ToArray();
             var saveValuestr = string.Format("INSERT INTO {0} ", TableNameFormat(tableName)) +
                                string.Format("({0}) ", ToSeperatedCommaList(tableCols)) +
@@ -137,7 +140,7 @@ namespace DBManager
             {
                 saveCommand.ExecuteNonQuery();
             }
-               
+
         }
 
         public void UpdateDataBaseRecord(string tableName, string id, string[] columns, string[] values)
@@ -154,8 +157,8 @@ namespace DBManager
             var last = zippedColVals.Last();
             foreach (var colVal in zippedColVals)
             {
-                command.AppendFormat("{0} = '{1}' ",colVal.Item1, colVal.Item2);
-                if(colVal != last)
+                command.AppendFormat("{0} = '{1}' ", colVal.Item1, colVal.Item2);
+                if (colVal != last)
                     command.Append(",");
             };
             command.AppendFormat(" WHERE Id = '{0}';", id);
@@ -163,14 +166,14 @@ namespace DBManager
             using (var updateCommand = new SqlCommand(command.ToString(), cnn))
             {
                 updateCommand.ExecuteNonQuery();
-            }    
+            }
         }
 
         public string[] GetRecord(string tableName, string colName, string colVal)
         {
             ValidateDBConnection();
             ValidateTableName(tableName);
-            
+
             var SelectRecord = string.Format("SELECT * FROM {0} ", TableNameFormat(tableName)) +
                                string.Format("WHERE {0} = '{1}'", colName, colVal);
 
@@ -214,26 +217,26 @@ namespace DBManager
         private bool CheckDatabaseExists(string databaseName)
         {
             ValidateDBConnection();
-           
+
             bool result = false;
 
             try
             {
                 var sqlCreateDBQuery = string.Format("SELECT database_id FROM sys.databases WHERE Name = '{0}'", databaseName);
-        
-                    using (SqlCommand sqlCmd = new SqlCommand(sqlCreateDBQuery, cnn))
+
+                using (SqlCommand sqlCmd = new SqlCommand(sqlCreateDBQuery, cnn))
+                {
+
+                    object resultObj = sqlCmd.ExecuteScalar();
+
+                    int databaseID = 0;
+
+                    if (resultObj != null)
                     {
-                        
-                        object resultObj = sqlCmd.ExecuteScalar();
-
-                        int databaseID = 0;
-
-                        if (resultObj != null)
-                        {
-                            int.TryParse(resultObj.ToString(), out databaseID);
-                        }
-                        result = (databaseID > 0);
+                        int.TryParse(resultObj.ToString(), out databaseID);
                     }
+                    result = (databaseID > 0);
+                }
             }
             catch (Exception ex)
             {
@@ -340,5 +343,7 @@ namespace DBManager
             Disconnect();
             cnn = null;
         }
+        }
     }
 }
+

@@ -8,6 +8,7 @@ using System.ServiceModel.Description;
 using UserAuthentication;
 using UserLoader;
 using ShellTrasferServer;
+using ServiceLoader;
 
 namespace Program
 {

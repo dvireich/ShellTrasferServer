@@ -51,6 +51,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{22ea23a9-9adc-4871-9304-8f4c284317c6}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShellTrasferServer\ShellTrasferServer.csproj">
       <Project>{a0755d37-471d-48ff-8672-14d31c6b3a38}</Project>
       <Name>ShellTrasferServer</Name>

@@ -18,3 +18,6 @@ C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Serv
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\ServiceLoader\obj\Debug\ServiceLoader.csproj.CopyComplete
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\ServiceLoader\obj\Debug\ServiceLoader.exe
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\ServiceLoader\obj\Debug\ServiceLoader.pdb
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\ServiceLoader\bin\Debug\Logger.pdb
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\ServiceLoader\bin\Debug\Logger.dll
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\ServiceLoader\bin\Debug\Logger.dll.config

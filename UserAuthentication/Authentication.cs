@@ -1,4 +1,5 @@
 ﻿using DBManager;
+using Logger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,8 @@ using System.Text;
 
 namespace UserAuthentication
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
+    [LoggingBehavior]
+    //[LoggingBehavior(LoggingStrategyType = typeof(FileLoggingStrategy))]
     public class Authentication : IAuthentication
     {
         public string Authenticate(string userName, string password, out string error)
