@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbols LinesOfCode="317" PostSharpLinesOfCode="0" EnhancedTypesCount="7" SchemaVersion="1" PostSharpVersion="5.0.52.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
+  <Class Class="#1=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogAttribute">
+    <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="6" Column="6">
+      <Target Target="#2=M:[DBManager]DBManager.Schema::#cctor()">
+        <JoinPoint Description="#3=Adds logging" Ordinal="4" LinesAvoided="5" />
+      </Target>
+      <Target Target="#4=M:[DBManager]DBManager.SchemaEntry::#ctor()">
+        <JoinPoint Description="#3" Ordinal="5" LinesAvoided="5" />
+      </Target>
+      <Target Target="#5=M:[DBManager]DBManager.SqlManager::#ctor()">
+        <JoinPoint Description="#3" Ordinal="27" LinesAvoided="5" />
+      </Target>
+    </Instance>
+    <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="7" Column="6">
+      <Target Target="#6=M:[DBManager]DBManager.SqlManager::TableNameFormat(System.String)">
+        <JoinPoint Description="#3" Ordinal="7" LinesAvoided="5" />
+      </Target>
+      <Target Target="#7=M:[DBManager]DBManager.SqlManager::Connect()">
+        <JoinPoint Description="#3" Ordinal="8" LinesAvoided="5" />
+      </Target>
+      <Target Target="#8=M:[DBManager]DBManager.SqlManager::Disconnect()">
+        <JoinPoint Description="#3" Ordinal="9" LinesAvoided="5" />
+      </Target>
+      <Target Target="#9=M:[DBManager]DBManager.SqlManager::CreateDataBase(System.String)">
+        <JoinPoint Description="#3" Ordinal="10" LinesAvoided="5" />
+      </Target>
+      <Target Target="#10=M:[DBManager]DBManager.SqlManager::MakeColumnPrimeryKey(System.String, System.String)">
+        <JoinPoint Description="#3" Ordinal="11" LinesAvoided="5" />
+      </Target>
+      <Target Target="#11=M:[DBManager]DBManager.SqlManager::InsertIntoDataBase(System.String, System.String[])">
+        <JoinPoint Description="#3" Ordinal="12" LinesAvoided="5" />
+      </Target>
+      <Target Target="#12=M:[DBManager]DBManager.SqlManager::UpdateDataBaseRecord(System.String, System.String, System.String[], System.String[])">
+        <JoinPoint Description="#3" Ordinal="13" LinesAvoided="5" />
+      </Target>
+      <Target Target="#13=M:[DBManager]DBManager.SqlManager::GetRecord(System.String, System.String, System.String)">
+        <JoinPoint Description="#3" Ordinal="14" LinesAvoided="5" />
+      </Target>
+      <Target Target="#14=M:[DBManager]DBManager.SqlManager::DeleteRecord(System.String, System.String)">
+        <JoinPoint Description="#3" Ordinal="15" LinesAvoided="5" />
+      </Target>
+      <Target Target="#15=M:[DBManager]DBManager.SqlManager::CheckDatabaseExists(System.String)">
+        <JoinPoint Description="#3" Ordinal="16" LinesAvoided="5" />
+      </Target>
+      <Target Target="#16=M:[DBManager]DBManager.SqlManager::CheckIfTableExsits(System.String)">
+        <JoinPoint Description="#3" Ordinal="17" LinesAvoided="5" />
+      </Target>
+      <Target Target="#17=M:[DBManager]DBManager.SqlManager::ToSeperatedCommaList(System.String[])">
+        <JoinPoint Description="#3" Ordinal="18" LinesAvoided="5" />
+      </Target>
+      <Target Target="#18=M:[DBManager]DBManager.SqlManager::ValidateNumberModifiedColEqualToNumberOfVals(System.String[], System.String[])">
+        <JoinPoint Description="#3" Ordinal="19" LinesAvoided="5" />
+      </Target>
+      <Target Target="#19=M:[DBManager]DBManager.SqlManager::ValidateNumOfColsOrValsNotZero(System.String[], System.String[])">
+        <JoinPoint Description="#3" Ordinal="20" LinesAvoided="5" />
+      </Target>
+      <Target Target="#20=M:[DBManager]DBManager.SqlManager::ValidateTableName(System.String)">
+        <JoinPoint Description="#3" Ordinal="21" LinesAvoided="5" />
+      </Target>
+      <Target Target="#21=M:[DBManager]DBManager.SqlManager::ValidateDBConnection()">
+        <JoinPoint Description="#3" Ordinal="22" LinesAvoided="5" />
+      </Target>
+      <Target Target="#22=M:[DBManager]DBManager.SqlManager::ValidateNumberOfValsMatchColNum(System.Int32, System.String)">
+        <JoinPoint Description="#3" Ordinal="23" LinesAvoided="5" />
+      </Target>
+      <Target Target="#23=M:[DBManager]DBManager.SqlManager::ValidateValsLengthByCol(System.String[], System.String)">
+        <JoinPoint Description="#3" Ordinal="24" LinesAvoided="5" />
+      </Target>
+      <Target Target="#24=M:[DBManager]DBManager.SqlManager::ValidateNoConnectionBeforeConnect()">
+        <JoinPoint Description="#3" Ordinal="25" LinesAvoided="5" />
+      </Target>
+      <Target Target="#25=M:[DBManager]DBManager.SqlManager::Dispose()">
+        <JoinPoint Description="#3" Ordinal="26" LinesAvoided="5" />
+      </Target>
+    </Instance>
+    <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="8" Column="6">
+      <Target Target="#26=M:[DBManager]DBManager.CreateDBHandler::#ctor()">
+        <JoinPoint Description="#3" Ordinal="0" LinesAvoided="5" />
+      </Target>
+      <Target Target="#27=M:[DBManager]DBManager.CreateDBHandler::Exit()">
+        <JoinPoint Description="#3" LinesAvoided="5" />
+      </Target>
+      <Target Target="#28=M:[DBManager]DBManager.CreateDBHandler::CreateDataBase()">
+        <JoinPoint Description="#3" Ordinal="2" LinesAvoided="5" />
+      </Target>
+      <Target Target="#29=M:[DBManager]DBManager.CreateDBHandler::Dispose()">
+        <JoinPoint Description="#3" Ordinal="3" LinesAvoided="5" />
+      </Target>
+      <Target Target="#30=M:[DBManager]DBManager.SqlCommandAndLog::#ctor()">
+        <JoinPoint Description="#3" Ordinal="6" LinesAvoided="5" />
+      </Target>
+      <Target Target="#31=M:[DBManager]DBManager.User::ToStringArray()">
+        <JoinPoint Description="#3" Ordinal="28" LinesAvoided="5" />
+      </Target>
+      <Target Target="#32=M:[DBManager]DBManager.User::#ctor()">
+        <JoinPoint Description="#3" Ordinal="29" LinesAvoided="5" />
+      </Target>
+      <Target Target="#33=M:[DBManager]DBManager.UserDBManager::#ctor()">
+        <JoinPoint Description="#3" Ordinal="30" LinesAvoided="5" />
+      </Target>
+      <Target Target="#34=M:[DBManager]DBManager.UserDBManager::Exit()">
+        <JoinPoint Description="#3" Ordinal="31" LinesAvoided="5" />
+      </Target>
+      <Target Target="#35=M:[DBManager]DBManager.UserDBManager::CheckUserNameExists(System.String)">
+        <JoinPoint Description="#3" Ordinal="32" LinesAvoided="5" />
+      </Target>
+      <Target Target="#36=M:[DBManager]DBManager.UserDBManager::CheckUserExists([DBManager]DBManager.User)">
+        <JoinPoint Description="#3" Ordinal="33" LinesAvoided="5" />
+      </Target>
+      <Target Target="#37=M:[DBManager]DBManager.UserDBManager::CheckUserNameAndPassword(System.String, System.String, out [DBManager]DBManager.User)">
+        <JoinPoint Description="#3" Ordinal="34" LinesAvoided="5" />
+      </Target>
+      <Target Target="#38=M:[DBManager]DBManager.UserDBManager::SaveUserInDB([DBManager]DBManager.User)">
+        <JoinPoint Description="#3" Ordinal="35" LinesAvoided="5" />
+      </Target>
+      <Target Target="#39=M:[DBManager]DBManager.UserDBManager::DeleteUserFromDB([DBManager]DBManager.User)">
+        <JoinPoint Description="#3" Ordinal="36" LinesAvoided="5" />
+      </Target>
+      <Target Target="#40=M:[DBManager]DBManager.UserDBManager::GetUserByUserName(System.String)">
+        <JoinPoint Description="#3" Ordinal="37" LinesAvoided="5" />
+      </Target>
+      <Target Target="#41=M:[DBManager]DBManager.UserDBManager::Dispose()">
+        <JoinPoint Description="#3" Ordinal="38" LinesAvoided="5" />
+      </Target>
+    </Instance>
+  </Class>
+</Symbols>

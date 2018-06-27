@@ -1,11 +1,9 @@
 ﻿using DBManager;
-using Logger;
+using PostSharp.Patterns.Diagnostics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
+using WcfLogger;
+
+[assembly: Log]
 
 namespace UserAuthentication
 {

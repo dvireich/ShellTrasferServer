@@ -1,12 +1,13 @@
-﻿using System;
+﻿using PostSharp.Patterns.Diagnostics;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
+using WcfLogger;
+
+[assembly: Log]
 
 namespace UserLoader
 {
+    [LoggingBehavior]
     public class LoadUser : ILoadUser
     {
         bool ILoadUser.LoadUser(string id)
@@ -33,6 +34,7 @@ namespace UserLoader
             return taskQueue.Dequeue();
         }
 
+        [Log(AttributeExclude = true)]
         public bool Any()
         {
             return taskQueue.Count > 0;
@@ -40,6 +42,7 @@ namespace UserLoader
 
         private TaskQueue() { }
 
+        [Log(AttributeExclude = true)]
         public static TaskQueue Instance
         {
             get

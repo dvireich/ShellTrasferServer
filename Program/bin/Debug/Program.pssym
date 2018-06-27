@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbols LinesOfCode="38" PostSharpLinesOfCode="0" EnhancedTypesCount="1" SchemaVersion="1" PostSharpVersion="5.0.52.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
+  <Class Class="#1=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogAttribute">
+    <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="8" Column="6">
+      <Target Target="#2=M:[Program]Program.Program::CreateDataBase()">
+        <JoinPoint Description="#3=Adds logging" Ordinal="0" LinesAvoided="5" />
+      </Target>
+      <Target Target="#4=M:[Program]Program.Program::RunAsConsole()">
+        <JoinPoint Description="#3" LinesAvoided="5" />
+      </Target>
+    </Instance>
+  </Class>
+</Symbols>

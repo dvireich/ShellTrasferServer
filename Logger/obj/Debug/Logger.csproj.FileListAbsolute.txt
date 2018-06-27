@@ -1,7 +1,12 @@
-C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Logger\bin\Debug\Logger.pdb
-C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Logger\obj\Debug\Logger.csproj.CoreCompileInputs.cache
-C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Logger\obj\Debug\Logger.pdb
-C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Logger\obj\Debug\Logger.csprojAssemblyReference.cache
+C:\Users\dvire\source\repos\DllInjectorTest\Logger\bin\Debug\Logger.dll.config
+C:\Users\dvire\source\repos\DllInjectorTest\Logger\bin\Debug\Logger.dll
+C:\Users\dvire\source\repos\DllInjectorTest\Logger\bin\Debug\Logger.pdb
+C:\Users\dvire\source\repos\DllInjectorTest\Logger\obj\Debug\Logger.csproj.CoreCompileInputs.cache
+C:\Users\dvire\source\repos\DllInjectorTest\Logger\obj\Debug\Logger.dll
+C:\Users\dvire\source\repos\DllInjectorTest\Logger\obj\Debug\Logger.pdb
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Logger\bin\Debug\Logger.dll.config
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Logger\bin\Debug\Logger.dll
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Logger\bin\Debug\Logger.pdb
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Logger\obj\Debug\Logger.csproj.CoreCompileInputs.cache
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Logger\obj\Debug\Logger.dll
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\Logger\obj\Debug\Logger.pdb

@@ -1,4 +1,4 @@
-﻿using Logger;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,6 @@ namespace DBManager
             Schema.Columns.SecurityQuestion.ToString(),
             Schema.Columns.SecurityAnswer.ToString(),
         };
-
         public UserDBManager()
         {
             sql = new SqlManager();

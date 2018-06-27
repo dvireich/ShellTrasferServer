@@ -9,6 +9,9 @@ using UserAuthentication;
 using UserLoader;
 using ShellTrasferServer;
 using ServiceLoader;
+using PostSharp.Patterns.Diagnostics;
+
+[assembly: Log]
 
 namespace Program
 {

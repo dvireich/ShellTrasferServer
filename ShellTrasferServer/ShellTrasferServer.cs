@@ -11,9 +11,14 @@ using System.Net.Http;
 using System.Collections.Concurrent;
 using System.ServiceModel.Web;
 using System.Text.RegularExpressions;
+using WcfLogger;
+using PostSharp.Patterns.Diagnostics;
+
+[assembly: Log]
 
 namespace ShellTrasferServer
 {
+    [LoggingBehavior]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     public class ShellTransfer : IActiveShell, IPassiveShell , IAletCallBack , IRestService , IActiveShellPassiveshell
     {

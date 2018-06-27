@@ -1,4 +1,5 @@
-﻿using Logger;
+﻿
+using PostSharp.Patterns.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,6 +10,8 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+
+[assembly: Log]
 
 namespace DBManager
 {
@@ -238,7 +241,7 @@ namespace DBManager
                     result = (databaseID > 0);
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 result = false;
             }

@@ -1,0 +1,3 @@
+C:\ProgramData\PostSharp\5.0.52\bin.Release\PostSharp.Compiler.Engine.dll
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\ShellTrasferServer.pssln
+C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\packages\PostSharp.Patterns.Diagnostics.5.0.52\tools\PostSharp.Patterns.Diagnostics.Weaver.dll

@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserLoader", "UserLoader\Us
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLoader", "ServiceLoader\ServiceLoader.csproj", "{EC61FA64-4635-49AA-B487-41A2E5C9A9BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "Logger\Logger.csproj", "{22EA23A9-9ADC-4871-9304-8F4C284317C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfLogger", "WcfLogger\WcfLogger.csproj", "{22EA23A9-9ADC-4871-9304-8F4C284317C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

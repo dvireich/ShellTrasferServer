@@ -1,16 +1,20 @@
 ﻿using DBManager;
+using PostSharp.Patterns.Diagnostics;
+using PostSharp.Patterns.Diagnostics.Backends.Console;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.IO;
 using UserLoader;
+
+[assembly: Log]
+
 
 namespace Program
 {
+   
     public static class Program
     {
-
+        
         private static void CreateDataBase()
         {
             using (var createdb = new CreateDBHandler())
@@ -35,9 +39,11 @@ namespace Program
             //ServiceLoader.CloseAllChnnels();
         }
 
+        [Log(AttributeExclude = true)]
         static void Main(string[] args)
         {
-            if(args.Length > 0)
+            InitializeLoggingBackend();
+            if (args.Length > 0)
             {
                 foreach(var arg in args)
                 {
@@ -55,5 +61,19 @@ namespace Program
                 }
             }
         }
+
+        [Log(AttributeExclude = true)]
+        public static void InitializeLoggingBackend()
+        {
+            var consoleLogging = new ConsoleLoggingBackend();
+            consoleLogging.Options.TimestampFormat = "MM/dd/yyyy hh:mm:ss.ffff tt";
+            consoleLogging.Options.IncludeTimestamp = true;
+            LoggingServices.DefaultBackend = consoleLogging;
+            
+            //FileStream fs = new FileStream("Log.txt", FileMode.OpenOrCreate);
+            //StreamWriter sw = new StreamWriter(fs);
+            //Console.SetOut(sw);
+        }
+
     }
 }
