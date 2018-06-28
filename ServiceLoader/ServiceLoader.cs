@@ -12,6 +12,7 @@ using ServiceLoader;
 using PostSharp.Patterns.Diagnostics;
 
 [assembly: Log]
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace Program
 {

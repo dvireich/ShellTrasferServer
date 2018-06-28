@@ -2,329 +2,329 @@
 <Symbols LinesOfCode="1014" PostSharpLinesOfCode="0" EnhancedTypesCount="13" SchemaVersion="1" PostSharpVersion="5.0.52.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
   <Evolution Source="#1=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::GetNextChunk(System.String)" Target="#2=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager+&lt;GetNextChunk&gt;d__45::MoveNext()" />
   <Class Class="#3=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogAttribute">
-    <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="7" Column="6">
-      <Target Target="#4=M:[ShellTrasferServer]ShellTrasferServer.Extentions::DeleteAt{T}(System.Collections.Generic.Queue{T}, System.Int32)">
-        <JoinPoint Description="#5=Adds logging" Ordinal="19" LinesAvoided="5" />
+    <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="10" Column="6">
+      <Target Target="#4=M:[ShellTrasferServer]Data.TaskQueue::#ctor()">
+        <JoinPoint Description="#5=Adds logging" Ordinal="39" LinesAvoided="5" />
       </Target>
-    </Instance>
-    <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="8" Column="6">
-      <Target Target="#6=M:[ShellTrasferServer]Data.TaskQueue::#ctor()">
-        <JoinPoint Description="#5" Ordinal="0" LinesAvoided="5" />
-      </Target>
-      <Target Target="#7=M:[ShellTrasferServer]Data.TaskQueue::get_CurrentUserTaskQueue()">
-        <JoinPoint Description="#5" LinesAvoided="5" />
-      </Target>
-      <Target Target="#8=M:[ShellTrasferServer]Data.TaskQueue::get_Instance()">
-        <JoinPoint Description="#5" Ordinal="2" LinesAvoided="5" />
-      </Target>
-      <Target Target="#9=M:[ShellTrasferServer]Data.TaskQueue::#cctor()">
-        <JoinPoint Description="#5" Ordinal="3" LinesAvoided="5" />
-      </Target>
-      <Target Target="#10=M:[ShellTrasferServer]Data.ClientManager::#ctor()">
-        <JoinPoint Description="#5" Ordinal="4" LinesAvoided="5" />
-      </Target>
-      <Target Target="#11=M:[ShellTrasferServer]Data.ClientManager::get_CurretUserClientManager()">
-        <JoinPoint Description="#5" Ordinal="5" LinesAvoided="5" />
-      </Target>
-      <Target Target="#12=M:[ShellTrasferServer]Data.ClientManager::get_Instance()">
-        <JoinPoint Description="#5" Ordinal="6" LinesAvoided="5" />
-      </Target>
-      <Target Target="#13=M:[ShellTrasferServer]Data.ClientManager::#cctor()">
-        <JoinPoint Description="#5" Ordinal="7" LinesAvoided="5" />
-      </Target>
-      <Target Target="#14=M:[ShellTrasferServer]Data.AtomicOperation::PerformAsAtomicFunction{T}(System.Func{T}, System.Object, System.Boolean)">
-        <JoinPoint Description="#5" Ordinal="8" LinesAvoided="5" />
-      </Target>
-      <Target Target="#15=M:[ShellTrasferServer]Data.AtomicOperation::PerformAsAtomicFunction{T}(System.Func{T}, System.Boolean)">
-        <JoinPoint Description="#5" Ordinal="9" LinesAvoided="5" />
-      </Target>
-      <Target Target="#16=M:[ShellTrasferServer]Data.AtomicOperation::PerformAsAtomicFunction(System.Action, System.Boolean)">
-        <JoinPoint Description="#5" Ordinal="10" LinesAvoided="5" />
-      </Target>
-      <Target Target="#17=M:[ShellTrasferServer]Data.AtomicOperation::PerformAsAtomicDownload(System.Action)">
-        <JoinPoint Description="#5" Ordinal="11" LinesAvoided="5" />
-      </Target>
-      <Target Target="#18=M:[ShellTrasferServer]Data.AtomicOperation::PerformAsAtomicUpload{T}(System.Func{T})">
-        <JoinPoint Description="#5" Ordinal="12" LinesAvoided="5" />
-      </Target>
-      <Target Target="#19=M:[ShellTrasferServer]Data.AtomicOperation::PerformAsAtomicSubscribe(System.Func{System.Boolean})">
-        <JoinPoint Description="#5" Ordinal="13" LinesAvoided="5" />
-      </Target>
-      <Target Target="#20=M:[ShellTrasferServer]Data.AtomicOperation::#cctor()">
-        <JoinPoint Description="#5" Ordinal="14" LinesAvoided="5" />
-      </Target>
-      <Target Target="#21=M:[ShellTrasferServer]Data.FileMannager::#ctor()">
-        <JoinPoint Description="#5" Ordinal="15" LinesAvoided="5" />
-      </Target>
-      <Target Target="#22=M:[ShellTrasferServer]Data.FileMannager::get_CurrentUserFileMannager()">
-        <JoinPoint Description="#5" Ordinal="16" LinesAvoided="5" />
-      </Target>
-      <Target Target="#23=M:[ShellTrasferServer]Data.FileMannager::get_Instance()">
-        <JoinPoint Description="#5" Ordinal="17" LinesAvoided="5" />
-      </Target>
-      <Target Target="#24=M:[ShellTrasferServer]Data.FileMannager::#cctor()">
-        <JoinPoint Description="#5" Ordinal="18" LinesAvoided="5" />
-      </Target>
-      <Target Target="#25=M:[ShellTrasferServer]ShellTrasferServer.DownloadRequest::#ctor()">
-        <JoinPoint Description="#5" Ordinal="20" LinesAvoided="5" />
-      </Target>
-      <Target Target="#26=M:[ShellTrasferServer]ShellTrasferServer.RemoteFileInfo::Dispose()">
-        <JoinPoint Description="#5" Ordinal="21" LinesAvoided="5" />
-      </Target>
-      <Target Target="#27=M:[ShellTrasferServer]ShellTrasferServer.RemoteFileInfo::#ctor()">
-        <JoinPoint Description="#5" Ordinal="22" LinesAvoided="5" />
-      </Target>
-      <Target Target="#28=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ActiveSetNickName(System.String, System.String)">
-        <JoinPoint Description="#5" Ordinal="23" LinesAvoided="5" />
-      </Target>
-      <Target Target="#29=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ShellTrasferServer#IActiveShell#DeleteClientTask(System.String, System.Boolean, System.Int32)">
-        <JoinPoint Description="#5" Ordinal="24" LinesAvoided="5" />
-      </Target>
-      <Target Target="#30=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::DeleteClientTask(System.String, System.Boolean, System.Int32, System.Boolean)">
-        <JoinPoint Description="#5" Ordinal="25" LinesAvoided="5" />
-      </Target>
-      <Target Target="#31=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ClearAllData(System.String)">
-        <JoinPoint Description="#5" Ordinal="26" LinesAvoided="5" />
-      </Target>
-      <Target Target="#32=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ActiveCloseClient(System.String)">
-        <JoinPoint Description="#5" Ordinal="27" LinesAvoided="5" />
-      </Target>
-      <Target Target="#33=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::SelectClient(System.String)">
-        <JoinPoint Description="#5" Ordinal="28" LinesAvoided="5" />
-      </Target>
-      <Target Target="#34=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::GetStatus()">
-        <JoinPoint Description="#5" Ordinal="29" LinesAvoided="5" />
-      </Target>
-      <Target Target="#35=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ClearQueue()">
-        <JoinPoint Description="#5" Ordinal="30" LinesAvoided="5" />
-      </Target>
-      <Target Target="#36=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ActiveNextCommand(System.String)">
-        <JoinPoint Description="#5" Ordinal="31" LinesAvoided="5" />
-      </Target>
-      <Target Target="#37=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ActiveClientRun()">
-        <JoinPoint Description="#5" Ordinal="32" LinesAvoided="5" />
-      </Target>
-      <Target Target="#38=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ActiveDownloadFile([ShellTrasferServer]ShellTrasferServer.DownloadRequest)">
-        <JoinPoint Description="#5" Ordinal="33" LinesAvoided="5" />
-      </Target>
-      <Target Target="#39=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ActiveUploadFile([ShellTrasferServer]ShellTrasferServer.RemoteFileInfo)">
-        <JoinPoint Description="#5" Ordinal="34" LinesAvoided="5" />
-      </Target>
-      <Target Target="#40=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::EnqueueWaitAndReturnBaseLine(System.String, System.String)">
-        <JoinPoint Description="#5" Ordinal="35" LinesAvoided="5" />
-      </Target>
-      <Target Target="#41=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::EnqueueWaitAndReturnBaseLine([ShellTrasferServer]ShellTrasferServer.TaskType, [ShellTrasferServer]ShellTrasferServer.DownloadRequest, [ShellTrasferServer]ShellTrasferServer.RemoteFileInfo)">
-        <JoinPoint Description="#5" Ordinal="36" LinesAvoided="5" />
-      </Target>
-      <Target Target="#42=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::PassiveClientRun(System.String, System.String, System.String)">
-        <JoinPoint Description="#5" Ordinal="37" LinesAvoided="5" />
-      </Target>
-      <Target Target="#43=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::HasCommand(System.String)">
-        <JoinPoint Description="#5" Ordinal="38" LinesAvoided="5" />
-      </Target>
-      <Target Target="#44=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::PassiveNextCommand(System.String)">
-        <JoinPoint Description="#5" Ordinal="39" LinesAvoided="5" />
-      </Target>
-      <Target Target="#45=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::CommandResponse(System.String, System.String, System.String)">
-        <JoinPoint Description="#5" Ordinal="40" LinesAvoided="5" />
-      </Target>
-      <Target Target="#46=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::HasUploadCommand(System.String)">
-        <JoinPoint Description="#5" Ordinal="41" LinesAvoided="5" />
-      </Target>
-      <Target Target="#47=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::HasDownloadCommand(System.String)">
+      <Target Target="#6=M:[ShellTrasferServer]Data.TaskQueue::#cctor()">
         <JoinPoint Description="#5" Ordinal="42" LinesAvoided="5" />
       </Target>
-      <Target Target="#48=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::PassiveGetDownloadFile([ShellTrasferServer]ShellTrasferServer.DownloadRequest)">
+      <Target Target="#7=M:[ShellTrasferServer]Data.ClientManager::#ctor()">
         <JoinPoint Description="#5" Ordinal="43" LinesAvoided="5" />
       </Target>
-      <Target Target="#49=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::PassiveDownloadedFile([ShellTrasferServer]ShellTrasferServer.RemoteFileInfo)">
-        <JoinPoint Description="#5" Ordinal="44" LinesAvoided="5" />
-      </Target>
-      <Target Target="#50=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::PassiveGetUploadFile([ShellTrasferServer]ShellTrasferServer.DownloadRequest)">
-        <JoinPoint Description="#5" Ordinal="45" LinesAvoided="5" />
-      </Target>
-      <Target Target="#51=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::PassiveUploadedFile(System.String, System.String)">
+      <Target Target="#8=M:[ShellTrasferServer]Data.ClientManager::#cctor()">
         <JoinPoint Description="#5" Ordinal="46" LinesAvoided="5" />
       </Target>
-      <Target Target="#52=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ErrorUploadDownload(System.String, System.String, System.String)">
-        <JoinPoint Description="#5" Ordinal="47" LinesAvoided="5" />
-      </Target>
-      <Target Target="#53=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ShellTrasferServer#IPassiveShell#ErrorNextCommand(System.String, System.String, System.String)">
-        <JoinPoint Description="#5" Ordinal="48" LinesAvoided="5" />
-      </Target>
-      <Target Target="#54=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::Subscribe(System.String, System.String, System.String)">
-        <JoinPoint Description="#5" Ordinal="49" LinesAvoided="5" />
-      </Target>
-      <Target Target="#55=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::IsTransferingData()">
-        <JoinPoint Description="#5" Ordinal="50" LinesAvoided="5" />
-      </Target>
-      <Target Target="#56=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::StartTransferData()">
-        <JoinPoint Description="#5" Ordinal="51" LinesAvoided="5" />
-      </Target>
-      <Target Target="#57=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::AllowOnlySelectedClient(System.String)">
-        <JoinPoint Description="#5" Ordinal="52" LinesAvoided="5" />
-      </Target>
-      <Target Target="#58=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::DefineSelectedClient(System.String)">
+      <Target Target="#9=M:[ShellTrasferServer]Data.AtomicOperation::#cctor()">
         <JoinPoint Description="#5" Ordinal="53" LinesAvoided="5" />
       </Target>
-      <Target Target="#59=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::RemoveClient(System.String, System.Boolean)">
+      <Target Target="#10=M:[ShellTrasferServer]Data.FileMannager::#ctor()">
         <JoinPoint Description="#5" Ordinal="54" LinesAvoided="5" />
       </Target>
-      <Target Target="#60=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::IsClientAlive(System.String)">
-        <JoinPoint Description="#5" Ordinal="55" LinesAvoided="5" />
-      </Target>
-      <Target Target="#61=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::RegisterCallBackFunction(System.String, System.String)">
-        <JoinPoint Description="#5" Ordinal="56" LinesAvoided="5" />
-      </Target>
-      <Target Target="#62=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::KeepCallBackAlive(System.String)">
+      <Target Target="#11=M:[ShellTrasferServer]Data.FileMannager::#cctor()">
         <JoinPoint Description="#5" Ordinal="57" LinesAvoided="5" />
       </Target>
-      <Target Target="#63=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::RestGetStatus()">
-        <JoinPoint Description="#5" Ordinal="58" LinesAvoided="5" />
-      </Target>
-      <Target Target="#64=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::RestSelectClient(System.String)">
+      <Target Target="#12=M:[ShellTrasferServer]ShellTrasferServer.DownloadRequest::#ctor()">
         <JoinPoint Description="#5" Ordinal="59" LinesAvoided="5" />
       </Target>
-      <Target Target="#65=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ClearAllData()">
-        <JoinPoint Description="#5" Ordinal="60" LinesAvoided="5" />
-      </Target>
-      <Target Target="#66=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::CloseClient(System.String)">
+      <Target Target="#13=M:[ShellTrasferServer]ShellTrasferServer.RemoteFileInfo::#ctor()">
         <JoinPoint Description="#5" Ordinal="61" LinesAvoided="5" />
       </Target>
-      <Target Target="#67=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::DeleteClientTask(System.String, System.String, System.String)">
+      <Target Target="#14=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::#ctor()">
+        <JoinPoint Description="#5" Ordinal="108" LinesAvoided="5" />
+      </Target>
+      <Target Target="#15=M:[ShellTrasferServer]ShellTrasferServer.ShellTask::#ctor(System.String, System.String, System.Action{System.String}, System.String)">
+        <JoinPoint Description="#5" Ordinal="109" LinesAvoided="5" />
+      </Target>
+      <Target Target="#16=M:[ShellTrasferServer]ShellTrasferServer.TransferTask::#ctor([ShellTrasferServer]ShellTrasferServer.TaskType, [ShellTrasferServer]ShellTrasferServer.DownloadRequest, [ShellTrasferServer]ShellTrasferServer.RemoteFileInfo, System.Action{System.Object})">
+        <JoinPoint Description="#5" Ordinal="110" LinesAvoided="5" />
+      </Target>
+      <Target Target="#17=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::#ctor()">
+        <JoinPoint Description="#5" Ordinal="118" LinesAvoided="5" />
+      </Target>
+      <Target Target="#18=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::#ctor()">
+        <JoinPoint Description="#5" Ordinal="141" LinesAvoided="5" />
+      </Target>
+      <Target Target="#19=M:[ShellTrasferServer]ShellTrasferServer.UserTaskQueue::#ctor()">
+        <JoinPoint Description="#5" Ordinal="145" LinesAvoided="5" />
+      </Target>
+    </Instance>
+    <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="11" Column="6">
+      <Target Target="#20=M:[ShellTrasferServer]Data.TaskQueue::get_CurrentUserTaskQueue()">
+        <JoinPoint Description="#5" Ordinal="40" LinesAvoided="5" />
+      </Target>
+      <Target Target="#21=M:[ShellTrasferServer]Data.TaskQueue::get_Instance()">
+        <JoinPoint Description="#5" Ordinal="41" LinesAvoided="5" />
+      </Target>
+      <Target Target="#22=M:[ShellTrasferServer]Data.ClientManager::get_CurretUserClientManager()">
+        <JoinPoint Description="#5" Ordinal="44" LinesAvoided="5" />
+      </Target>
+      <Target Target="#23=M:[ShellTrasferServer]Data.ClientManager::get_Instance()">
+        <JoinPoint Description="#5" Ordinal="45" LinesAvoided="5" />
+      </Target>
+      <Target Target="#24=M:[ShellTrasferServer]Data.AtomicOperation::PerformAsAtomicFunction{T}(System.Func{T}, System.Object, System.Boolean)">
+        <JoinPoint Description="#5" Ordinal="47" LinesAvoided="5" />
+      </Target>
+      <Target Target="#25=M:[ShellTrasferServer]Data.AtomicOperation::PerformAsAtomicFunction{T}(System.Func{T}, System.Boolean)">
+        <JoinPoint Description="#5" Ordinal="48" LinesAvoided="5" />
+      </Target>
+      <Target Target="#26=M:[ShellTrasferServer]Data.AtomicOperation::PerformAsAtomicFunction(System.Action, System.Boolean)">
+        <JoinPoint Description="#5" Ordinal="49" LinesAvoided="5" />
+      </Target>
+      <Target Target="#27=M:[ShellTrasferServer]Data.AtomicOperation::PerformAsAtomicDownload(System.Action)">
+        <JoinPoint Description="#5" Ordinal="50" LinesAvoided="5" />
+      </Target>
+      <Target Target="#28=M:[ShellTrasferServer]Data.AtomicOperation::PerformAsAtomicUpload{T}(System.Func{T})">
+        <JoinPoint Description="#5" Ordinal="51" LinesAvoided="5" />
+      </Target>
+      <Target Target="#29=M:[ShellTrasferServer]Data.AtomicOperation::PerformAsAtomicSubscribe(System.Func{System.Boolean})">
+        <JoinPoint Description="#5" Ordinal="52" LinesAvoided="5" />
+      </Target>
+      <Target Target="#30=M:[ShellTrasferServer]Data.FileMannager::get_CurrentUserFileMannager()">
+        <JoinPoint Description="#5" Ordinal="55" LinesAvoided="5" />
+      </Target>
+      <Target Target="#31=M:[ShellTrasferServer]Data.FileMannager::get_Instance()">
+        <JoinPoint Description="#5" Ordinal="56" LinesAvoided="5" />
+      </Target>
+      <Target Target="#32=M:[ShellTrasferServer]ShellTrasferServer.Extentions::DeleteAt{T}(System.Collections.Generic.Queue{T}, System.Int32)">
+        <JoinPoint Description="#5" Ordinal="58" LinesAvoided="5" />
+      </Target>
+      <Target Target="#33=M:[ShellTrasferServer]ShellTrasferServer.RemoteFileInfo::Dispose()">
+        <JoinPoint Description="#5" Ordinal="60" LinesAvoided="5" />
+      </Target>
+      <Target Target="#34=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ActiveSetNickName(System.String, System.String)">
         <JoinPoint Description="#5" Ordinal="62" LinesAvoided="5" />
       </Target>
-      <Target Target="#68=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::SetNickName(System.String, System.String)">
+      <Target Target="#35=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ShellTrasferServer#IActiveShell#DeleteClientTask(System.String, System.Boolean, System.Int32)">
         <JoinPoint Description="#5" Ordinal="63" LinesAvoided="5" />
       </Target>
-      <Target Target="#69=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::Help()">
+      <Target Target="#36=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::DeleteClientTask(System.String, System.Boolean, System.Int32, System.Boolean)">
         <JoinPoint Description="#5" Ordinal="64" LinesAvoided="5" />
       </Target>
-      <Target Target="#70=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::Run()">
+      <Target Target="#37=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ClearAllData(System.String)">
         <JoinPoint Description="#5" Ordinal="65" LinesAvoided="5" />
       </Target>
-      <Target Target="#71=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::NextCommand(System.String)">
+      <Target Target="#38=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ActiveCloseClient(System.String)">
         <JoinPoint Description="#5" Ordinal="66" LinesAvoided="5" />
       </Target>
-      <Target Target="#72=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ReturnPage(System.Boolean, System.String, System.String)">
+      <Target Target="#39=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::SelectClient(System.String)">
         <JoinPoint Description="#5" Ordinal="67" LinesAvoided="5" />
       </Target>
-      <Target Target="#73=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::HtmlPrintColor(System.String, System.Collections.Generic.Dictionary{[System]System.Text.RegularExpressions.Regex,System.String})">
+      <Target Target="#40=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::GetStatus()">
         <JoinPoint Description="#5" Ordinal="68" LinesAvoided="5" />
       </Target>
-      <Target Target="#74=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::#ctor()">
+      <Target Target="#41=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ClearQueue()">
         <JoinPoint Description="#5" Ordinal="69" LinesAvoided="5" />
       </Target>
-      <Target Target="#75=M:[ShellTrasferServer]ShellTrasferServer.ShellTask::#ctor(System.String, System.String, System.Action{System.String}, System.String)">
+      <Target Target="#42=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ActiveNextCommand(System.String)">
         <JoinPoint Description="#5" Ordinal="70" LinesAvoided="5" />
       </Target>
-      <Target Target="#76=M:[ShellTrasferServer]ShellTrasferServer.TransferTask::#ctor([ShellTrasferServer]ShellTrasferServer.TaskType, [ShellTrasferServer]ShellTrasferServer.DownloadRequest, [ShellTrasferServer]ShellTrasferServer.RemoteFileInfo, System.Action{System.Object})">
+      <Target Target="#43=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ActiveClientRun()">
         <JoinPoint Description="#5" Ordinal="71" LinesAvoided="5" />
       </Target>
-      <Target Target="#77=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::get_StatusCallBacks()">
+      <Target Target="#44=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ActiveDownloadFile([ShellTrasferServer]ShellTrasferServer.DownloadRequest)">
         <JoinPoint Description="#5" Ordinal="72" LinesAvoided="5" />
       </Target>
-      <Target Target="#78=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::get_CallBacks()">
+      <Target Target="#45=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ActiveUploadFile([ShellTrasferServer]ShellTrasferServer.RemoteFileInfo)">
         <JoinPoint Description="#5" Ordinal="73" LinesAvoided="5" />
       </Target>
-      <Target Target="#79=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::get_NickNames()">
+      <Target Target="#46=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::EnqueueWaitAndReturnBaseLine(System.String, System.String)">
         <JoinPoint Description="#5" Ordinal="74" LinesAvoided="5" />
       </Target>
-      <Target Target="#80=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::get_Deleted()">
+      <Target Target="#47=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::EnqueueWaitAndReturnBaseLine([ShellTrasferServer]ShellTrasferServer.TaskType, [ShellTrasferServer]ShellTrasferServer.DownloadRequest, [ShellTrasferServer]ShellTrasferServer.RemoteFileInfo)">
         <JoinPoint Description="#5" Ordinal="75" LinesAvoided="5" />
       </Target>
-      <Target Target="#81=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::get_DeletedTasks()">
+      <Target Target="#48=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::PassiveClientRun(System.String, System.String, System.String)">
         <JoinPoint Description="#5" Ordinal="76" LinesAvoided="5" />
       </Target>
-      <Target Target="#82=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::get_SelectedClient()">
+      <Target Target="#49=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::HasCommand(System.String)">
         <JoinPoint Description="#5" Ordinal="77" LinesAvoided="5" />
       </Target>
-      <Target Target="#83=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::set_SelectedClient(System.String)">
+      <Target Target="#50=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::PassiveNextCommand(System.String)">
         <JoinPoint Description="#5" Ordinal="78" LinesAvoided="5" />
       </Target>
-      <Target Target="#84=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::#ctor()">
+      <Target Target="#51=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::CommandResponse(System.String, System.String, System.String)">
         <JoinPoint Description="#5" Ordinal="79" LinesAvoided="5" />
       </Target>
-      <Target Target="#85=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_FileStream()">
+      <Target Target="#52=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::HasUploadCommand(System.String)">
         <JoinPoint Description="#5" Ordinal="80" LinesAvoided="5" />
       </Target>
-      <Target Target="#86=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_FileStream(System.IO.FileStream)">
+      <Target Target="#53=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::HasDownloadCommand(System.String)">
         <JoinPoint Description="#5" Ordinal="81" LinesAvoided="5" />
       </Target>
-      <Target Target="#87=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_IsDownloding()">
+      <Target Target="#54=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::PassiveGetDownloadFile([ShellTrasferServer]ShellTrasferServer.DownloadRequest)">
         <JoinPoint Description="#5" Ordinal="82" LinesAvoided="5" />
       </Target>
-      <Target Target="#88=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_IsDownloding(System.Boolean)">
+      <Target Target="#55=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::PassiveDownloadedFile([ShellTrasferServer]ShellTrasferServer.RemoteFileInfo)">
         <JoinPoint Description="#5" Ordinal="83" LinesAvoided="5" />
       </Target>
-      <Target Target="#89=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_Buffering()">
+      <Target Target="#56=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::PassiveGetUploadFile([ShellTrasferServer]ShellTrasferServer.DownloadRequest)">
         <JoinPoint Description="#5" Ordinal="84" LinesAvoided="5" />
       </Target>
-      <Target Target="#90=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_Buffering(System.Boolean)">
+      <Target Target="#57=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::PassiveUploadedFile(System.String, System.String)">
         <JoinPoint Description="#5" Ordinal="85" LinesAvoided="5" />
       </Target>
-      <Target Target="#91=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_Error()">
+      <Target Target="#58=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ErrorUploadDownload(System.String, System.String, System.String)">
         <JoinPoint Description="#5" Ordinal="86" LinesAvoided="5" />
       </Target>
-      <Target Target="#92=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_Error(System.Boolean)">
+      <Target Target="#59=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ShellTrasferServer#IPassiveShell#ErrorNextCommand(System.String, System.String, System.String)">
         <JoinPoint Description="#5" Ordinal="87" LinesAvoided="5" />
       </Target>
-      <Target Target="#93=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_ErrorMessage()">
+      <Target Target="#60=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::Subscribe(System.String, System.String, System.String)">
         <JoinPoint Description="#5" Ordinal="88" LinesAvoided="5" />
       </Target>
-      <Target Target="#94=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_ErrorMessage(System.String)">
+      <Target Target="#61=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::IsTransferingData()">
         <JoinPoint Description="#5" Ordinal="89" LinesAvoided="5" />
       </Target>
-      <Target Target="#95=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_FileSize()">
+      <Target Target="#62=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::StartTransferData()">
         <JoinPoint Description="#5" Ordinal="90" LinesAvoided="5" />
       </Target>
-      <Target Target="#96=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_FileSize(System.String)">
+      <Target Target="#63=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::AllowOnlySelectedClient(System.String)">
         <JoinPoint Description="#5" Ordinal="91" LinesAvoided="5" />
       </Target>
-      <Target Target="#97=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_EnumerableChunk()">
+      <Target Target="#64=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::DefineSelectedClient(System.String)">
         <JoinPoint Description="#5" Ordinal="92" LinesAvoided="5" />
       </Target>
-      <Target Target="#98=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_Chunk()">
+      <Target Target="#65=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::RemoveClient(System.String, System.Boolean)">
         <JoinPoint Description="#5" Ordinal="93" LinesAvoided="5" />
       </Target>
-      <Target Target="#99=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_Path(System.String)">
+      <Target Target="#66=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::IsClientAlive(System.String)">
         <JoinPoint Description="#5" Ordinal="94" LinesAvoided="5" />
       </Target>
-      <Target Target="#100=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_Path()">
+      <Target Target="#67=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::RegisterCallBackFunction(System.String, System.String)">
         <JoinPoint Description="#5" Ordinal="95" LinesAvoided="5" />
       </Target>
-      <Target Target="#101=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_ReadSoFar()">
+      <Target Target="#68=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::KeepCallBackAlive(System.String)">
         <JoinPoint Description="#5" Ordinal="96" LinesAvoided="5" />
       </Target>
-      <Target Target="#102=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_ReadSoFar(System.Int64)">
+      <Target Target="#69=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::RestGetStatus()">
         <JoinPoint Description="#5" Ordinal="97" LinesAvoided="5" />
       </Target>
-      <Target Target="#103=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_IsUploading()">
+      <Target Target="#70=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::RestSelectClient(System.String)">
         <JoinPoint Description="#5" Ordinal="98" LinesAvoided="5" />
       </Target>
-      <Target Target="#104=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_IsUploading(System.Boolean)">
+      <Target Target="#71=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ClearAllData()">
         <JoinPoint Description="#5" Ordinal="99" LinesAvoided="5" />
       </Target>
-      <Target Target="#105=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_UploadingEnded()">
+      <Target Target="#72=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::CloseClient(System.String)">
         <JoinPoint Description="#5" Ordinal="100" LinesAvoided="5" />
       </Target>
-      <Target Target="#106=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_UploadingEnded(System.Boolean)">
+      <Target Target="#73=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::DeleteClientTask(System.String, System.String, System.String)">
         <JoinPoint Description="#5" Ordinal="101" LinesAvoided="5" />
       </Target>
-      <Target Target="#1">
-        <JoinPoint Advised="#2" Description="#5" Ordinal="103" LinesAvoided="5" />
-      </Target>
-      <Target Target="#107=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::#ctor()">
+      <Target Target="#74=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::SetNickName(System.String, System.String)">
         <JoinPoint Description="#5" Ordinal="102" LinesAvoided="5" />
       </Target>
-      <Target Target="#108=M:[ShellTrasferServer]ShellTrasferServer.UserTaskQueue::get_ShellQueue()">
+      <Target Target="#75=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::Help()">
+        <JoinPoint Description="#5" Ordinal="103" LinesAvoided="5" />
+      </Target>
+      <Target Target="#76=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::Run()">
         <JoinPoint Description="#5" Ordinal="104" LinesAvoided="5" />
       </Target>
-      <Target Target="#109=M:[ShellTrasferServer]ShellTrasferServer.UserTaskQueue::get_TransferTaskQueue()">
+      <Target Target="#77=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::NextCommand(System.String)">
         <JoinPoint Description="#5" Ordinal="105" LinesAvoided="5" />
       </Target>
-      <Target Target="#110=M:[ShellTrasferServer]ShellTrasferServer.UserTaskQueue::#ctor()">
+      <Target Target="#78=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::ReturnPage(System.Boolean, System.String, System.String)">
         <JoinPoint Description="#5" Ordinal="106" LinesAvoided="5" />
+      </Target>
+      <Target Target="#79=M:[ShellTrasferServer]ShellTrasferServer.ShellTransfer::HtmlPrintColor(System.String, System.Collections.Generic.Dictionary{[System]System.Text.RegularExpressions.Regex,System.String})">
+        <JoinPoint Description="#5" Ordinal="107" LinesAvoided="5" />
+      </Target>
+      <Target Target="#80=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::get_StatusCallBacks()">
+        <JoinPoint Description="#5" Ordinal="111" LinesAvoided="5" />
+      </Target>
+      <Target Target="#81=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::get_CallBacks()">
+        <JoinPoint Description="#5" Ordinal="112" LinesAvoided="5" />
+      </Target>
+      <Target Target="#82=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::get_NickNames()">
+        <JoinPoint Description="#5" Ordinal="113" LinesAvoided="5" />
+      </Target>
+      <Target Target="#83=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::get_Deleted()">
+        <JoinPoint Description="#5" Ordinal="114" LinesAvoided="5" />
+      </Target>
+      <Target Target="#84=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::get_DeletedTasks()">
+        <JoinPoint Description="#5" Ordinal="115" LinesAvoided="5" />
+      </Target>
+      <Target Target="#85=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::get_SelectedClient()">
+        <JoinPoint Description="#5" Ordinal="116" LinesAvoided="5" />
+      </Target>
+      <Target Target="#86=M:[ShellTrasferServer]ShellTrasferServer.UserClientManager::set_SelectedClient(System.String)">
+        <JoinPoint Description="#5" Ordinal="117" LinesAvoided="5" />
+      </Target>
+      <Target Target="#87=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_FileStream()">
+        <JoinPoint Description="#5" Ordinal="119" LinesAvoided="5" />
+      </Target>
+      <Target Target="#88=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_FileStream(System.IO.FileStream)">
+        <JoinPoint Description="#5" Ordinal="120" LinesAvoided="5" />
+      </Target>
+      <Target Target="#89=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_IsDownloding()">
+        <JoinPoint Description="#5" Ordinal="121" LinesAvoided="5" />
+      </Target>
+      <Target Target="#90=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_IsDownloding(System.Boolean)">
+        <JoinPoint Description="#5" Ordinal="122" LinesAvoided="5" />
+      </Target>
+      <Target Target="#91=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_Buffering()">
+        <JoinPoint Description="#5" Ordinal="123" LinesAvoided="5" />
+      </Target>
+      <Target Target="#92=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_Buffering(System.Boolean)">
+        <JoinPoint Description="#5" Ordinal="124" LinesAvoided="5" />
+      </Target>
+      <Target Target="#93=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_Error()">
+        <JoinPoint Description="#5" Ordinal="125" LinesAvoided="5" />
+      </Target>
+      <Target Target="#94=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_Error(System.Boolean)">
+        <JoinPoint Description="#5" Ordinal="126" LinesAvoided="5" />
+      </Target>
+      <Target Target="#95=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_ErrorMessage()">
+        <JoinPoint Description="#5" Ordinal="127" LinesAvoided="5" />
+      </Target>
+      <Target Target="#96=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_ErrorMessage(System.String)">
+        <JoinPoint Description="#5" Ordinal="128" LinesAvoided="5" />
+      </Target>
+      <Target Target="#97=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_FileSize()">
+        <JoinPoint Description="#5" Ordinal="129" LinesAvoided="5" />
+      </Target>
+      <Target Target="#98=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_FileSize(System.String)">
+        <JoinPoint Description="#5" Ordinal="130" LinesAvoided="5" />
+      </Target>
+      <Target Target="#99=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_EnumerableChunk()">
+        <JoinPoint Description="#5" Ordinal="131" LinesAvoided="5" />
+      </Target>
+      <Target Target="#100=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_Chunk()">
+        <JoinPoint Description="#5" Ordinal="132" LinesAvoided="5" />
+      </Target>
+      <Target Target="#101=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_Path(System.String)">
+        <JoinPoint Description="#5" Ordinal="133" LinesAvoided="5" />
+      </Target>
+      <Target Target="#102=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_Path()">
+        <JoinPoint Description="#5" Ordinal="134" LinesAvoided="5" />
+      </Target>
+      <Target Target="#103=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_ReadSoFar()">
+        <JoinPoint Description="#5" Ordinal="135" LinesAvoided="5" />
+      </Target>
+      <Target Target="#104=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_ReadSoFar(System.Int64)">
+        <JoinPoint Description="#5" Ordinal="136" LinesAvoided="5" />
+      </Target>
+      <Target Target="#105=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_IsUploading()">
+        <JoinPoint Description="#5" Ordinal="137" LinesAvoided="5" />
+      </Target>
+      <Target Target="#106=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_IsUploading(System.Boolean)">
+        <JoinPoint Description="#5" Ordinal="138" LinesAvoided="5" />
+      </Target>
+      <Target Target="#107=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::get_UploadingEnded()">
+        <JoinPoint Description="#5" Ordinal="139" LinesAvoided="5" />
+      </Target>
+      <Target Target="#108=M:[ShellTrasferServer]ShellTrasferServer.UserFileManager::set_UploadingEnded(System.Boolean)">
+        <JoinPoint Description="#5" Ordinal="140" LinesAvoided="5" />
+      </Target>
+      <Target Target="#1">
+        <JoinPoint Advised="#2" Description="#5" Ordinal="142" LinesAvoided="5" />
+      </Target>
+      <Target Target="#109=M:[ShellTrasferServer]ShellTrasferServer.UserTaskQueue::get_ShellQueue()">
+        <JoinPoint Description="#5" Ordinal="143" LinesAvoided="5" />
+      </Target>
+      <Target Target="#110=M:[ShellTrasferServer]ShellTrasferServer.UserTaskQueue::get_TransferTaskQueue()">
+        <JoinPoint Description="#5" Ordinal="144" LinesAvoided="5" />
       </Target>
     </Instance>
   </Class>

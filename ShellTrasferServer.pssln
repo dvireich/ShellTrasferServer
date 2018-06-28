@@ -6,5 +6,8 @@
     <d:Log AttributeTargetTypeAttributes="Private | Protected | Internal | Public" AttributeTargetMemberAttributes="Private | Protected | Internal | Public" />
     <d:Log AttributeTargetElements="Method" AttributeTargetTypeAttributes="Private | Protected | Internal | Public" AttributeTargetMemberAttributes="Private | Protected | Internal | Public" />
     <d:Log AttributeTargetTypeAttributes="Public" AttributeTargetMemberAttributes="Private | Protected | Internal | Public" />
+    <d:Log AttributeTargetTypeAttributes="Private | Protected | Internal | Public" AttributeTargetMemberAttributes="Private | Protected | Internal | Public" />
+    <d:Log AttributeTargetTypeAttributes="Private | Protected | Internal | Public" AttributeTargetMemberAttributes="Private | Protected | Internal | Public" />
+    <d:Log AttributeTargetElements="Method" AttributeTargetTypeAttributes="Private | Protected | Internal | Public" AttributeTargetMemberAttributes="Private | Protected | Internal | Public" />
   </Multicast>
 </Project>

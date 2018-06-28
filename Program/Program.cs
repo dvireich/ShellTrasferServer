@@ -1,13 +1,10 @@
 ﻿using DBManager;
 using PostSharp.Patterns.Diagnostics;
-using PostSharp.Patterns.Diagnostics.Backends.Console;
-using System;
-using System.Diagnostics;
-using System.IO;
+using PostSharp.Patterns.Diagnostics.Backends.Log4Net;
 using UserLoader;
 
-[assembly: Log]
-
+//[assembly: Log]
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace Program
 {
@@ -26,18 +23,22 @@ namespace Program
         private static void RunAsConsole()
         {
             ServiceLoader.LoadBasicServices();
-
-
-            while (true)
+            try
             {
-                if (!TaskQueue.Instance.Any()) continue;
+                while (true)
+                {
+                    if (!TaskQueue.Instance.Any()) continue;
 
-                var id = TaskQueue.Instance.GetNextTask();
-                ServiceLoader.LoadShellTransferServices(id);
+                    var id = TaskQueue.Instance.GetNextTask();
+                    ServiceLoader.LoadShellTransferServices(id);
+                }
             }
-
-            //ServiceLoader.CloseAllChnnels();
+            finally
+            {
+                ServiceLoader.CloseAllChnnels();
+            }
         }
+        
 
         [Log(AttributeExclude = true)]
         static void Main(string[] args)
@@ -65,14 +66,14 @@ namespace Program
         [Log(AttributeExclude = true)]
         public static void InitializeLoggingBackend()
         {
-            var consoleLogging = new ConsoleLoggingBackend();
-            consoleLogging.Options.TimestampFormat = "MM/dd/yyyy hh:mm:ss.ffff tt";
-            consoleLogging.Options.IncludeTimestamp = true;
-            LoggingServices.DefaultBackend = consoleLogging;
-            
-            //FileStream fs = new FileStream("Log.txt", FileMode.OpenOrCreate);
-            //StreamWriter sw = new StreamWriter(fs);
-            //Console.SetOut(sw);
+            //var consoleLogging = new ConsoleLoggingBackend();
+            //consoleLogging.Options.TimestampFormat = "MM/dd/yyyy hh:mm:ss.ffff tt";
+            //consoleLogging.Options.IncludeTimestamp = true;
+            //LoggingServices.DefaultBackend = consoleLogging;
+
+            log4net.Config.XmlConfigurator.Configure();
+            var log4NetLoggingBackend = new Log4NetLoggingBackend();
+            LoggingServices.DefaultBackend = log4NetLoggingBackend;
         }
 
     }

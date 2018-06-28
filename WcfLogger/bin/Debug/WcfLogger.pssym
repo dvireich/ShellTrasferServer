@@ -1,0 +1,961 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbols LinesOfCode="613" PostSharpLinesOfCode="0" EnhancedTypesCount="15" SchemaVersion="1" PostSharpVersion="5.0.52.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
+  <Class Class="#1=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogAttribute">
+    <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="10" Column="6">
+      <Target Target="#2=M:[WcfLogger]WcfLogger.ConsoleLoggingStrategy::#ctor()">
+        <JoinPoint Description="#3=Adds logging" Ordinal="0" LinesAvoided="5" />
+      </Target>
+      <Target Target="#4=M:[WcfLogger]WcfLogger.LoggingArgument::#ctor()">
+        <JoinPoint Description="#3" Ordinal="24" LinesAvoided="5" />
+      </Target>
+      <Target Target="#5=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::#ctor()">
+        <JoinPoint Description="#3" Ordinal="68" LinesAvoided="5" />
+      </Target>
+      <Target Target="#6=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::#ctor()">
+        <JoinPoint Description="#3" Ordinal="140" LinesAvoided="5" />
+      </Target>
+      <Target Target="#7=M:[WcfLogger]WcfLogger.LoggingContext::#ctor()">
+        <JoinPoint Description="#3" Ordinal="170" LinesAvoided="5" />
+      </Target>
+      <Target Target="#8=M:[WcfLogger]WcfLogger.LoggingContext::#cctor()">
+        <JoinPoint Description="#3" Ordinal="172" LinesAvoided="5" />
+      </Target>
+      <Target Target="#9=M:[WcfLogger]WcfLogger.LoggingContextDetails::#ctor()">
+        <JoinPoint Description="#3" Ordinal="198" LinesAvoided="5" />
+      </Target>
+      <Target Target="#10=M:[WcfLogger]WcfLogger.LoggingExceptionData::#ctor()">
+        <JoinPoint Description="#3" Ordinal="206" LinesAvoided="5" />
+      </Target>
+      <Target Target="#11=M:[WcfLogger]WcfLogger.LoggingInformationData::#ctor()">
+        <JoinPoint Description="#3" Ordinal="214" LinesAvoided="5" />
+      </Target>
+      <Target Target="#12=M:[WcfLogger]WcfLogger.LoggingInputsData::#ctor()">
+        <JoinPoint Description="#3" Ordinal="226" LinesAvoided="5" />
+      </Target>
+      <Target Target="#13=M:[WcfLogger]WcfLogger.LoggingOutputsData::#ctor()">
+        <JoinPoint Description="#3" Ordinal="238" LinesAvoided="5" />
+      </Target>
+      <Target Target="#14=M:[WcfLogger]WcfLogger.LoggingParameterInspector::#ctor()">
+        <JoinPoint Description="#3" Ordinal="278" LinesAvoided="5" />
+      </Target>
+      <Target Target="#15=M:[WcfLogger]WcfLogger.LoggingReturnValueData::#ctor()">
+        <JoinPoint Description="#3" Ordinal="286" LinesAvoided="5" />
+      </Target>
+      <Target Target="#16=M:[WcfLogger]WcfLogger.FileLoggingStrategy::#ctor()">
+        <JoinPoint Description="#3" Ordinal="310" LinesAvoided="5" />
+      </Target>
+      <Target Target="#17=M:[WcfLogger]WcfLogger.PostSharpLoggingStrategy::#ctor()">
+        <JoinPoint Description="#3" Ordinal="314" LinesAvoided="5" />
+      </Target>
+    </Instance>
+    <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="11" Column="6">
+      <Target Target="#18=M:[WcfLogger]WcfLogger.ConsoleLoggingStrategy::Log([WcfLogger]WcfLogger.LoggingArgument)">
+        <JoinPoint Description="#3" Ordinal="2" LinesAvoided="5" />
+      </Target>
+      <Target Target="#19=M:[WcfLogger]WcfLogger.ConsoleLoggingStrategy::get_InvokeLogColor()">
+        <JoinPoint Description="#3" Ordinal="4" LinesAvoided="5" />
+      </Target>
+      <Target Target="#20=M:[WcfLogger]WcfLogger.ConsoleLoggingStrategy::set_InvokeLogColor(System.ConsoleColor)">
+        <JoinPoint Description="#3" Ordinal="6" LinesAvoided="5" />
+      </Target>
+      <Target Target="#21=M:[WcfLogger]WcfLogger.ConsoleLoggingStrategy::get_ResultLogColor()">
+        <JoinPoint Description="#3" Ordinal="8" LinesAvoided="5" />
+      </Target>
+      <Target Target="#22=M:[WcfLogger]WcfLogger.ConsoleLoggingStrategy::set_ResultLogColor(System.ConsoleColor)">
+        <JoinPoint Description="#3" Ordinal="10" LinesAvoided="5" />
+      </Target>
+      <Target Target="#23=M:[WcfLogger]WcfLogger.ConsoleLoggingStrategy::get_ErrorLogColor()">
+        <JoinPoint Description="#3" Ordinal="12" LinesAvoided="5" />
+      </Target>
+      <Target Target="#24=M:[WcfLogger]WcfLogger.ConsoleLoggingStrategy::set_ErrorLogColor(System.ConsoleColor)">
+        <JoinPoint Description="#3" Ordinal="14" LinesAvoided="5" />
+      </Target>
+      <Target Target="#25=M:[WcfLogger]WcfLogger.ConsoleLoggingStrategy::get_WarningLogColor()">
+        <JoinPoint Description="#3" Ordinal="16" LinesAvoided="5" />
+      </Target>
+      <Target Target="#26=M:[WcfLogger]WcfLogger.ConsoleLoggingStrategy::set_WarningLogColor(System.ConsoleColor)">
+        <JoinPoint Description="#3" Ordinal="18" LinesAvoided="5" />
+      </Target>
+      <Target Target="#27=M:[WcfLogger]WcfLogger.ConsoleLoggingStrategy::get_InformationLogColor()">
+        <JoinPoint Description="#3" Ordinal="20" LinesAvoided="5" />
+      </Target>
+      <Target Target="#28=M:[WcfLogger]WcfLogger.ConsoleLoggingStrategy::set_InformationLogColor(System.ConsoleColor)">
+        <JoinPoint Description="#3" Ordinal="22" LinesAvoided="5" />
+      </Target>
+      <Target Target="#29=M:[WcfLogger]WcfLogger.LoggingArgument::get_LogTime()">
+        <JoinPoint Description="#3" Ordinal="26" LinesAvoided="5" />
+      </Target>
+      <Target Target="#30=M:[WcfLogger]WcfLogger.LoggingArgument::set_LogTime(System.DateTime)">
+        <JoinPoint Description="#3" Ordinal="28" LinesAvoided="5" />
+      </Target>
+      <Target Target="#31=M:[WcfLogger]WcfLogger.LoggingArgument::get_OperationName()">
+        <JoinPoint Description="#3" Ordinal="30" LinesAvoided="5" />
+      </Target>
+      <Target Target="#32=M:[WcfLogger]WcfLogger.LoggingArgument::set_OperationName(System.String)">
+        <JoinPoint Description="#3" Ordinal="32" LinesAvoided="5" />
+      </Target>
+      <Target Target="#33=M:[WcfLogger]WcfLogger.LoggingArgument::get_CallerIp()">
+        <JoinPoint Description="#3" Ordinal="34" LinesAvoided="5" />
+      </Target>
+      <Target Target="#34=M:[WcfLogger]WcfLogger.LoggingArgument::set_CallerIp(System.String)">
+        <JoinPoint Description="#3" Ordinal="36" LinesAvoided="5" />
+      </Target>
+      <Target Target="#35=M:[WcfLogger]WcfLogger.LoggingArgument::get_CallerPort()">
+        <JoinPoint Description="#3" Ordinal="38" LinesAvoided="5" />
+      </Target>
+      <Target Target="#36=M:[WcfLogger]WcfLogger.LoggingArgument::set_CallerPort(System.Int32)">
+        <JoinPoint Description="#3" Ordinal="40" LinesAvoided="5" />
+      </Target>
+      <Target Target="#37=M:[WcfLogger]WcfLogger.LoggingArgument::get_LogType()">
+        <JoinPoint Description="#3" Ordinal="42" LinesAvoided="5" />
+      </Target>
+      <Target Target="#38=M:[WcfLogger]WcfLogger.LoggingArgument::set_LogType([WcfLogger]WcfLogger.LoggingType)">
+        <JoinPoint Description="#3" Ordinal="44" LinesAvoided="5" />
+      </Target>
+      <Target Target="#39=M:[WcfLogger]WcfLogger.LoggingArgument::get_InputsData()">
+        <JoinPoint Description="#3" Ordinal="46" LinesAvoided="5" />
+      </Target>
+      <Target Target="#40=M:[WcfLogger]WcfLogger.LoggingArgument::set_InputsData([WcfLogger]WcfLogger.LoggingInputsData)">
+        <JoinPoint Description="#3" Ordinal="48" LinesAvoided="5" />
+      </Target>
+      <Target Target="#41=M:[WcfLogger]WcfLogger.LoggingArgument::get_OutputsData()">
+        <JoinPoint Description="#3" Ordinal="50" LinesAvoided="5" />
+      </Target>
+      <Target Target="#42=M:[WcfLogger]WcfLogger.LoggingArgument::set_OutputsData([WcfLogger]WcfLogger.LoggingOutputsData)">
+        <JoinPoint Description="#3" Ordinal="52" LinesAvoided="5" />
+      </Target>
+      <Target Target="#43=M:[WcfLogger]WcfLogger.LoggingArgument::get_ReturnValueData()">
+        <JoinPoint Description="#3" Ordinal="54" LinesAvoided="5" />
+      </Target>
+      <Target Target="#44=M:[WcfLogger]WcfLogger.LoggingArgument::set_ReturnValueData([WcfLogger]WcfLogger.LoggingReturnValueData)">
+        <JoinPoint Description="#3" Ordinal="56" LinesAvoided="5" />
+      </Target>
+      <Target Target="#45=M:[WcfLogger]WcfLogger.LoggingArgument::get_ExceptionData()">
+        <JoinPoint Description="#3" Ordinal="58" LinesAvoided="5" />
+      </Target>
+      <Target Target="#46=M:[WcfLogger]WcfLogger.LoggingArgument::set_ExceptionData([WcfLogger]WcfLogger.LoggingExceptionData)">
+        <JoinPoint Description="#3" Ordinal="60" LinesAvoided="5" />
+      </Target>
+      <Target Target="#47=M:[WcfLogger]WcfLogger.LoggingArgument::get_InformationData()">
+        <JoinPoint Description="#3" Ordinal="62" LinesAvoided="5" />
+      </Target>
+      <Target Target="#48=M:[WcfLogger]WcfLogger.LoggingArgument::set_InformationData([WcfLogger]WcfLogger.LoggingInformationData)">
+        <JoinPoint Description="#3" Ordinal="64" LinesAvoided="5" />
+      </Target>
+      <Target Target="#49=M:[WcfLogger]WcfLogger.LoggingArgument::ToString()">
+        <JoinPoint Description="#3" Ordinal="66" LinesAvoided="5" />
+      </Target>
+      <Target Target="#50=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::AddBindingParameters(System.ServiceModel.Description.ServiceDescription, System.ServiceModel.ServiceHostBase, System.Collections.ObjectModel.Collection{[System.ServiceModel]System.ServiceModel.Description.ServiceEndpoint}, System.ServiceModel.Channels.BindingParameterCollection)">
+        <JoinPoint Description="#3" Ordinal="70" LinesAvoided="5" />
+      </Target>
+      <Target Target="#51=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription, System.ServiceModel.ServiceHostBase)">
+        <JoinPoint Description="#3" Ordinal="72" LinesAvoided="5" />
+      </Target>
+      <Target Target="#52=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::Validate(System.ServiceModel.Description.ServiceDescription, System.ServiceModel.ServiceHostBase)">
+        <JoinPoint Description="#3" Ordinal="74" LinesAvoided="5" />
+      </Target>
+      <Target Target="#53=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::AddBindingParameters(System.ServiceModel.Description.OperationDescription, System.ServiceModel.Channels.BindingParameterCollection)">
+        <JoinPoint Description="#3" Ordinal="76" LinesAvoided="5" />
+      </Target>
+      <Target Target="#54=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::ApplyClientBehavior(System.ServiceModel.Description.OperationDescription, System.ServiceModel.Dispatcher.ClientOperation)">
+        <JoinPoint Description="#3" Ordinal="78" LinesAvoided="5" />
+      </Target>
+      <Target Target="#55=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription, System.ServiceModel.Dispatcher.DispatchOperation)">
+        <JoinPoint Description="#3" Ordinal="80" LinesAvoided="5" />
+      </Target>
+      <Target Target="#56=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::Validate(System.ServiceModel.Description.OperationDescription)">
+        <JoinPoint Description="#3" Ordinal="82" LinesAvoided="5" />
+      </Target>
+      <Target Target="#57=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::get_LogBeforeCall()">
+        <JoinPoint Description="#3" Ordinal="84" LinesAvoided="5" />
+      </Target>
+      <Target Target="#58=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::set_LogBeforeCall(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="86" LinesAvoided="5" />
+      </Target>
+      <Target Target="#59=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::get_LogAfterCall()">
+        <JoinPoint Description="#3" Ordinal="88" LinesAvoided="5" />
+      </Target>
+      <Target Target="#60=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::set_LogAfterCall(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="90" LinesAvoided="5" />
+      </Target>
+      <Target Target="#61=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::get_LogErrors()">
+        <JoinPoint Description="#3" Ordinal="92" LinesAvoided="5" />
+      </Target>
+      <Target Target="#62=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::set_LogErrors(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="94" LinesAvoided="5" />
+      </Target>
+      <Target Target="#63=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::get_LogWarnings()">
+        <JoinPoint Description="#3" Ordinal="96" LinesAvoided="5" />
+      </Target>
+      <Target Target="#64=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::set_LogWarnings(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="98" LinesAvoided="5" />
+      </Target>
+      <Target Target="#65=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::get_LogInformation()">
+        <JoinPoint Description="#3" Ordinal="100" LinesAvoided="5" />
+      </Target>
+      <Target Target="#66=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::set_LogInformation(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="102" LinesAvoided="5" />
+      </Target>
+      <Target Target="#67=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::get_LoggingStrategyType()">
+        <JoinPoint Description="#3" Ordinal="104" LinesAvoided="5" />
+      </Target>
+      <Target Target="#68=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::set_LoggingStrategyType(System.Type)">
+        <JoinPoint Description="#3" Ordinal="106" LinesAvoided="5" />
+      </Target>
+      <Target Target="#69=M:[WcfLogger]WcfLogger.LoggingBehaviorAttribute::GetLoggingStrategy()">
+        <JoinPoint Description="#3" Ordinal="108" LinesAvoided="5" />
+      </Target>
+      <Target Target="#70=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::get_BehaviorType()">
+        <JoinPoint Description="#3" Ordinal="110" LinesAvoided="5" />
+      </Target>
+      <Target Target="#71=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::CreateBehavior()">
+        <JoinPoint Description="#3" Ordinal="112" LinesAvoided="5" />
+      </Target>
+      <Target Target="#72=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::ConvertStringToType(System.String)">
+        <JoinPoint Description="#3" Ordinal="114" LinesAvoided="5" />
+      </Target>
+      <Target Target="#73=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::get_LogBeforeCall()">
+        <JoinPoint Description="#3" Ordinal="116" LinesAvoided="5" />
+      </Target>
+      <Target Target="#74=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::set_LogBeforeCall(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="118" LinesAvoided="5" />
+      </Target>
+      <Target Target="#75=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::get_LogAfterCall()">
+        <JoinPoint Description="#3" Ordinal="120" LinesAvoided="5" />
+      </Target>
+      <Target Target="#76=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::set_LogAfterCall(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="122" LinesAvoided="5" />
+      </Target>
+      <Target Target="#77=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::get_LogErrors()">
+        <JoinPoint Description="#3" Ordinal="124" LinesAvoided="5" />
+      </Target>
+      <Target Target="#78=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::set_LogErrors(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="126" LinesAvoided="5" />
+      </Target>
+      <Target Target="#79=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::get_LogWarnings()">
+        <JoinPoint Description="#3" Ordinal="128" LinesAvoided="5" />
+      </Target>
+      <Target Target="#80=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::set_LogWarnings(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="130" LinesAvoided="5" />
+      </Target>
+      <Target Target="#81=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::get_LogInformation()">
+        <JoinPoint Description="#3" Ordinal="132" LinesAvoided="5" />
+      </Target>
+      <Target Target="#82=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::set_LogInformation(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="134" LinesAvoided="5" />
+      </Target>
+      <Target Target="#83=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::get_LoggingStrategyType()">
+        <JoinPoint Description="#3" Ordinal="136" LinesAvoided="5" />
+      </Target>
+      <Target Target="#84=M:[WcfLogger]WcfLogger.LoggingBehaviorExtensionElement::set_LoggingStrategyType(System.String)">
+        <JoinPoint Description="#3" Ordinal="138" LinesAvoided="5" />
+      </Target>
+      <Target Target="#85=M:[WcfLogger]WcfLogger.LoggingContext::SetCurrentContextDetails([WcfLogger]WcfLogger.LoggingContextDetails)">
+        <JoinPoint Description="#3" Ordinal="142" LinesAvoided="5" />
+      </Target>
+      <Target Target="#86=M:[WcfLogger]WcfLogger.LoggingContext::ClearCurrentContextDetails()">
+        <JoinPoint Description="#3" Ordinal="144" LinesAvoided="5" />
+      </Target>
+      <Target Target="#87=M:[WcfLogger]WcfLogger.LoggingContext::GetCurrentContextId()">
+        <JoinPoint Description="#3" Ordinal="146" LinesAvoided="5" />
+      </Target>
+      <Target Target="#88=M:[WcfLogger]WcfLogger.LoggingContext::AddContext(System.String, [WcfLogger]WcfLogger.LoggingContextDetails, System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="148" LinesAvoided="5" />
+      </Target>
+      <Target Target="#89=M:[WcfLogger]WcfLogger.LoggingContext::RemoveContext(System.String)">
+        <JoinPoint Description="#3" Ordinal="150" LinesAvoided="5" />
+      </Target>
+      <Target Target="#90=M:[WcfLogger]WcfLogger.LoggingContext::get_Contexts()">
+        <JoinPoint Description="#3" Ordinal="152" LinesAvoided="5" />
+      </Target>
+      <Target Target="#91=M:[WcfLogger]WcfLogger.LoggingContext::get_Current()">
+        <JoinPoint Description="#3" Ordinal="154" LinesAvoided="5" />
+      </Target>
+      <Target Target="#92=M:[WcfLogger]WcfLogger.LoggingContext::get_Details()">
+        <JoinPoint Description="#3" Ordinal="156" LinesAvoided="5" />
+      </Target>
+      <Target Target="#93=M:[WcfLogger]WcfLogger.LoggingContext::set_Details([WcfLogger]WcfLogger.LoggingContextDetails)">
+        <JoinPoint Description="#3" Ordinal="158" LinesAvoided="5" />
+      </Target>
+      <Target Target="#94=M:[WcfLogger]WcfLogger.LoggingContext::CreateArgumentForCommonLog()">
+        <JoinPoint Description="#3" Ordinal="160" LinesAvoided="5" />
+      </Target>
+      <Target Target="#95=M:[WcfLogger]WcfLogger.LoggingContext::Log(System.Exception, System.String, [WcfLogger]WcfLogger.LoggingType)">
+        <JoinPoint Description="#3" Ordinal="162" LinesAvoided="5" />
+      </Target>
+      <Target Target="#96=M:[WcfLogger]WcfLogger.LoggingContext::LogError(System.Exception, System.String)">
+        <JoinPoint Description="#3" Ordinal="164" LinesAvoided="5" />
+      </Target>
+      <Target Target="#97=M:[WcfLogger]WcfLogger.LoggingContext::LogWarning(System.Exception, System.String)">
+        <JoinPoint Description="#3" Ordinal="166" LinesAvoided="5" />
+      </Target>
+      <Target Target="#98=M:[WcfLogger]WcfLogger.LoggingContext::LogInformation(System.String)">
+        <JoinPoint Description="#3" Ordinal="168" LinesAvoided="5" />
+      </Target>
+      <Target Target="#99=M:[WcfLogger]WcfLogger.LoggingContextDetails::get_MethodDetails()">
+        <JoinPoint Description="#3" Ordinal="174" LinesAvoided="5" />
+      </Target>
+      <Target Target="#100=M:[WcfLogger]WcfLogger.LoggingContextDetails::set_MethodDetails(System.Reflection.MethodInfo)">
+        <JoinPoint Description="#3" Ordinal="176" LinesAvoided="5" />
+      </Target>
+      <Target Target="#101=M:[WcfLogger]WcfLogger.LoggingContextDetails::get_Inputs()">
+        <JoinPoint Description="#3" Ordinal="178" LinesAvoided="5" />
+      </Target>
+      <Target Target="#102=M:[WcfLogger]WcfLogger.LoggingContextDetails::set_Inputs(System.Object[])">
+        <JoinPoint Description="#3" Ordinal="180" LinesAvoided="5" />
+      </Target>
+      <Target Target="#103=M:[WcfLogger]WcfLogger.LoggingContextDetails::get_LogErrors()">
+        <JoinPoint Description="#3" Ordinal="182" LinesAvoided="5" />
+      </Target>
+      <Target Target="#104=M:[WcfLogger]WcfLogger.LoggingContextDetails::set_LogErrors(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="184" LinesAvoided="5" />
+      </Target>
+      <Target Target="#105=M:[WcfLogger]WcfLogger.LoggingContextDetails::get_LogWarnings()">
+        <JoinPoint Description="#3" Ordinal="186" LinesAvoided="5" />
+      </Target>
+      <Target Target="#106=M:[WcfLogger]WcfLogger.LoggingContextDetails::set_LogWarnings(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="188" LinesAvoided="5" />
+      </Target>
+      <Target Target="#107=M:[WcfLogger]WcfLogger.LoggingContextDetails::get_LogInformation()">
+        <JoinPoint Description="#3" Ordinal="190" LinesAvoided="5" />
+      </Target>
+      <Target Target="#108=M:[WcfLogger]WcfLogger.LoggingContextDetails::set_LogInformation(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="192" LinesAvoided="5" />
+      </Target>
+      <Target Target="#109=M:[WcfLogger]WcfLogger.LoggingContextDetails::get_LoggingStrategy()">
+        <JoinPoint Description="#3" Ordinal="194" LinesAvoided="5" />
+      </Target>
+      <Target Target="#110=M:[WcfLogger]WcfLogger.LoggingContextDetails::set_LoggingStrategy([WcfLogger]WcfLogger.ILoggingStrategy)">
+        <JoinPoint Description="#3" Ordinal="196" LinesAvoided="5" />
+      </Target>
+      <Target Target="#111=M:[WcfLogger]WcfLogger.LoggingExceptionData::get_Exception()">
+        <JoinPoint Description="#3" Ordinal="200" LinesAvoided="5" />
+      </Target>
+      <Target Target="#112=M:[WcfLogger]WcfLogger.LoggingExceptionData::set_Exception(System.Exception)">
+        <JoinPoint Description="#3" Ordinal="202" LinesAvoided="5" />
+      </Target>
+      <Target Target="#113=M:[WcfLogger]WcfLogger.LoggingExceptionData::ToString()">
+        <JoinPoint Description="#3" Ordinal="204" LinesAvoided="5" />
+      </Target>
+      <Target Target="#114=M:[WcfLogger]WcfLogger.LoggingInformationData::get_Text()">
+        <JoinPoint Description="#3" Ordinal="208" LinesAvoided="5" />
+      </Target>
+      <Target Target="#115=M:[WcfLogger]WcfLogger.LoggingInformationData::set_Text(System.String)">
+        <JoinPoint Description="#3" Ordinal="210" LinesAvoided="5" />
+      </Target>
+      <Target Target="#116=M:[WcfLogger]WcfLogger.LoggingInformationData::ToString()">
+        <JoinPoint Description="#3" Ordinal="212" LinesAvoided="5" />
+      </Target>
+      <Target Target="#117=M:[WcfLogger]WcfLogger.LoggingInputsData::get_InputParameters()">
+        <JoinPoint Description="#3" Ordinal="216" LinesAvoided="5" />
+      </Target>
+      <Target Target="#118=M:[WcfLogger]WcfLogger.LoggingInputsData::set_InputParameters(System.Reflection.ParameterInfo[])">
+        <JoinPoint Description="#3" Ordinal="218" LinesAvoided="5" />
+      </Target>
+      <Target Target="#119=M:[WcfLogger]WcfLogger.LoggingInputsData::get_InputValues()">
+        <JoinPoint Description="#3" Ordinal="220" LinesAvoided="5" />
+      </Target>
+      <Target Target="#120=M:[WcfLogger]WcfLogger.LoggingInputsData::set_InputValues(System.Object[])">
+        <JoinPoint Description="#3" Ordinal="222" LinesAvoided="5" />
+      </Target>
+      <Target Target="#121=M:[WcfLogger]WcfLogger.LoggingInputsData::ToString()">
+        <JoinPoint Description="#3" Ordinal="224" LinesAvoided="5" />
+      </Target>
+      <Target Target="#122=M:[WcfLogger]WcfLogger.LoggingOutputsData::get_OutputParameters()">
+        <JoinPoint Description="#3" Ordinal="228" LinesAvoided="5" />
+      </Target>
+      <Target Target="#123=M:[WcfLogger]WcfLogger.LoggingOutputsData::set_OutputParameters(System.Reflection.ParameterInfo[])">
+        <JoinPoint Description="#3" Ordinal="230" LinesAvoided="5" />
+      </Target>
+      <Target Target="#124=M:[WcfLogger]WcfLogger.LoggingOutputsData::get_OutputValues()">
+        <JoinPoint Description="#3" Ordinal="232" LinesAvoided="5" />
+      </Target>
+      <Target Target="#125=M:[WcfLogger]WcfLogger.LoggingOutputsData::set_OutputValues(System.Object[])">
+        <JoinPoint Description="#3" Ordinal="234" LinesAvoided="5" />
+      </Target>
+      <Target Target="#126=M:[WcfLogger]WcfLogger.LoggingOutputsData::ToString()">
+        <JoinPoint Description="#3" Ordinal="236" LinesAvoided="5" />
+      </Target>
+      <Target Target="#127=M:[WcfLogger]WcfLogger.LoggingParameterInspector::AfterCall(System.String, System.Object[], System.Object, System.Object)">
+        <JoinPoint Description="#3" Ordinal="240" LinesAvoided="5" />
+      </Target>
+      <Target Target="#128=M:[WcfLogger]WcfLogger.LoggingParameterInspector::BeforeCall(System.String, System.Object[])">
+        <JoinPoint Description="#3" Ordinal="242" LinesAvoided="5" />
+      </Target>
+      <Target Target="#129=M:[WcfLogger]WcfLogger.LoggingParameterInspector::SetLoggingContext(System.Object[], System.Reflection.MethodInfo)">
+        <JoinPoint Description="#3" Ordinal="244" LinesAvoided="5" />
+      </Target>
+      <Target Target="#130=M:[WcfLogger]WcfLogger.LoggingParameterInspector::get_ServiceType()">
+        <JoinPoint Description="#3" Ordinal="246" LinesAvoided="5" />
+      </Target>
+      <Target Target="#131=M:[WcfLogger]WcfLogger.LoggingParameterInspector::set_ServiceType(System.Type)">
+        <JoinPoint Description="#3" Ordinal="248" LinesAvoided="5" />
+      </Target>
+      <Target Target="#132=M:[WcfLogger]WcfLogger.LoggingParameterInspector::get_LoggingStrategy()">
+        <JoinPoint Description="#3" Ordinal="250" LinesAvoided="5" />
+      </Target>
+      <Target Target="#133=M:[WcfLogger]WcfLogger.LoggingParameterInspector::set_LoggingStrategy([WcfLogger]WcfLogger.ILoggingStrategy)">
+        <JoinPoint Description="#3" Ordinal="252" LinesAvoided="5" />
+      </Target>
+      <Target Target="#134=M:[WcfLogger]WcfLogger.LoggingParameterInspector::get_LogBeforeCall()">
+        <JoinPoint Description="#3" Ordinal="254" LinesAvoided="5" />
+      </Target>
+      <Target Target="#135=M:[WcfLogger]WcfLogger.LoggingParameterInspector::set_LogBeforeCall(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="256" LinesAvoided="5" />
+      </Target>
+      <Target Target="#136=M:[WcfLogger]WcfLogger.LoggingParameterInspector::get_LogAfterCall()">
+        <JoinPoint Description="#3" Ordinal="258" LinesAvoided="5" />
+      </Target>
+      <Target Target="#137=M:[WcfLogger]WcfLogger.LoggingParameterInspector::set_LogAfterCall(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="260" LinesAvoided="5" />
+      </Target>
+      <Target Target="#138=M:[WcfLogger]WcfLogger.LoggingParameterInspector::get_LogErrors()">
+        <JoinPoint Description="#3" Ordinal="262" LinesAvoided="5" />
+      </Target>
+      <Target Target="#139=M:[WcfLogger]WcfLogger.LoggingParameterInspector::set_LogErrors(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="264" LinesAvoided="5" />
+      </Target>
+      <Target Target="#140=M:[WcfLogger]WcfLogger.LoggingParameterInspector::get_LogWarnings()">
+        <JoinPoint Description="#3" Ordinal="266" LinesAvoided="5" />
+      </Target>
+      <Target Target="#141=M:[WcfLogger]WcfLogger.LoggingParameterInspector::set_LogWarnings(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="268" LinesAvoided="5" />
+      </Target>
+      <Target Target="#142=M:[WcfLogger]WcfLogger.LoggingParameterInspector::get_LogInformation()">
+        <JoinPoint Description="#3" Ordinal="270" LinesAvoided="5" />
+      </Target>
+      <Target Target="#143=M:[WcfLogger]WcfLogger.LoggingParameterInspector::set_LogInformation(System.Boolean)">
+        <JoinPoint Description="#3" Ordinal="272" LinesAvoided="5" />
+      </Target>
+      <Target Target="#144=M:[WcfLogger]WcfLogger.LoggingParameterInspector::CreateArgumentForInvokeLog(System.Reflection.MethodInfo, System.Object[])">
+        <JoinPoint Description="#3" Ordinal="274" LinesAvoided="5" />
+      </Target>
+      <Target Target="#145=M:[WcfLogger]WcfLogger.LoggingParameterInspector::CreateArgumentForResultLog(System.Reflection.MethodInfo, System.Object[], System.Object)">
+        <JoinPoint Description="#3" Ordinal="276" LinesAvoided="5" />
+      </Target>
+      <Target Target="#146=M:[WcfLogger]WcfLogger.LoggingReturnValueData::get_Value()">
+        <JoinPoint Description="#3" Ordinal="280" LinesAvoided="5" />
+      </Target>
+      <Target Target="#147=M:[WcfLogger]WcfLogger.LoggingReturnValueData::set_Value(System.Object)">
+        <JoinPoint Description="#3" Ordinal="282" LinesAvoided="5" />
+      </Target>
+      <Target Target="#148=M:[WcfLogger]WcfLogger.LoggingReturnValueData::ToString()">
+        <JoinPoint Description="#3" Ordinal="284" LinesAvoided="5" />
+      </Target>
+      <Target Target="#149=M:[WcfLogger]WcfLogger.ObjectToStringConverter::ConvertSomeToString(System.String[], System.Object[])">
+        <JoinPoint Description="#3" Ordinal="288" LinesAvoided="5" />
+      </Target>
+      <Target Target="#150=M:[WcfLogger]WcfLogger.ObjectToStringConverter::ConvertToString(System.String, System.Object)">
+        <JoinPoint Description="#3" Ordinal="290" LinesAvoided="5" />
+      </Target>
+      <Target Target="#151=M:[WcfLogger]WcfLogger.ObjectToStringConverter::ConvertToString(System.Object)">
+        <JoinPoint Description="#3" Ordinal="292" LinesAvoided="5" />
+      </Target>
+      <Target Target="#152=M:[WcfLogger]WcfLogger.ObjectToStringConverter::ConvertCollectionToString(System.Collections.IEnumerable)">
+        <JoinPoint Description="#3" Ordinal="294" LinesAvoided="5" />
+      </Target>
+      <Target Target="#153=M:[WcfLogger]WcfLogger.ObjectToStringConverter::ConvertClassToString(System.Object)">
+        <JoinPoint Description="#3" Ordinal="296" LinesAvoided="5" />
+      </Target>
+      <Target Target="#154=M:[WcfLogger]WcfLogger.ObjectToStringConverter::ConvertExceptionToString(System.Exception)">
+        <JoinPoint Description="#3" Ordinal="298" LinesAvoided="5" />
+      </Target>
+      <Target Target="#155=M:[WcfLogger]WcfLogger.ObjectToStringConverter::ConvertTypeToString(System.Type)">
+        <JoinPoint Description="#3" Ordinal="300" LinesAvoided="5" />
+      </Target>
+      <Target Target="#156=M:[WcfLogger]WcfLogger.ObjectToStringConverter::IsParsable(System.Type)">
+        <JoinPoint Description="#3" Ordinal="302" LinesAvoided="5" />
+      </Target>
+      <Target Target="#157=M:[WcfLogger]WcfLogger.FileLoggingStrategy::Log([WcfLogger]WcfLogger.LoggingArgument)">
+        <JoinPoint Description="#3" Ordinal="304" LinesAvoided="5" />
+      </Target>
+      <Target Target="#158=M:[WcfLogger]WcfLogger.FileLoggingStrategy::get_FilePath()">
+        <JoinPoint Description="#3" Ordinal="306" LinesAvoided="5" />
+      </Target>
+      <Target Target="#159=M:[WcfLogger]WcfLogger.FileLoggingStrategy::set_FilePath(System.String)">
+        <JoinPoint Description="#3" Ordinal="308" LinesAvoided="5" />
+      </Target>
+      <Target Target="#160=M:[WcfLogger]WcfLogger.PostSharpLoggingStrategy::Log([WcfLogger]WcfLogger.LoggingArgument)">
+        <JoinPoint Description="#3" Ordinal="312" LinesAvoided="5" />
+      </Target>
+    </Instance>
+  </Class>
+  <Class Class="#161=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogExceptionAttribute">
+    <Instance Declaration="#162=A:WcfLogger" Id="8820a3559cb343f8">
+      <Target Target="#2">
+        <JoinPoint Advising="#161" Description="#3" LinesAvoided="3" />
+      </Target>
+      <Target Target="#18">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="3" LinesAvoided="3" />
+      </Target>
+      <Target Target="#19">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="5" LinesAvoided="3" />
+      </Target>
+      <Target Target="#20">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="7" LinesAvoided="3" />
+      </Target>
+      <Target Target="#21">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="9" LinesAvoided="3" />
+      </Target>
+      <Target Target="#22">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="11" LinesAvoided="3" />
+      </Target>
+      <Target Target="#23">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="13" LinesAvoided="3" />
+      </Target>
+      <Target Target="#24">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="15" LinesAvoided="3" />
+      </Target>
+      <Target Target="#25">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="17" LinesAvoided="3" />
+      </Target>
+      <Target Target="#26">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="19" LinesAvoided="3" />
+      </Target>
+      <Target Target="#27">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="21" LinesAvoided="3" />
+      </Target>
+      <Target Target="#28">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="23" LinesAvoided="3" />
+      </Target>
+      <Target Target="#4">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="25" LinesAvoided="3" />
+      </Target>
+      <Target Target="#29">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="27" LinesAvoided="3" />
+      </Target>
+      <Target Target="#30">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="29" LinesAvoided="3" />
+      </Target>
+      <Target Target="#31">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="31" LinesAvoided="3" />
+      </Target>
+      <Target Target="#32">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="33" LinesAvoided="3" />
+      </Target>
+      <Target Target="#33">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="35" LinesAvoided="3" />
+      </Target>
+      <Target Target="#34">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="37" LinesAvoided="3" />
+      </Target>
+      <Target Target="#35">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="39" LinesAvoided="3" />
+      </Target>
+      <Target Target="#36">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="41" LinesAvoided="3" />
+      </Target>
+      <Target Target="#37">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="43" LinesAvoided="3" />
+      </Target>
+      <Target Target="#38">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="45" LinesAvoided="3" />
+      </Target>
+      <Target Target="#39">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="47" LinesAvoided="3" />
+      </Target>
+      <Target Target="#40">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="49" LinesAvoided="3" />
+      </Target>
+      <Target Target="#41">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="51" LinesAvoided="3" />
+      </Target>
+      <Target Target="#42">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="53" LinesAvoided="3" />
+      </Target>
+      <Target Target="#43">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="55" LinesAvoided="3" />
+      </Target>
+      <Target Target="#44">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="57" LinesAvoided="3" />
+      </Target>
+      <Target Target="#45">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="59" LinesAvoided="3" />
+      </Target>
+      <Target Target="#46">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="61" LinesAvoided="3" />
+      </Target>
+      <Target Target="#47">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="63" LinesAvoided="3" />
+      </Target>
+      <Target Target="#48">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="65" LinesAvoided="3" />
+      </Target>
+      <Target Target="#49">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="67" LinesAvoided="3" />
+      </Target>
+      <Target Target="#5">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="69" LinesAvoided="3" />
+      </Target>
+      <Target Target="#50">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="71" LinesAvoided="3" />
+      </Target>
+      <Target Target="#51">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="73" LinesAvoided="3" />
+      </Target>
+      <Target Target="#52">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="75" LinesAvoided="3" />
+      </Target>
+      <Target Target="#53">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="77" LinesAvoided="3" />
+      </Target>
+      <Target Target="#54">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="79" LinesAvoided="3" />
+      </Target>
+      <Target Target="#55">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="81" LinesAvoided="3" />
+      </Target>
+      <Target Target="#56">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="83" LinesAvoided="3" />
+      </Target>
+      <Target Target="#57">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="85" LinesAvoided="3" />
+      </Target>
+      <Target Target="#58">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="87" LinesAvoided="3" />
+      </Target>
+      <Target Target="#59">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="89" LinesAvoided="3" />
+      </Target>
+      <Target Target="#60">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="91" LinesAvoided="3" />
+      </Target>
+      <Target Target="#61">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="93" LinesAvoided="3" />
+      </Target>
+      <Target Target="#62">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="95" LinesAvoided="3" />
+      </Target>
+      <Target Target="#63">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="97" LinesAvoided="3" />
+      </Target>
+      <Target Target="#64">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="99" LinesAvoided="3" />
+      </Target>
+      <Target Target="#65">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="101" LinesAvoided="3" />
+      </Target>
+      <Target Target="#66">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="103" LinesAvoided="3" />
+      </Target>
+      <Target Target="#67">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="105" LinesAvoided="3" />
+      </Target>
+      <Target Target="#68">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="107" LinesAvoided="3" />
+      </Target>
+      <Target Target="#69">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="109" LinesAvoided="3" />
+      </Target>
+      <Target Target="#70">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="111" LinesAvoided="3" />
+      </Target>
+      <Target Target="#71">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="113" LinesAvoided="3" />
+      </Target>
+      <Target Target="#72">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="115" LinesAvoided="3" />
+      </Target>
+      <Target Target="#73">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="117" LinesAvoided="3" />
+      </Target>
+      <Target Target="#74">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="119" LinesAvoided="3" />
+      </Target>
+      <Target Target="#75">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="121" LinesAvoided="3" />
+      </Target>
+      <Target Target="#76">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="123" LinesAvoided="3" />
+      </Target>
+      <Target Target="#77">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="125" LinesAvoided="3" />
+      </Target>
+      <Target Target="#78">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="127" LinesAvoided="3" />
+      </Target>
+      <Target Target="#79">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="129" LinesAvoided="3" />
+      </Target>
+      <Target Target="#80">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="131" LinesAvoided="3" />
+      </Target>
+      <Target Target="#81">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="133" LinesAvoided="3" />
+      </Target>
+      <Target Target="#82">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="135" LinesAvoided="3" />
+      </Target>
+      <Target Target="#83">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="137" LinesAvoided="3" />
+      </Target>
+      <Target Target="#84">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="139" LinesAvoided="3" />
+      </Target>
+      <Target Target="#6">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="141" LinesAvoided="3" />
+      </Target>
+      <Target Target="#85">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="143" LinesAvoided="3" />
+      </Target>
+      <Target Target="#86">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="145" LinesAvoided="3" />
+      </Target>
+      <Target Target="#87">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="147" LinesAvoided="3" />
+      </Target>
+      <Target Target="#88">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="149" LinesAvoided="3" />
+      </Target>
+      <Target Target="#89">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="151" LinesAvoided="3" />
+      </Target>
+      <Target Target="#90">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="153" LinesAvoided="3" />
+      </Target>
+      <Target Target="#91">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="155" LinesAvoided="3" />
+      </Target>
+      <Target Target="#92">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="157" LinesAvoided="3" />
+      </Target>
+      <Target Target="#93">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="159" LinesAvoided="3" />
+      </Target>
+      <Target Target="#94">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="161" LinesAvoided="3" />
+      </Target>
+      <Target Target="#95">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="163" LinesAvoided="3" />
+      </Target>
+      <Target Target="#96">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="165" LinesAvoided="3" />
+      </Target>
+      <Target Target="#97">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="167" LinesAvoided="3" />
+      </Target>
+      <Target Target="#98">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="169" LinesAvoided="3" />
+      </Target>
+      <Target Target="#7">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="171" LinesAvoided="3" />
+      </Target>
+      <Target Target="#8">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="173" LinesAvoided="3" />
+      </Target>
+      <Target Target="#99">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="175" LinesAvoided="3" />
+      </Target>
+      <Target Target="#100">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="177" LinesAvoided="3" />
+      </Target>
+      <Target Target="#101">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="179" LinesAvoided="3" />
+      </Target>
+      <Target Target="#102">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="181" LinesAvoided="3" />
+      </Target>
+      <Target Target="#103">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="183" LinesAvoided="3" />
+      </Target>
+      <Target Target="#104">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="185" LinesAvoided="3" />
+      </Target>
+      <Target Target="#105">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="187" LinesAvoided="3" />
+      </Target>
+      <Target Target="#106">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="189" LinesAvoided="3" />
+      </Target>
+      <Target Target="#107">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="191" LinesAvoided="3" />
+      </Target>
+      <Target Target="#108">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="193" LinesAvoided="3" />
+      </Target>
+      <Target Target="#109">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="195" LinesAvoided="3" />
+      </Target>
+      <Target Target="#110">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="197" LinesAvoided="3" />
+      </Target>
+      <Target Target="#9">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="199" LinesAvoided="3" />
+      </Target>
+      <Target Target="#111">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="201" LinesAvoided="3" />
+      </Target>
+      <Target Target="#112">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="203" LinesAvoided="3" />
+      </Target>
+      <Target Target="#113">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="205" LinesAvoided="3" />
+      </Target>
+      <Target Target="#10">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="207" LinesAvoided="3" />
+      </Target>
+      <Target Target="#114">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="209" LinesAvoided="3" />
+      </Target>
+      <Target Target="#115">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="211" LinesAvoided="3" />
+      </Target>
+      <Target Target="#116">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="213" LinesAvoided="3" />
+      </Target>
+      <Target Target="#11">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="215" LinesAvoided="3" />
+      </Target>
+      <Target Target="#117">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="217" LinesAvoided="3" />
+      </Target>
+      <Target Target="#118">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="219" LinesAvoided="3" />
+      </Target>
+      <Target Target="#119">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="221" LinesAvoided="3" />
+      </Target>
+      <Target Target="#120">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="223" LinesAvoided="3" />
+      </Target>
+      <Target Target="#121">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="225" LinesAvoided="3" />
+      </Target>
+      <Target Target="#12">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="227" LinesAvoided="3" />
+      </Target>
+      <Target Target="#122">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="229" LinesAvoided="3" />
+      </Target>
+      <Target Target="#123">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="231" LinesAvoided="3" />
+      </Target>
+      <Target Target="#124">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="233" LinesAvoided="3" />
+      </Target>
+      <Target Target="#125">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="235" LinesAvoided="3" />
+      </Target>
+      <Target Target="#126">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="237" LinesAvoided="3" />
+      </Target>
+      <Target Target="#13">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="239" LinesAvoided="3" />
+      </Target>
+      <Target Target="#127">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="241" LinesAvoided="3" />
+      </Target>
+      <Target Target="#128">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="243" LinesAvoided="3" />
+      </Target>
+      <Target Target="#129">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="245" LinesAvoided="3" />
+      </Target>
+      <Target Target="#130">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="247" LinesAvoided="3" />
+      </Target>
+      <Target Target="#131">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="249" LinesAvoided="3" />
+      </Target>
+      <Target Target="#132">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="251" LinesAvoided="3" />
+      </Target>
+      <Target Target="#133">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="253" LinesAvoided="3" />
+      </Target>
+      <Target Target="#134">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="255" LinesAvoided="3" />
+      </Target>
+      <Target Target="#135">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="257" LinesAvoided="3" />
+      </Target>
+      <Target Target="#136">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="259" LinesAvoided="3" />
+      </Target>
+      <Target Target="#137">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="261" LinesAvoided="3" />
+      </Target>
+      <Target Target="#138">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="263" LinesAvoided="3" />
+      </Target>
+      <Target Target="#139">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="265" LinesAvoided="3" />
+      </Target>
+      <Target Target="#140">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="267" LinesAvoided="3" />
+      </Target>
+      <Target Target="#141">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="269" LinesAvoided="3" />
+      </Target>
+      <Target Target="#142">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="271" LinesAvoided="3" />
+      </Target>
+      <Target Target="#143">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="273" LinesAvoided="3" />
+      </Target>
+      <Target Target="#144">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="275" LinesAvoided="3" />
+      </Target>
+      <Target Target="#145">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="277" LinesAvoided="3" />
+      </Target>
+      <Target Target="#14">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="279" LinesAvoided="3" />
+      </Target>
+      <Target Target="#146">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="281" LinesAvoided="3" />
+      </Target>
+      <Target Target="#147">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="283" LinesAvoided="3" />
+      </Target>
+      <Target Target="#148">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="285" LinesAvoided="3" />
+      </Target>
+      <Target Target="#15">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="287" LinesAvoided="3" />
+      </Target>
+      <Target Target="#149">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="289" LinesAvoided="3" />
+      </Target>
+      <Target Target="#150">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="291" LinesAvoided="3" />
+      </Target>
+      <Target Target="#151">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="293" LinesAvoided="3" />
+      </Target>
+      <Target Target="#152">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="295" LinesAvoided="3" />
+      </Target>
+      <Target Target="#153">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="297" LinesAvoided="3" />
+      </Target>
+      <Target Target="#154">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="299" LinesAvoided="3" />
+      </Target>
+      <Target Target="#155">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="301" LinesAvoided="3" />
+      </Target>
+      <Target Target="#156">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="303" LinesAvoided="3" />
+      </Target>
+      <Target Target="#157">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="305" LinesAvoided="3" />
+      </Target>
+      <Target Target="#158">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="307" LinesAvoided="3" />
+      </Target>
+      <Target Target="#159">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="309" LinesAvoided="3" />
+      </Target>
+      <Target Target="#16">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="311" LinesAvoided="3" />
+      </Target>
+      <Target Target="#160">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="313" LinesAvoided="3" />
+      </Target>
+      <Target Target="#17">
+        <JoinPoint Advising="#161" Description="#3" Ordinal="315" LinesAvoided="3" />
+      </Target>
+    </Instance>
+  </Class>
+</Symbols>
