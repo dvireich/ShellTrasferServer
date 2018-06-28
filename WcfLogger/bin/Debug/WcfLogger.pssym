@@ -480,482 +480,565 @@
       </Target>
     </Instance>
   </Class>
-  <Class Class="#161=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogExceptionAttribute">
-    <Instance Declaration="#162=A:WcfLogger" Id="8820a3559cb343f8">
-      <Target Target="#2">
-        <JoinPoint Advising="#161" Description="#3" LinesAvoided="3" />
-      </Target>
-      <Target Target="#18">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="3" LinesAvoided="3" />
-      </Target>
-      <Target Target="#19">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="5" LinesAvoided="3" />
-      </Target>
-      <Target Target="#20">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="7" LinesAvoided="3" />
-      </Target>
-      <Target Target="#21">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="9" LinesAvoided="3" />
-      </Target>
-      <Target Target="#22">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="11" LinesAvoided="3" />
-      </Target>
-      <Target Target="#23">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="13" LinesAvoided="3" />
-      </Target>
-      <Target Target="#24">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="15" LinesAvoided="3" />
-      </Target>
-      <Target Target="#25">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="17" LinesAvoided="3" />
-      </Target>
-      <Target Target="#26">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="19" LinesAvoided="3" />
-      </Target>
-      <Target Target="#27">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="21" LinesAvoided="3" />
-      </Target>
-      <Target Target="#28">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="23" LinesAvoided="3" />
-      </Target>
-      <Target Target="#4">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="25" LinesAvoided="3" />
-      </Target>
-      <Target Target="#29">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="27" LinesAvoided="3" />
-      </Target>
-      <Target Target="#30">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="29" LinesAvoided="3" />
-      </Target>
-      <Target Target="#31">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="31" LinesAvoided="3" />
-      </Target>
-      <Target Target="#32">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="33" LinesAvoided="3" />
-      </Target>
-      <Target Target="#33">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="35" LinesAvoided="3" />
-      </Target>
-      <Target Target="#34">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="37" LinesAvoided="3" />
-      </Target>
-      <Target Target="#35">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="39" LinesAvoided="3" />
-      </Target>
-      <Target Target="#36">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="41" LinesAvoided="3" />
-      </Target>
-      <Target Target="#37">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="43" LinesAvoided="3" />
-      </Target>
-      <Target Target="#38">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="45" LinesAvoided="3" />
-      </Target>
-      <Target Target="#39">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="47" LinesAvoided="3" />
-      </Target>
-      <Target Target="#40">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="49" LinesAvoided="3" />
-      </Target>
-      <Target Target="#41">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="51" LinesAvoided="3" />
-      </Target>
-      <Target Target="#42">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="53" LinesAvoided="3" />
-      </Target>
-      <Target Target="#43">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="55" LinesAvoided="3" />
-      </Target>
-      <Target Target="#44">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="57" LinesAvoided="3" />
-      </Target>
-      <Target Target="#45">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="59" LinesAvoided="3" />
-      </Target>
-      <Target Target="#46">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="61" LinesAvoided="3" />
-      </Target>
-      <Target Target="#47">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="63" LinesAvoided="3" />
-      </Target>
-      <Target Target="#48">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="65" LinesAvoided="3" />
-      </Target>
-      <Target Target="#49">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="67" LinesAvoided="3" />
-      </Target>
-      <Target Target="#5">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="69" LinesAvoided="3" />
-      </Target>
-      <Target Target="#50">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="71" LinesAvoided="3" />
-      </Target>
-      <Target Target="#51">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="73" LinesAvoided="3" />
-      </Target>
-      <Target Target="#52">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="75" LinesAvoided="3" />
-      </Target>
-      <Target Target="#53">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="77" LinesAvoided="3" />
-      </Target>
-      <Target Target="#54">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="79" LinesAvoided="3" />
-      </Target>
-      <Target Target="#55">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="81" LinesAvoided="3" />
-      </Target>
-      <Target Target="#56">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="83" LinesAvoided="3" />
-      </Target>
-      <Target Target="#57">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="85" LinesAvoided="3" />
-      </Target>
-      <Target Target="#58">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="87" LinesAvoided="3" />
-      </Target>
-      <Target Target="#59">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="89" LinesAvoided="3" />
-      </Target>
-      <Target Target="#60">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="91" LinesAvoided="3" />
-      </Target>
-      <Target Target="#61">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="93" LinesAvoided="3" />
-      </Target>
-      <Target Target="#62">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="95" LinesAvoided="3" />
-      </Target>
-      <Target Target="#63">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="97" LinesAvoided="3" />
-      </Target>
-      <Target Target="#64">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="99" LinesAvoided="3" />
-      </Target>
-      <Target Target="#65">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="101" LinesAvoided="3" />
-      </Target>
-      <Target Target="#66">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="103" LinesAvoided="3" />
-      </Target>
-      <Target Target="#67">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="105" LinesAvoided="3" />
-      </Target>
-      <Target Target="#68">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="107" LinesAvoided="3" />
-      </Target>
-      <Target Target="#69">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="109" LinesAvoided="3" />
-      </Target>
-      <Target Target="#70">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="111" LinesAvoided="3" />
-      </Target>
-      <Target Target="#71">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="113" LinesAvoided="3" />
-      </Target>
-      <Target Target="#72">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="115" LinesAvoided="3" />
-      </Target>
-      <Target Target="#73">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="117" LinesAvoided="3" />
-      </Target>
-      <Target Target="#74">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="119" LinesAvoided="3" />
-      </Target>
-      <Target Target="#75">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="121" LinesAvoided="3" />
-      </Target>
-      <Target Target="#76">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="123" LinesAvoided="3" />
-      </Target>
-      <Target Target="#77">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="125" LinesAvoided="3" />
-      </Target>
-      <Target Target="#78">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="127" LinesAvoided="3" />
-      </Target>
-      <Target Target="#79">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="129" LinesAvoided="3" />
-      </Target>
-      <Target Target="#80">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="131" LinesAvoided="3" />
-      </Target>
-      <Target Target="#81">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="133" LinesAvoided="3" />
-      </Target>
-      <Target Target="#82">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="135" LinesAvoided="3" />
-      </Target>
-      <Target Target="#83">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="137" LinesAvoided="3" />
-      </Target>
-      <Target Target="#84">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="139" LinesAvoided="3" />
-      </Target>
-      <Target Target="#6">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="141" LinesAvoided="3" />
-      </Target>
-      <Target Target="#85">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="143" LinesAvoided="3" />
-      </Target>
-      <Target Target="#86">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="145" LinesAvoided="3" />
-      </Target>
-      <Target Target="#87">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="147" LinesAvoided="3" />
-      </Target>
-      <Target Target="#88">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="149" LinesAvoided="3" />
-      </Target>
-      <Target Target="#89">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="151" LinesAvoided="3" />
-      </Target>
-      <Target Target="#90">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="153" LinesAvoided="3" />
-      </Target>
-      <Target Target="#91">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="155" LinesAvoided="3" />
-      </Target>
-      <Target Target="#92">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="157" LinesAvoided="3" />
-      </Target>
-      <Target Target="#93">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="159" LinesAvoided="3" />
-      </Target>
-      <Target Target="#94">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="161" LinesAvoided="3" />
-      </Target>
-      <Target Target="#95">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="163" LinesAvoided="3" />
-      </Target>
-      <Target Target="#96">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="165" LinesAvoided="3" />
-      </Target>
-      <Target Target="#97">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="167" LinesAvoided="3" />
-      </Target>
-      <Target Target="#98">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="169" LinesAvoided="3" />
-      </Target>
-      <Target Target="#7">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="171" LinesAvoided="3" />
-      </Target>
-      <Target Target="#8">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="173" LinesAvoided="3" />
-      </Target>
-      <Target Target="#99">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="175" LinesAvoided="3" />
-      </Target>
-      <Target Target="#100">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="177" LinesAvoided="3" />
-      </Target>
-      <Target Target="#101">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="179" LinesAvoided="3" />
-      </Target>
-      <Target Target="#102">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="181" LinesAvoided="3" />
-      </Target>
-      <Target Target="#103">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="183" LinesAvoided="3" />
-      </Target>
-      <Target Target="#104">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="185" LinesAvoided="3" />
-      </Target>
-      <Target Target="#105">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="187" LinesAvoided="3" />
-      </Target>
-      <Target Target="#106">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="189" LinesAvoided="3" />
-      </Target>
-      <Target Target="#107">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="191" LinesAvoided="3" />
-      </Target>
-      <Target Target="#108">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="193" LinesAvoided="3" />
-      </Target>
-      <Target Target="#109">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="195" LinesAvoided="3" />
-      </Target>
-      <Target Target="#110">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="197" LinesAvoided="3" />
-      </Target>
-      <Target Target="#9">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="199" LinesAvoided="3" />
-      </Target>
-      <Target Target="#111">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="201" LinesAvoided="3" />
-      </Target>
-      <Target Target="#112">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="203" LinesAvoided="3" />
-      </Target>
-      <Target Target="#113">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="205" LinesAvoided="3" />
-      </Target>
-      <Target Target="#10">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="207" LinesAvoided="3" />
-      </Target>
-      <Target Target="#114">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="209" LinesAvoided="3" />
-      </Target>
-      <Target Target="#115">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="211" LinesAvoided="3" />
-      </Target>
-      <Target Target="#116">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="213" LinesAvoided="3" />
-      </Target>
-      <Target Target="#11">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="215" LinesAvoided="3" />
-      </Target>
-      <Target Target="#117">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="217" LinesAvoided="3" />
-      </Target>
-      <Target Target="#118">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="219" LinesAvoided="3" />
-      </Target>
-      <Target Target="#119">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="221" LinesAvoided="3" />
-      </Target>
-      <Target Target="#120">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="223" LinesAvoided="3" />
-      </Target>
-      <Target Target="#121">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="225" LinesAvoided="3" />
-      </Target>
-      <Target Target="#12">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="227" LinesAvoided="3" />
-      </Target>
-      <Target Target="#122">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="229" LinesAvoided="3" />
-      </Target>
-      <Target Target="#123">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="231" LinesAvoided="3" />
-      </Target>
-      <Target Target="#124">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="233" LinesAvoided="3" />
-      </Target>
-      <Target Target="#125">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="235" LinesAvoided="3" />
-      </Target>
-      <Target Target="#126">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="237" LinesAvoided="3" />
-      </Target>
-      <Target Target="#13">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="239" LinesAvoided="3" />
-      </Target>
-      <Target Target="#127">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="241" LinesAvoided="3" />
-      </Target>
-      <Target Target="#128">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="243" LinesAvoided="3" />
-      </Target>
-      <Target Target="#129">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="245" LinesAvoided="3" />
-      </Target>
-      <Target Target="#130">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="247" LinesAvoided="3" />
-      </Target>
-      <Target Target="#131">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="249" LinesAvoided="3" />
-      </Target>
-      <Target Target="#132">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="251" LinesAvoided="3" />
-      </Target>
-      <Target Target="#133">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="253" LinesAvoided="3" />
-      </Target>
-      <Target Target="#134">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="255" LinesAvoided="3" />
-      </Target>
-      <Target Target="#135">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="257" LinesAvoided="3" />
-      </Target>
-      <Target Target="#136">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="259" LinesAvoided="3" />
-      </Target>
-      <Target Target="#137">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="261" LinesAvoided="3" />
-      </Target>
-      <Target Target="#138">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="263" LinesAvoided="3" />
-      </Target>
-      <Target Target="#139">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="265" LinesAvoided="3" />
-      </Target>
-      <Target Target="#140">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="267" LinesAvoided="3" />
-      </Target>
-      <Target Target="#141">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="269" LinesAvoided="3" />
-      </Target>
-      <Target Target="#142">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="271" LinesAvoided="3" />
-      </Target>
-      <Target Target="#143">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="273" LinesAvoided="3" />
-      </Target>
-      <Target Target="#144">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="275" LinesAvoided="3" />
-      </Target>
-      <Target Target="#145">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="277" LinesAvoided="3" />
-      </Target>
-      <Target Target="#14">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="279" LinesAvoided="3" />
-      </Target>
-      <Target Target="#146">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="281" LinesAvoided="3" />
-      </Target>
-      <Target Target="#147">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="283" LinesAvoided="3" />
-      </Target>
-      <Target Target="#148">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="285" LinesAvoided="3" />
-      </Target>
-      <Target Target="#15">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="287" LinesAvoided="3" />
-      </Target>
-      <Target Target="#149">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="289" LinesAvoided="3" />
-      </Target>
-      <Target Target="#150">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="291" LinesAvoided="3" />
-      </Target>
-      <Target Target="#151">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="293" LinesAvoided="3" />
-      </Target>
-      <Target Target="#152">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="295" LinesAvoided="3" />
-      </Target>
-      <Target Target="#153">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="297" LinesAvoided="3" />
-      </Target>
-      <Target Target="#154">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="299" LinesAvoided="3" />
-      </Target>
-      <Target Target="#155">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="301" LinesAvoided="3" />
-      </Target>
-      <Target Target="#156">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="303" LinesAvoided="3" />
-      </Target>
-      <Target Target="#157">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="305" LinesAvoided="3" />
-      </Target>
-      <Target Target="#158">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="307" LinesAvoided="3" />
-      </Target>
-      <Target Target="#159">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="309" LinesAvoided="3" />
-      </Target>
-      <Target Target="#16">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="311" LinesAvoided="3" />
-      </Target>
-      <Target Target="#160">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="313" LinesAvoided="3" />
-      </Target>
-      <Target Target="#17">
-        <JoinPoint Advising="#161" Description="#3" Ordinal="315" LinesAvoided="3" />
+  <Class Class="#161=T:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy">
+    <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="12" Column="6">
+      <Target Target="#162=A:WcfLogger">
+        <JoinPoint Advised="#163=M:[mscorlib]System.Threading.Monitor::Enter(System.Object, ref System.Boolean)" Advising="#164=T:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+MonitorEnhancements" Description="#165=Intercepted by Enter_Object_Bool" Ordinal="316" LinesAvoided="2" />
+        <JoinPoint Advised="#166=M:[mscorlib]System.Threading.Monitor::Exit(System.Object)" Advising="#164" Description="#167=Intercepted by Exit" Ordinal="317" LinesAvoided="2" />
       </Target>
     </Instance>
   </Class>
+  <Class Class="#168=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogExceptionAttribute">
+    <Instance Declaration="#162" Id="8820a3552832732e">
+      <Target Target="#2">
+        <JoinPoint Advising="#168" Description="#3" LinesAvoided="3" />
+      </Target>
+      <Target Target="#18">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="3" LinesAvoided="3" />
+      </Target>
+      <Target Target="#19">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="5" LinesAvoided="3" />
+      </Target>
+      <Target Target="#20">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="7" LinesAvoided="3" />
+      </Target>
+      <Target Target="#21">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="9" LinesAvoided="3" />
+      </Target>
+      <Target Target="#22">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="11" LinesAvoided="3" />
+      </Target>
+      <Target Target="#23">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="13" LinesAvoided="3" />
+      </Target>
+      <Target Target="#24">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="15" LinesAvoided="3" />
+      </Target>
+      <Target Target="#25">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="17" LinesAvoided="3" />
+      </Target>
+      <Target Target="#26">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="19" LinesAvoided="3" />
+      </Target>
+      <Target Target="#27">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="21" LinesAvoided="3" />
+      </Target>
+      <Target Target="#28">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="23" LinesAvoided="3" />
+      </Target>
+      <Target Target="#4">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="25" LinesAvoided="3" />
+      </Target>
+      <Target Target="#29">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="27" LinesAvoided="3" />
+      </Target>
+      <Target Target="#30">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="29" LinesAvoided="3" />
+      </Target>
+      <Target Target="#31">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="31" LinesAvoided="3" />
+      </Target>
+      <Target Target="#32">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="33" LinesAvoided="3" />
+      </Target>
+      <Target Target="#33">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="35" LinesAvoided="3" />
+      </Target>
+      <Target Target="#34">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="37" LinesAvoided="3" />
+      </Target>
+      <Target Target="#35">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="39" LinesAvoided="3" />
+      </Target>
+      <Target Target="#36">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="41" LinesAvoided="3" />
+      </Target>
+      <Target Target="#37">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="43" LinesAvoided="3" />
+      </Target>
+      <Target Target="#38">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="45" LinesAvoided="3" />
+      </Target>
+      <Target Target="#39">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="47" LinesAvoided="3" />
+      </Target>
+      <Target Target="#40">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="49" LinesAvoided="3" />
+      </Target>
+      <Target Target="#41">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="51" LinesAvoided="3" />
+      </Target>
+      <Target Target="#42">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="53" LinesAvoided="3" />
+      </Target>
+      <Target Target="#43">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="55" LinesAvoided="3" />
+      </Target>
+      <Target Target="#44">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="57" LinesAvoided="3" />
+      </Target>
+      <Target Target="#45">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="59" LinesAvoided="3" />
+      </Target>
+      <Target Target="#46">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="61" LinesAvoided="3" />
+      </Target>
+      <Target Target="#47">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="63" LinesAvoided="3" />
+      </Target>
+      <Target Target="#48">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="65" LinesAvoided="3" />
+      </Target>
+      <Target Target="#49">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="67" LinesAvoided="3" />
+      </Target>
+      <Target Target="#5">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="69" LinesAvoided="3" />
+      </Target>
+      <Target Target="#50">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="71" LinesAvoided="3" />
+      </Target>
+      <Target Target="#51">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="73" LinesAvoided="3" />
+      </Target>
+      <Target Target="#52">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="75" LinesAvoided="3" />
+      </Target>
+      <Target Target="#53">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="77" LinesAvoided="3" />
+      </Target>
+      <Target Target="#54">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="79" LinesAvoided="3" />
+      </Target>
+      <Target Target="#55">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="81" LinesAvoided="3" />
+      </Target>
+      <Target Target="#56">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="83" LinesAvoided="3" />
+      </Target>
+      <Target Target="#57">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="85" LinesAvoided="3" />
+      </Target>
+      <Target Target="#58">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="87" LinesAvoided="3" />
+      </Target>
+      <Target Target="#59">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="89" LinesAvoided="3" />
+      </Target>
+      <Target Target="#60">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="91" LinesAvoided="3" />
+      </Target>
+      <Target Target="#61">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="93" LinesAvoided="3" />
+      </Target>
+      <Target Target="#62">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="95" LinesAvoided="3" />
+      </Target>
+      <Target Target="#63">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="97" LinesAvoided="3" />
+      </Target>
+      <Target Target="#64">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="99" LinesAvoided="3" />
+      </Target>
+      <Target Target="#65">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="101" LinesAvoided="3" />
+      </Target>
+      <Target Target="#66">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="103" LinesAvoided="3" />
+      </Target>
+      <Target Target="#67">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="105" LinesAvoided="3" />
+      </Target>
+      <Target Target="#68">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="107" LinesAvoided="3" />
+      </Target>
+      <Target Target="#69">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="109" LinesAvoided="3" />
+      </Target>
+      <Target Target="#70">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="111" LinesAvoided="3" />
+      </Target>
+      <Target Target="#71">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="113" LinesAvoided="3" />
+      </Target>
+      <Target Target="#72">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="115" LinesAvoided="3" />
+      </Target>
+      <Target Target="#73">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="117" LinesAvoided="3" />
+      </Target>
+      <Target Target="#74">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="119" LinesAvoided="3" />
+      </Target>
+      <Target Target="#75">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="121" LinesAvoided="3" />
+      </Target>
+      <Target Target="#76">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="123" LinesAvoided="3" />
+      </Target>
+      <Target Target="#77">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="125" LinesAvoided="3" />
+      </Target>
+      <Target Target="#78">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="127" LinesAvoided="3" />
+      </Target>
+      <Target Target="#79">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="129" LinesAvoided="3" />
+      </Target>
+      <Target Target="#80">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="131" LinesAvoided="3" />
+      </Target>
+      <Target Target="#81">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="133" LinesAvoided="3" />
+      </Target>
+      <Target Target="#82">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="135" LinesAvoided="3" />
+      </Target>
+      <Target Target="#83">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="137" LinesAvoided="3" />
+      </Target>
+      <Target Target="#84">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="139" LinesAvoided="3" />
+      </Target>
+      <Target Target="#6">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="141" LinesAvoided="3" />
+      </Target>
+      <Target Target="#85">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="143" LinesAvoided="3" />
+      </Target>
+      <Target Target="#86">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="145" LinesAvoided="3" />
+      </Target>
+      <Target Target="#87">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="147" LinesAvoided="3" />
+      </Target>
+      <Target Target="#88">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="149" LinesAvoided="3" />
+      </Target>
+      <Target Target="#89">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="151" LinesAvoided="3" />
+      </Target>
+      <Target Target="#90">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="153" LinesAvoided="3" />
+      </Target>
+      <Target Target="#91">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="155" LinesAvoided="3" />
+      </Target>
+      <Target Target="#92">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="157" LinesAvoided="3" />
+      </Target>
+      <Target Target="#93">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="159" LinesAvoided="3" />
+      </Target>
+      <Target Target="#94">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="161" LinesAvoided="3" />
+      </Target>
+      <Target Target="#95">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="163" LinesAvoided="3" />
+      </Target>
+      <Target Target="#96">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="165" LinesAvoided="3" />
+      </Target>
+      <Target Target="#97">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="167" LinesAvoided="3" />
+      </Target>
+      <Target Target="#98">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="169" LinesAvoided="3" />
+      </Target>
+      <Target Target="#7">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="171" LinesAvoided="3" />
+      </Target>
+      <Target Target="#8">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="173" LinesAvoided="3" />
+      </Target>
+      <Target Target="#99">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="175" LinesAvoided="3" />
+      </Target>
+      <Target Target="#100">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="177" LinesAvoided="3" />
+      </Target>
+      <Target Target="#101">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="179" LinesAvoided="3" />
+      </Target>
+      <Target Target="#102">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="181" LinesAvoided="3" />
+      </Target>
+      <Target Target="#103">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="183" LinesAvoided="3" />
+      </Target>
+      <Target Target="#104">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="185" LinesAvoided="3" />
+      </Target>
+      <Target Target="#105">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="187" LinesAvoided="3" />
+      </Target>
+      <Target Target="#106">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="189" LinesAvoided="3" />
+      </Target>
+      <Target Target="#107">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="191" LinesAvoided="3" />
+      </Target>
+      <Target Target="#108">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="193" LinesAvoided="3" />
+      </Target>
+      <Target Target="#109">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="195" LinesAvoided="3" />
+      </Target>
+      <Target Target="#110">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="197" LinesAvoided="3" />
+      </Target>
+      <Target Target="#9">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="199" LinesAvoided="3" />
+      </Target>
+      <Target Target="#111">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="201" LinesAvoided="3" />
+      </Target>
+      <Target Target="#112">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="203" LinesAvoided="3" />
+      </Target>
+      <Target Target="#113">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="205" LinesAvoided="3" />
+      </Target>
+      <Target Target="#10">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="207" LinesAvoided="3" />
+      </Target>
+      <Target Target="#114">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="209" LinesAvoided="3" />
+      </Target>
+      <Target Target="#115">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="211" LinesAvoided="3" />
+      </Target>
+      <Target Target="#116">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="213" LinesAvoided="3" />
+      </Target>
+      <Target Target="#11">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="215" LinesAvoided="3" />
+      </Target>
+      <Target Target="#117">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="217" LinesAvoided="3" />
+      </Target>
+      <Target Target="#118">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="219" LinesAvoided="3" />
+      </Target>
+      <Target Target="#119">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="221" LinesAvoided="3" />
+      </Target>
+      <Target Target="#120">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="223" LinesAvoided="3" />
+      </Target>
+      <Target Target="#121">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="225" LinesAvoided="3" />
+      </Target>
+      <Target Target="#12">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="227" LinesAvoided="3" />
+      </Target>
+      <Target Target="#122">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="229" LinesAvoided="3" />
+      </Target>
+      <Target Target="#123">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="231" LinesAvoided="3" />
+      </Target>
+      <Target Target="#124">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="233" LinesAvoided="3" />
+      </Target>
+      <Target Target="#125">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="235" LinesAvoided="3" />
+      </Target>
+      <Target Target="#126">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="237" LinesAvoided="3" />
+      </Target>
+      <Target Target="#13">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="239" LinesAvoided="3" />
+      </Target>
+      <Target Target="#127">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="241" LinesAvoided="3" />
+      </Target>
+      <Target Target="#128">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="243" LinesAvoided="3" />
+      </Target>
+      <Target Target="#129">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="245" LinesAvoided="3" />
+      </Target>
+      <Target Target="#130">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="247" LinesAvoided="3" />
+      </Target>
+      <Target Target="#131">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="249" LinesAvoided="3" />
+      </Target>
+      <Target Target="#132">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="251" LinesAvoided="3" />
+      </Target>
+      <Target Target="#133">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="253" LinesAvoided="3" />
+      </Target>
+      <Target Target="#134">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="255" LinesAvoided="3" />
+      </Target>
+      <Target Target="#135">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="257" LinesAvoided="3" />
+      </Target>
+      <Target Target="#136">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="259" LinesAvoided="3" />
+      </Target>
+      <Target Target="#137">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="261" LinesAvoided="3" />
+      </Target>
+      <Target Target="#138">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="263" LinesAvoided="3" />
+      </Target>
+      <Target Target="#139">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="265" LinesAvoided="3" />
+      </Target>
+      <Target Target="#140">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="267" LinesAvoided="3" />
+      </Target>
+      <Target Target="#141">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="269" LinesAvoided="3" />
+      </Target>
+      <Target Target="#142">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="271" LinesAvoided="3" />
+      </Target>
+      <Target Target="#143">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="273" LinesAvoided="3" />
+      </Target>
+      <Target Target="#144">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="275" LinesAvoided="3" />
+      </Target>
+      <Target Target="#145">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="277" LinesAvoided="3" />
+      </Target>
+      <Target Target="#14">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="279" LinesAvoided="3" />
+      </Target>
+      <Target Target="#146">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="281" LinesAvoided="3" />
+      </Target>
+      <Target Target="#147">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="283" LinesAvoided="3" />
+      </Target>
+      <Target Target="#148">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="285" LinesAvoided="3" />
+      </Target>
+      <Target Target="#15">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="287" LinesAvoided="3" />
+      </Target>
+      <Target Target="#149">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="289" LinesAvoided="3" />
+      </Target>
+      <Target Target="#150">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="291" LinesAvoided="3" />
+      </Target>
+      <Target Target="#151">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="293" LinesAvoided="3" />
+      </Target>
+      <Target Target="#152">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="295" LinesAvoided="3" />
+      </Target>
+      <Target Target="#153">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="297" LinesAvoided="3" />
+      </Target>
+      <Target Target="#154">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="299" LinesAvoided="3" />
+      </Target>
+      <Target Target="#155">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="301" LinesAvoided="3" />
+      </Target>
+      <Target Target="#156">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="303" LinesAvoided="3" />
+      </Target>
+      <Target Target="#157">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="305" LinesAvoided="3" />
+      </Target>
+      <Target Target="#158">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="307" LinesAvoided="3" />
+      </Target>
+      <Target Target="#159">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="309" LinesAvoided="3" />
+      </Target>
+      <Target Target="#16">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="311" LinesAvoided="3" />
+      </Target>
+      <Target Target="#160">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="313" LinesAvoided="3" />
+      </Target>
+      <Target Target="#17">
+        <JoinPoint Advising="#168" Description="#3" Ordinal="315" LinesAvoided="3" />
+      </Target>
+    </Instance>
+  </Class>
+  <Annotation Target="#169=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+MutexEnhancements::Release(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170=2" Description="#171=PostSharp estimates that 2 line(s) of code are saved every time this advice is applied. Use the [LinesOfCodeAvoided] attribute on the aspect or specify the LinesOfCodeAvoided property on the advice attribute to override this value." />
+  <Annotation Target="#172=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::WaitOne(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#173=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::WaitOne_Int32(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#174=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::WaitOne_TimeSpan(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#175=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::WaitOne_Int32_Boolean(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#176=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::WaitOne_TimeSpan_Boolean(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#177=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::WaitAll_WaitHandleArray(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#178=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::WaitAll_WaitHandleArray_Int32(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#179=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::WaitAll_WaitHandleArray_TimeSpan(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#180=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::WaitAll_WaitHandleArray_Int32_Boolean(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#181=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::WaitAll_WaitHandleArray_TimeSpan_Boolean(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#182=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::SignalAndWait_WaitHandle_WaitHandle(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#183=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::SignalAndWait_WaitHandle_WaitHandle_Int32_Boolean(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#184=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::SignalAndWait_WaitHandle_WaitHandle_TimeSpan_Boolean(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#185=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+WaitHandleEnhancements::HandleModification(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#186=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+MonitorEnhancements::Enter_Object(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#187=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+MonitorEnhancements::Enter_Object_Bool(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#188=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+MonitorEnhancements::TryEnter_Object(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#189=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+MonitorEnhancements::TryEnter_Object_Bool(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#190=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+MonitorEnhancements::TryEnter_Object_Int32(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#191=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+MonitorEnhancements::TryEnter_Object_TimeSpan(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#192=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+MonitorEnhancements::TryEnter_Object_Int32_Bool(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#193=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+MonitorEnhancements::TryEnter_Object_TimeSpan_Bool(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#194=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+MonitorEnhancements::Exit(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#195=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ReaderWriterEnhancements::ReaderLockEnter(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#196=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ReaderWriterEnhancements::UpgradeableReadEnter(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#197=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ReaderWriterEnhancements::WriterLockEnter(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#198=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ReaderWriterEnhancements::UpgradeToWriterLock(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#199=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ReaderWriterEnhancements::ReaderLockExit(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#200=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ReaderWriterEnhancements::UpgradeableReadLockExit(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#201=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ReaderWriterEnhancements::WriterLockExit(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#202=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ReaderWriterEnhancements::TryEnterReadLock(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#203=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ReaderWriterEnhancements::TryEnterUpgradeableReadLock(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#204=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ReaderWriterEnhancements::TryEnterWriteLock(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#205=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ReaderWriterEnhancements::ReleaseRestoreLock(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#206=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ThreadEnhancements::Join(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#207=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ThreadEnhancements::Join_Int32(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#208=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+ThreadEnhancements::Join_TimeSpan(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#209=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_Action(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#210=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_Func(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#211=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_Action_DispatcherPriority(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#212=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_Func_DispatcherPriority(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#213=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_Action_DispatcherPriority_CancellationToken(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#214=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_Func_DispatcherPriority_CancellationToken(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#215=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_Action_DispatcherPriority_CancellationToken_TimeSpan(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#216=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_Func_DispatcherPriority_CancellationToken_TimeSpan(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#217=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_Delegate_ObjectArray(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#218=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_DispatcherPriority_Delegate(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#219=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::OnInvoke_Delegate_TimeSpan_ObjectArray(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#220=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::OnInvoke_Delegate_DispatcherPriority_ObjectArray(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#221=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_DispatcherPriority_Delegate_ObjectArray(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#222=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_DispatcherPriority_TimeSpan_Delegate(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#223=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_DispatcherPriority_TimeSpan_Delegate_ObjectArray(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#224=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_DispatcherPriority_Delegate_Object_ObjectArray(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#225=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_DispatcherPriority_TimeSpan_Delegate_Object(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#226=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::Invoke_DispatcherPriority_TimeSpan_Delegate_Object_ObjectArray(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#227=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::InvokeAsync_Action(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#228=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::InvokeAsync_Func(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#229=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::InvokeAsync_Action_DispatcherPriority(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#230=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::InvokeAsync_Func_DispatcherPriority(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#231=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::InvokeAsync_Action_DispatcherPriority_CancellationToken(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#232=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::InvokeAsync_Func_DispatcherPriority_CancellationToken(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#233=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::BeginInvoke_Delegate_ObjectArray(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#234=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::BeginInvoke_DispatcherPriority_Delegate(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#235=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::BeginInvoke_Delegate_DispatcherPriority_ObjectArray(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#236=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::BeginInvoke_DispatcherPriority_Delegate_ObjectArray(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#237=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherEnhancements::BeginInvoke_DispatcherPriority_Delegate_Object_ObjectArray(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#238=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherOperationEnhancements::Wait(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#239=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherOperationEnhancements::Wait_TimeSpan(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#240=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+SynchronizationContextEnhancements::Post(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#241=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+SynchronizationContextEnhancements::Send(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#242=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+SynchronizationContextEnhancements::Wait(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#243=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherSynchronizationContextEnhancements::Post(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#244=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherSynchronizationContextEnhancements::Send(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
+  <Annotation Target="#245=M:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+DispatcherSynchronizationContextEnhancements::Wait(PostSharp.Aspects.MethodInterceptionArgs)" Arguments="#170" Description="#171" />
 </Symbols>

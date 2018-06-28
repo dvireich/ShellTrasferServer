@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.postsharp.org/1.0/configuration" xmlns:d="clr-namespace:PostSharp.Patterns.Diagnostics;assembly:PostSharp.Patterns.Diagnostics">
+<Project xmlns="http://schemas.postsharp.org/1.0/configuration" xmlns:d="clr-namespace:PostSharp.Patterns.Diagnostics;assembly:PostSharp.Patterns.Diagnostics" xmlns:t="clr-namespace:PostSharp.Patterns.Threading;assembly:PostSharp.Patterns.Threading">
   <Property Name="DebuggerExtensionsMode" Value="Enabled" />
   <Property Name="SolutionWideProcessingEnabled" Value="True" />
   <Multicast>
@@ -9,5 +9,6 @@
     <d:Log AttributeTargetTypeAttributes="Private | Protected | Internal | Public" AttributeTargetMemberAttributes="Private | Protected | Internal | Public" />
     <d:Log AttributeTargetTypeAttributes="Private | Protected | Internal | Public" AttributeTargetMemberAttributes="Private | Protected | Internal | Public" />
     <d:Log AttributeTargetElements="Method" AttributeTargetTypeAttributes="Private | Protected | Internal | Public" AttributeTargetMemberAttributes="Private | Protected | Internal | Public" />
+    <t:DeadlockDetectionPolicy />
   </Multicast>
 </Project>

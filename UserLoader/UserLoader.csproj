@@ -55,6 +55,9 @@
     <Reference Include="PostSharp, Version=5.0.52.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
       <HintPath>..\packages\PostSharp.Redist.5.0.52\lib\net45\PostSharp.dll</HintPath>
     </Reference>
+    <Reference Include="PostSharp.Patterns.Aggregation, Version=5.0.52.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+      <HintPath>..\packages\PostSharp.Patterns.Aggregation.Redist.5.0.52\lib\net45\PostSharp.Patterns.Aggregation.dll</HintPath>
+    </Reference>
     <Reference Include="PostSharp.Patterns.Common, Version=5.0.52.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
       <HintPath>..\packages\PostSharp.Patterns.Common.Redist.5.0.52\lib\net46\PostSharp.Patterns.Common.dll</HintPath>
     </Reference>
@@ -63,6 +66,9 @@
     </Reference>
     <Reference Include="PostSharp.Patterns.Diagnostics.Backends.Log4Net, Version=5.0.52.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
       <HintPath>..\packages\PostSharp.Patterns.Diagnostics.Log4Net.5.0.52\lib\net40\PostSharp.Patterns.Diagnostics.Backends.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp.Patterns.Threading, Version=5.0.52.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+      <HintPath>..\packages\PostSharp.Patterns.Threading.Redist.5.0.52\lib\net45\PostSharp.Patterns.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
