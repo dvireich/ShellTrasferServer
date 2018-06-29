@@ -3,30 +3,30 @@
   <Class Class="#1=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogAttribute">
     <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="10" Column="6">
       <Target Target="#2=M:[ServiceLoader]Program.ServiceLoader::#cctor()">
-        <JoinPoint Description="#3=Adds logging" Ordinal="330" LinesAvoided="5" />
+        <JoinPoint Description="#3=Adds logging" Ordinal="332" LinesAvoided="5" />
       </Target>
       <Target Target="#4=M:[ServiceLoader]ServiceLoader.Program::#ctor()">
-        <JoinPoint Description="#3" Ordinal="332" LinesAvoided="5" />
+        <JoinPoint Description="#3" Ordinal="334" LinesAvoided="5" />
       </Target>
     </Instance>
     <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="11" Column="6">
       <Target Target="#5=M:[ServiceLoader]Program.ServiceLoader::LoadBasicServices()">
-        <JoinPoint Description="#3" Ordinal="325" LinesAvoided="5" />
-      </Target>
-      <Target Target="#6=M:[ServiceLoader]Program.ServiceLoader::LoadShellTransferServices(System.String)">
-        <JoinPoint Description="#3" Ordinal="326" LinesAvoided="5" />
-      </Target>
-      <Target Target="#7=M:[ServiceLoader]Program.ServiceLoader::InitializeBasicHttpServiceReferences{TC,TI}(System.String)">
         <JoinPoint Description="#3" Ordinal="327" LinesAvoided="5" />
       </Target>
-      <Target Target="#8=M:[ServiceLoader]Program.ServiceLoader::InitializeTCPServiceReferences{TC,TI}(System.String)">
+      <Target Target="#6=M:[ServiceLoader]Program.ServiceLoader::LoadShellTransferServices(System.String)">
         <JoinPoint Description="#3" Ordinal="328" LinesAvoided="5" />
       </Target>
-      <Target Target="#9=M:[ServiceLoader]Program.ServiceLoader::CloseAllChnnels()">
+      <Target Target="#7=M:[ServiceLoader]Program.ServiceLoader::InitializeBasicHttpServiceReferences{TC,TI}(System.String)">
         <JoinPoint Description="#3" Ordinal="329" LinesAvoided="5" />
       </Target>
-      <Target Target="#10=M:[ServiceLoader]ServiceLoader.Program::Main(System.String[])">
+      <Target Target="#8=M:[ServiceLoader]Program.ServiceLoader::InitializeTCPServiceReferences{TC,TI}(System.String)">
+        <JoinPoint Description="#3" Ordinal="330" LinesAvoided="5" />
+      </Target>
+      <Target Target="#9=M:[ServiceLoader]Program.ServiceLoader::CloseAllChnnels()">
         <JoinPoint Description="#3" Ordinal="331" LinesAvoided="5" />
+      </Target>
+      <Target Target="#10=M:[ServiceLoader]ServiceLoader.Program::Main(System.String[])">
+        <JoinPoint Description="#3" Ordinal="333" LinesAvoided="5" />
       </Target>
     </Instance>
   </Class>

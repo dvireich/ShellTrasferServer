@@ -41,6 +41,7 @@ namespace UserLoader
             return taskQueue.Count > 0;
         }
 
+        [Log(AttributeExclude = true)]
         private TaskQueue() { }
 
         [Log(AttributeExclude = true)]

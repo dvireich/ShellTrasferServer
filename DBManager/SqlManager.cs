@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 [assembly: Log]
+
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace DBManager
