@@ -17148,3 +17148,116 @@ There is no clients connected
 2018-06-29 03:00:32,735 [1] DEBUG Trace -   ServiceLoader.LoadBasicServices() | Succeeded.
 2018-06-29 03:00:32,736 [1] DEBUG Trace -   TaskQueue..cctor() | Starting.
 2018-06-29 03:00:32,736 [1] DEBUG Trace -   TaskQueue..cctor() | Succeeded.
+2018-06-29 12:39:25,581 [1] DEBUG Trace - Program.RunAsConsole() | Starting.
+2018-06-29 12:39:25,749 [1] DEBUG Trace -   ServiceLoader..cctor() | Starting.
+2018-06-29 12:39:25,750 [1] DEBUG Trace -   ServiceLoader..cctor() | Succeeded.
+2018-06-29 12:39:25,756 [1] DEBUG Trace -   ServiceLoader.LoadBasicServices() | Starting.
+2018-06-29 12:39:25,758 [1] DEBUG Trace -     ServiceLoader.InitializeBasicHttpServiceReferences("Authentication") | Starting.
+2018-06-29 12:39:25,789 [1] DEBUG Trace -       LoggingBehaviorAttribute..ctor() | Starting.
+2018-06-29 12:39:25,791 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogBeforeCall(true) | Starting.
+2018-06-29 12:39:25,791 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogBeforeCall(true) | Succeeded.
+2018-06-29 12:39:25,792 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogAfterCall(true) | Starting.
+2018-06-29 12:39:25,792 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogAfterCall(true) | Succeeded.
+2018-06-29 12:39:25,792 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogErrors(true) | Starting.
+2018-06-29 12:39:25,792 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogErrors(true) | Succeeded.
+2018-06-29 12:39:25,793 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogWarnings(true) | Starting.
+2018-06-29 12:39:25,793 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogWarnings(true) | Succeeded.
+2018-06-29 12:39:25,793 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogInformation(true) | Starting.
+2018-06-29 12:39:25,794 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogInformation(true) | Succeeded.
+2018-06-29 12:39:25,794 [1] DEBUG Trace -       LoggingBehaviorAttribute..ctor() | Succeeded.
+2018-06-29 12:39:25,825 [1] DEBUG Trace -       LoggingBehaviorAttribute.Validate({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}) | Starting.
+2018-06-29 12:39:25,825 [1] DEBUG Trace -       LoggingBehaviorAttribute.Validate({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}) | Succeeded.
+2018-06-29 12:39:25,838 [1] DEBUG Trace -       LoggingBehaviorAttribute.AddBindingParameters({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}, [ {System.ServiceModel.Description.ServiceEndpoint} ], [ [] ]) | Starting.
+2018-06-29 12:39:25,839 [1] DEBUG Trace -       LoggingBehaviorAttribute.AddBindingParameters({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}, [ {System.ServiceModel.Description.ServiceEndpoint} ], [ [] ]) | Succeeded.
+2018-06-29 12:39:25,862 [1] DEBUG Trace -       LoggingBehaviorAttribute.ApplyDispatchBehavior({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}) | Starting.
+2018-06-29 12:39:25,863 [1] DEBUG Trace -         LoggingParameterInspector..ctor() | Starting.
+2018-06-29 12:39:25,863 [1] DEBUG Trace -         LoggingParameterInspector..ctor() | Succeeded.
+2018-06-29 12:39:25,866 [1] DEBUG Trace -         LoggingParameterInspector.set_ServiceType(UserAuthentication.Authentication) | Starting.
+2018-06-29 12:39:25,866 [1] DEBUG Trace -         LoggingParameterInspector.set_ServiceType(UserAuthentication.Authentication) | Succeeded.
+2018-06-29 12:39:25,868 [1] DEBUG Trace -         LoggingBehaviorAttribute.GetLoggingStrategy() | Starting.
+2018-06-29 12:39:25,869 [1] DEBUG Trace -           PostSharpLoggingStrategy..cctor() | Starting.
+2018-06-29 12:39:25,869 [1] DEBUG Trace -           PostSharpLoggingStrategy..cctor() | Succeeded.
+2018-06-29 12:39:25,870 [1] DEBUG Trace -           PostSharpLoggingStrategy..ctor() | Starting.
+2018-06-29 12:39:25,870 [1] DEBUG Trace -           PostSharpLoggingStrategy..ctor() | Succeeded.
+2018-06-29 12:39:25,871 [1] DEBUG Trace -         LoggingBehaviorAttribute.GetLoggingStrategy() | Succeeded, returnValue = {WcfLogger.PostSharpLoggingStrategy}.
+2018-06-29 12:39:25,872 [1] DEBUG Trace -         LoggingParameterInspector.set_LoggingStrategy({WcfLogger.PostSharpLoggingStrategy}) | Starting.
+2018-06-29 12:39:25,874 [1] DEBUG Trace -         LoggingParameterInspector.set_LoggingStrategy({WcfLogger.PostSharpLoggingStrategy}) | Succeeded.
+2018-06-29 12:39:25,875 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogAfterCall() | Starting.
+2018-06-29 12:39:25,877 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogAfterCall() | Succeeded, returnValue = true.
+2018-06-29 12:39:25,878 [1] DEBUG Trace -         LoggingParameterInspector.set_LogAfterCall(true) | Starting.
+2018-06-29 12:39:25,878 [1] DEBUG Trace -         LoggingParameterInspector.set_LogAfterCall(true) | Succeeded.
+2018-06-29 12:39:25,879 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogBeforeCall() | Starting.
+2018-06-29 12:39:25,879 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogBeforeCall() | Succeeded, returnValue = true.
+2018-06-29 12:39:25,880 [1] DEBUG Trace -         LoggingParameterInspector.set_LogBeforeCall(true) | Starting.
+2018-06-29 12:39:25,880 [1] DEBUG Trace -         LoggingParameterInspector.set_LogBeforeCall(true) | Succeeded.
+2018-06-29 12:39:25,881 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogErrors() | Starting.
+2018-06-29 12:39:25,881 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogErrors() | Succeeded, returnValue = true.
+2018-06-29 12:39:25,882 [1] DEBUG Trace -         LoggingParameterInspector.set_LogErrors(true) | Starting.
+2018-06-29 12:39:25,882 [1] DEBUG Trace -         LoggingParameterInspector.set_LogErrors(true) | Succeeded.
+2018-06-29 12:39:25,883 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogWarnings() | Starting.
+2018-06-29 12:39:25,887 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogWarnings() | Succeeded, returnValue = true.
+2018-06-29 12:39:25,888 [1] DEBUG Trace -         LoggingParameterInspector.set_LogWarnings(true) | Starting.
+2018-06-29 12:39:25,888 [1] DEBUG Trace -         LoggingParameterInspector.set_LogWarnings(true) | Succeeded.
+2018-06-29 12:39:25,889 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogInformation() | Starting.
+2018-06-29 12:39:25,889 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogInformation() | Succeeded, returnValue = true.
+2018-06-29 12:39:25,890 [1] DEBUG Trace -         LoggingParameterInspector.set_LogInformation(true) | Starting.
+2018-06-29 12:39:25,890 [1] DEBUG Trace -         LoggingParameterInspector.set_LogInformation(true) | Succeeded.
+2018-06-29 12:39:25,892 [1] DEBUG Trace -       LoggingBehaviorAttribute.ApplyDispatchBehavior({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}) | Succeeded.
+2018-06-29 12:39:25,897 [1] DEBUG Trace -       LoggingBehaviorAttribute.AddBindingParameters({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}, [], [ [] ]) | Starting.
+2018-06-29 12:39:25,897 [1] DEBUG Trace -       LoggingBehaviorAttribute.AddBindingParameters({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}, [], [ [] ]) | Succeeded.
+2018-06-29 12:39:25,929 [1] DEBUG Trace -     ServiceLoader.InitializeBasicHttpServiceReferences("Authentication") | Succeeded.
+2018-06-29 12:39:25,929 [1] DEBUG Trace -     ServiceLoader.InitializeBasicHttpServiceReferences("LoadUser") | Starting.
+2018-06-29 12:39:25,930 [1] DEBUG Trace -       LoggingBehaviorAttribute..ctor() | Starting.
+2018-06-29 12:39:25,933 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogBeforeCall(true) | Starting.
+2018-06-29 12:39:25,934 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogBeforeCall(true) | Succeeded.
+2018-06-29 12:39:25,935 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogAfterCall(true) | Starting.
+2018-06-29 12:39:25,935 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogAfterCall(true) | Succeeded.
+2018-06-29 12:39:25,935 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogErrors(true) | Starting.
+2018-06-29 12:39:25,935 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogErrors(true) | Succeeded.
+2018-06-29 12:39:25,936 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogWarnings(true) | Starting.
+2018-06-29 12:39:25,936 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogWarnings(true) | Succeeded.
+2018-06-29 12:39:25,936 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogInformation(true) | Starting.
+2018-06-29 12:39:25,937 [1] DEBUG Trace -         LoggingBehaviorAttribute.set_LogInformation(true) | Succeeded.
+2018-06-29 12:39:25,937 [1] DEBUG Trace -       LoggingBehaviorAttribute..ctor() | Succeeded.
+2018-06-29 12:39:25,937 [1] DEBUG Trace -       LoggingBehaviorAttribute.Validate({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}) | Starting.
+2018-06-29 12:39:25,937 [1] DEBUG Trace -       LoggingBehaviorAttribute.Validate({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}) | Succeeded.
+2018-06-29 12:39:25,938 [1] DEBUG Trace -       LoggingBehaviorAttribute.AddBindingParameters({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}, [ {System.ServiceModel.Description.ServiceEndpoint} ], [ [] ]) | Starting.
+2018-06-29 12:39:25,938 [1] DEBUG Trace -       LoggingBehaviorAttribute.AddBindingParameters({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}, [ {System.ServiceModel.Description.ServiceEndpoint} ], [ [] ]) | Succeeded.
+2018-06-29 12:39:25,942 [1] DEBUG Trace -       LoggingBehaviorAttribute.ApplyDispatchBehavior({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}) | Starting.
+2018-06-29 12:39:25,942 [1] DEBUG Trace -         LoggingParameterInspector..ctor() | Starting.
+2018-06-29 12:39:25,943 [1] DEBUG Trace -         LoggingParameterInspector..ctor() | Succeeded.
+2018-06-29 12:39:25,943 [1] DEBUG Trace -         LoggingParameterInspector.set_ServiceType(UserLoader.LoadUser) | Starting.
+2018-06-29 12:39:25,943 [1] DEBUG Trace -         LoggingParameterInspector.set_ServiceType(UserLoader.LoadUser) | Succeeded.
+2018-06-29 12:39:25,944 [1] DEBUG Trace -         LoggingBehaviorAttribute.GetLoggingStrategy() | Starting.
+2018-06-29 12:39:25,944 [1] DEBUG Trace -           PostSharpLoggingStrategy..ctor() | Starting.
+2018-06-29 12:39:25,944 [1] DEBUG Trace -           PostSharpLoggingStrategy..ctor() | Succeeded.
+2018-06-29 12:39:25,945 [1] DEBUG Trace -         LoggingBehaviorAttribute.GetLoggingStrategy() | Succeeded, returnValue = {WcfLogger.PostSharpLoggingStrategy}.
+2018-06-29 12:39:25,945 [1] DEBUG Trace -         LoggingParameterInspector.set_LoggingStrategy({WcfLogger.PostSharpLoggingStrategy}) | Starting.
+2018-06-29 12:39:25,946 [1] DEBUG Trace -         LoggingParameterInspector.set_LoggingStrategy({WcfLogger.PostSharpLoggingStrategy}) | Succeeded.
+2018-06-29 12:39:25,946 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogAfterCall() | Starting.
+2018-06-29 12:39:25,947 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogAfterCall() | Succeeded, returnValue = true.
+2018-06-29 12:39:25,947 [1] DEBUG Trace -         LoggingParameterInspector.set_LogAfterCall(true) | Starting.
+2018-06-29 12:39:25,947 [1] DEBUG Trace -         LoggingParameterInspector.set_LogAfterCall(true) | Succeeded.
+2018-06-29 12:39:25,948 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogBeforeCall() | Starting.
+2018-06-29 12:39:25,948 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogBeforeCall() | Succeeded, returnValue = true.
+2018-06-29 12:39:25,949 [1] DEBUG Trace -         LoggingParameterInspector.set_LogBeforeCall(true) | Starting.
+2018-06-29 12:39:25,949 [1] DEBUG Trace -         LoggingParameterInspector.set_LogBeforeCall(true) | Succeeded.
+2018-06-29 12:39:25,949 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogErrors() | Starting.
+2018-06-29 12:39:25,949 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogErrors() | Succeeded, returnValue = true.
+2018-06-29 12:39:25,950 [1] DEBUG Trace -         LoggingParameterInspector.set_LogErrors(true) | Starting.
+2018-06-29 12:39:25,953 [1] DEBUG Trace -         LoggingParameterInspector.set_LogErrors(true) | Succeeded.
+2018-06-29 12:39:25,953 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogWarnings() | Starting.
+2018-06-29 12:39:25,955 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogWarnings() | Succeeded, returnValue = true.
+2018-06-29 12:39:25,955 [1] DEBUG Trace -         LoggingParameterInspector.set_LogWarnings(true) | Starting.
+2018-06-29 12:39:25,955 [1] DEBUG Trace -         LoggingParameterInspector.set_LogWarnings(true) | Succeeded.
+2018-06-29 12:39:25,955 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogInformation() | Starting.
+2018-06-29 12:39:25,956 [1] DEBUG Trace -         LoggingBehaviorAttribute.get_LogInformation() | Succeeded, returnValue = true.
+2018-06-29 12:39:25,956 [1] DEBUG Trace -         LoggingParameterInspector.set_LogInformation(true) | Starting.
+2018-06-29 12:39:25,956 [1] DEBUG Trace -         LoggingParameterInspector.set_LogInformation(true) | Succeeded.
+2018-06-29 12:39:25,957 [1] DEBUG Trace -       LoggingBehaviorAttribute.ApplyDispatchBehavior({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}) | Succeeded.
+2018-06-29 12:39:25,957 [1] DEBUG Trace -       LoggingBehaviorAttribute.AddBindingParameters({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}, [], [ [] ]) | Starting.
+2018-06-29 12:39:25,957 [1] DEBUG Trace -       LoggingBehaviorAttribute.AddBindingParameters({System.ServiceModel.Description.ServiceDescription}, {System.ServiceModel.ServiceHost}, [], [ [] ]) | Succeeded.
+2018-06-29 12:39:25,960 [1] DEBUG Trace -     ServiceLoader.InitializeBasicHttpServiceReferences("LoadUser") | Succeeded.
+2018-06-29 12:39:25,960 [1] DEBUG Trace -   ServiceLoader.LoadBasicServices() | Succeeded.
+2018-06-29 12:39:25,961 [1] DEBUG Trace -   TaskQueue..cctor() | Starting.
+2018-06-29 12:39:25,961 [1] DEBUG Trace -   TaskQueue..cctor() | Succeeded.

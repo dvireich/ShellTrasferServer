@@ -3,7 +3,7 @@ using PostSharp.Patterns.Diagnostics;
 using PostSharp.Patterns.Diagnostics.Backends.Log4Net;
 using UserLoader;
 
-//[assembly: Log]
+[assembly: Log]
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace Program
@@ -66,11 +66,6 @@ namespace Program
         [Log(AttributeExclude = true)]
         public static void InitializeLoggingBackend()
         {
-            //var consoleLogging = new ConsoleLoggingBackend();
-            //consoleLogging.Options.TimestampFormat = "MM/dd/yyyy hh:mm:ss.ffff tt";
-            //consoleLogging.Options.IncludeTimestamp = true;
-            //LoggingServices.DefaultBackend = consoleLogging;
-
             log4net.Config.XmlConfigurator.Configure();
             var log4NetLoggingBackend = new Log4NetLoggingBackend();
             LoggingServices.DefaultBackend = log4NetLoggingBackend;

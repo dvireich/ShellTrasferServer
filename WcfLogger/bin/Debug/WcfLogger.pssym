@@ -492,7 +492,7 @@
     </Instance>
   </Class>
   <Class Class="#169=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogExceptionAttribute">
-    <Instance Declaration="#163" Id="8820a3558ef46cb4">
+    <Instance Declaration="#163" Id="8820a355a8503d12">
       <Target Target="#2">
         <JoinPoint Advising="#169" Description="#3" LinesAvoided="3" />
       </Target>
