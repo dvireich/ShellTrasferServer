@@ -1,5 +1,6 @@
 ﻿using PostSharp.Patterns.Diagnostics;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using WcfLogger;
 
@@ -23,7 +24,7 @@ namespace UserLoader
         private static volatile TaskQueue instance;
         private static object syncRoot = new Object();
 
-        private Queue<string> taskQueue = new Queue<string>();
+        private ConcurrentQueue<string> taskQueue = new ConcurrentQueue<string>();
 
         public void AddToTaskQueue(string id)
         {
@@ -32,7 +33,8 @@ namespace UserLoader
 
         public string GetNextTask()
         {
-            return taskQueue.Dequeue();
+            taskQueue.TryDequeue(out string task);
+            return task;
         }
 
         [Log(AttributeExclude = true)]

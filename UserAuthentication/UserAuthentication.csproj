@@ -83,6 +83,7 @@
     <Compile Include="IAuthentication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Authentication.cs" />
+    <Compile Include="UserConnection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

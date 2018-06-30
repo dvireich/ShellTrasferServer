@@ -28,4 +28,3 @@ C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\WcfL
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\WcfLogger\obj\Debug\WcfLogger.dll
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\WcfLogger\obj\Debug\WcfLogger.pdb
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\WcfLogger\obj\Debug\PostSharpHost.config
-C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\WcfLogger\obj\Debug\WcfLogger.csprojAssemblyReference.cache

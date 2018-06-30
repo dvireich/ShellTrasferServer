@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Symbols LinesOfCode="30" PostSharpLinesOfCode="0" EnhancedTypesCount="2" SchemaVersion="1" PostSharpVersion="5.0.52.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
+<Symbols LinesOfCode="31" PostSharpLinesOfCode="0" EnhancedTypesCount="2" SchemaVersion="1" PostSharpVersion="5.0.52.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
   <Class Class="#1=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogAttribute">
     <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="10" Column="6">
       <Target Target="#2=M:[UserLoader]UserLoader.LoadUser::#ctor()">
-        <JoinPoint Description="#3=Adds logging" Ordinal="150" LinesAvoided="5" />
+        <JoinPoint Description="#3=Adds logging" Ordinal="321" LinesAvoided="5" />
       </Target>
       <Target Target="#4=M:[UserLoader]UserLoader.TaskQueue::#cctor()">
-        <JoinPoint Description="#3" Ordinal="153" LinesAvoided="5" />
+        <JoinPoint Description="#3" Ordinal="324" LinesAvoided="5" />
       </Target>
     </Instance>
     <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="11" Column="6">
       <Target Target="#5=M:[UserLoader]UserLoader.LoadUser::UserLoader#ILoadUser#LoadUser(System.String)">
-        <JoinPoint Description="#3" Ordinal="149" LinesAvoided="5" />
+        <JoinPoint Description="#3" Ordinal="320" LinesAvoided="5" />
       </Target>
       <Target Target="#6=M:[UserLoader]UserLoader.TaskQueue::AddToTaskQueue(System.String)">
-        <JoinPoint Description="#3" Ordinal="151" LinesAvoided="5" />
+        <JoinPoint Description="#3" Ordinal="322" LinesAvoided="5" />
       </Target>
       <Target Target="#7=M:[UserLoader]UserLoader.TaskQueue::GetNextTask()">
-        <JoinPoint Description="#3" Ordinal="152" LinesAvoided="5" />
+        <JoinPoint Description="#3" Ordinal="323" LinesAvoided="5" />
       </Target>
     </Instance>
   </Class>
   <Class Class="#8=T:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy">
     <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="12" Column="6">
       <Target Target="#9=A:UserLoader">
-        <JoinPoint Advised="#10=M:[mscorlib]System.Threading.Monitor::Enter(System.Object, ref System.Boolean)" Advising="#11=T:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+MonitorEnhancements" Description="#12=Intercepted by Enter_Object_Bool" Ordinal="154" LinesAvoided="2" />
-        <JoinPoint Advised="#13=M:[mscorlib]System.Threading.Monitor::Exit(System.Object)" Advising="#11" Description="#14=Intercepted by Exit" Ordinal="155" LinesAvoided="2" />
+        <JoinPoint Advised="#10=M:[mscorlib]System.Threading.Monitor::Enter(System.Object, ref System.Boolean)" Advising="#11=T:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy+MonitorEnhancements" Description="#12=Intercepted by Enter_Object_Bool" Ordinal="325" LinesAvoided="2" />
+        <JoinPoint Advised="#13=M:[mscorlib]System.Threading.Monitor::Exit(System.Object)" Advising="#11" Description="#14=Intercepted by Exit" Ordinal="326" LinesAvoided="2" />
       </Target>
     </Instance>
   </Class>

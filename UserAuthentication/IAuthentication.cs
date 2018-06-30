@@ -8,12 +8,14 @@ using System.Text;
 
 namespace UserAuthentication
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IAuthentication
     {
         [OperationContract]
-        string Authenticate(string userName, string password, out string error);
+        string AuthenticateAndSignIn(string userName, string userType , string password, out string error);
+
+        [OperationContract]
+        bool Logout(string userName, string userType, out string error);
 
         [OperationContract]
         bool SignUp(string userName, string password, out string error);

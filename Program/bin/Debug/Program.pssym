@@ -3,10 +3,10 @@
   <Class Class="#1=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogAttribute">
     <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="11" Column="6">
       <Target Target="#2=M:[Program]Program.Program::CreateDataBase()">
-        <JoinPoint Description="#3=Adds logging" Ordinal="156" LinesAvoided="5" />
+        <JoinPoint Description="#3=Adds logging" Ordinal="164" LinesAvoided="5" />
       </Target>
       <Target Target="#4=M:[Program]Program.Program::RunAsConsole()">
-        <JoinPoint Description="#3" Ordinal="157" LinesAvoided="5" />
+        <JoinPoint Description="#3" Ordinal="165" LinesAvoided="5" />
       </Target>
     </Instance>
   </Class>
