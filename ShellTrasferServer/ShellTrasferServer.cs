@@ -11,15 +11,11 @@ using System.Net.Http;
 using System.Collections.Concurrent;
 using System.ServiceModel.Web;
 using System.Text.RegularExpressions;
-using WcfLogger;
-using PostSharp.Patterns.Diagnostics;
 
-[assembly: Log]
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace ShellTrasferServer
 {
-    [LoggingBehavior]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     public class ShellTransfer : IActiveShell, IPassiveShell , IAletCallBack , IRestService , IActiveShellPassiveshell
     {
@@ -261,6 +257,13 @@ namespace ShellTrasferServer
             return EnqueueWaitAndReturnBaseLine(run, "");
         }
 
+
+        //[LoggingBehavior(LogAfterCall = false, 
+        //                 LogBeforeCall = false, 
+        //                 LogErrors = false, 
+        //                 LoggingStrategyType = typeof(ConsoleLoggingStrategy), 
+        //                 LogInformation = false, 
+        //                 LogWarnings = false)]
         public RemoteFileInfo ActiveDownloadFile(DownloadRequest request)
         {
             var currentFileManager = FileMannager.Instance.CurrentUserFileMannager;
@@ -280,6 +283,7 @@ namespace ShellTrasferServer
                 
                 var fileSize = currentFileManager.FileStream != null ? double.Parse(currentFileManager.FileSize) : 0;
                 var precent = currentFileManager.FileStream != null ? ((currentFileManager.FileStream.Position / fileSize) * 100) : 0;
+                precent = precent > 100 ? 100 : precent;
                 var messagePrecent = string.Format("Buffering File in Server Memory {0} %", (long)precent);
                 return new RemoteFileInfo()
                 {
@@ -348,6 +352,7 @@ namespace ShellTrasferServer
             {
                 var fileSize = currentFileManager.FileStream != null ?  double.Parse(currentFileManager.FileSize) : 0;
                 var precent = currentFileManager.FileStream != null ? ((currentFileManager.FileStream.Position / fileSize) * 100) : 0;
+                precent = precent > 100 ? 100 : precent;
                 var messagePrecent = string.Format("Buffering File in Server Memory {0} %", (long)precent);
                 return new RemoteFileInfo()
                 {
@@ -357,7 +362,13 @@ namespace ShellTrasferServer
                 };
             }
         }
-        
+
+        //[LoggingBehavior(LogAfterCall = false,
+        //                 LogBeforeCall = false,
+        //                 LogErrors = false,
+        //                 LoggingStrategyType = typeof(ConsoleLoggingStrategy),
+        //                 LogInformation = false,
+        //                 LogWarnings = false)]
         public RemoteFileInfo ActiveUploadFile(RemoteFileInfo request)
         {
             var currentFileManager = FileMannager.Instance.CurrentUserFileMannager;
@@ -388,6 +399,7 @@ namespace ShellTrasferServer
                 var fileSize = double.Parse(currentFileManager.FileSize);
                 fileSize = fileSize == 0 ? 1 : fileSize;
                 var precent = (currentFileManager.ReadSoFar / fileSize) * 100;
+                precent = precent > 100 ? 100 : precent;
                 var messagePrecent = string.Format("Buffering File in passive client Memory {0} %", (long)precent);
                 return new RemoteFileInfo()
                 {
@@ -700,6 +712,12 @@ namespace ShellTrasferServer
                    false;
         }
 
+        //[LoggingBehavior(LogAfterCall = false,
+        //                 LogBeforeCall = false,
+        //                 LogErrors = false,
+        //                 LoggingStrategyType = typeof(ConsoleLoggingStrategy),
+        //                 LogInformation = false,
+        //                 LogWarnings = false)]
         public DownloadRequest PassiveGetDownloadFile(DownloadRequest id)
         {
             var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
@@ -717,6 +735,13 @@ namespace ShellTrasferServer
             return req;
         }
 
+
+        //[LoggingBehavior(LogAfterCall = false,
+        //                 LogBeforeCall = false,
+        //                 LogErrors = false,
+        //                 LoggingStrategyType = typeof(ConsoleLoggingStrategy),
+        //                 LogInformation = false,
+        //                 LogWarnings = false)]
         public void PassiveDownloadedFile(RemoteFileInfo request)
         {
             var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
@@ -762,6 +787,12 @@ namespace ShellTrasferServer
 
         }
 
+        //[LoggingBehavior(LogAfterCall = false,
+        //                 LogBeforeCall = false,
+        //                 LogErrors = false,
+        //                 LoggingStrategyType = typeof(ConsoleLoggingStrategy),
+        //                 LogInformation = false,
+        //                 LogWarnings = false)]
         public RemoteFileInfo PassiveGetUploadFile(DownloadRequest id)
         {
             var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;

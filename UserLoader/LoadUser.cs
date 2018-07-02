@@ -1,15 +1,11 @@
-﻿using PostSharp.Patterns.Diagnostics;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using WcfLogger;
 
-[assembly: Log]
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace UserLoader
 {
-    [LoggingBehavior]
     public class LoadUser : ILoadUser
     {
         bool ILoadUser.LoadUser(string id)
@@ -37,16 +33,16 @@ namespace UserLoader
             return task;
         }
 
-        [Log(AttributeExclude = true)]
+        //[Log(AttributeExclude = true)]
         public bool Any()
         {
             return taskQueue.Count > 0;
         }
 
-        [Log(AttributeExclude = true)]
+        //[Log(AttributeExclude = true)]
         private TaskQueue() { }
 
-        [Log(AttributeExclude = true)]
+        //[Log(AttributeExclude = true)]
         public static TaskQueue Instance
         {
             get

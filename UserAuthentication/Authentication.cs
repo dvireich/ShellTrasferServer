@@ -1,20 +1,15 @@
 ﻿using DBManager;
-using PostSharp.Patterns.Diagnostics;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
-using WcfLogger;
 
-[assembly: Log]
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace UserAuthentication
 {
-    [LoggingBehavior]
-    //[LoggingBehavior(LoggingStrategyType = typeof(FileLoggingStrategy))]
     public class Authentication : IAuthentication
     {
         public string AuthenticateAndSignIn(string userName, string userType, string password, out string error)
@@ -264,10 +259,10 @@ namespace UserAuthentication
             }
         }
 
-        [Log(AttributeExclude = true)]
+        //[Log(AttributeExclude = true)]
         private SignInUsers() { }
 
-        [Log(AttributeExclude = true)]
+        //[Log(AttributeExclude = true)]
         public static SignInUsers Instance
         {
             get

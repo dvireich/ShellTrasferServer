@@ -7,10 +7,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
-using PostSharp.Patterns.Diagnostics;
 
-[assembly: LogException(AttributeExclude = true)]
-[assembly: Log(AttributeExclude = true)]
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace WcfLogger
@@ -156,7 +153,7 @@ namespace WcfLogger
 
         private ILoggingStrategy GetLoggingStrategy()
         {
-            return new PostSharpLoggingStrategy();
+            return new ConsoleLoggingStrategy();
         }
     }
 }
