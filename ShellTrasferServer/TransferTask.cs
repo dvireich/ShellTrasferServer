@@ -1,7 +1,10 @@
-﻿using System;
+﻿using PostSharp.Patterns.Diagnostics;
+using ShellTrasferServer;
+using System;
 
-namespace ShellTrasferServer
+namespace Data
 {
+    [Log(AttributeExclude = true)]
     public class TransferTask
     {
         public TaskType TaskType;

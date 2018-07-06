@@ -1,14 +1,16 @@
 ﻿using DBManager;
+using PostSharp.Patterns.Diagnostics;
+using PostSharp.Patterns.Diagnostics.Backends.Log4Net;
 using UserLoader;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace Program
 {
-   
+    
     public static class Program
     {
-        
+        [Log]
         private static void CreateDataBase()
         {
             using (var createdb = new CreateDBHandler())
@@ -17,6 +19,7 @@ namespace Program
             }
         }
 
+        [Log]
         private static void RunAsConsole()
         {
             ServiceLoader.LoadBasicServices();
@@ -37,10 +40,10 @@ namespace Program
         }
         
 
-        //[Log(AttributeExclude = true)]
+        [Log(AttributeExclude = true)]
         static void Main(string[] args)
         {
-            //InitializeLoggingBackend();
+            InitializeLoggingBackend();
             if (args.Length > 0)
             {
                 foreach(var arg in args)
@@ -60,13 +63,13 @@ namespace Program
             }
         }
 
-        //[Log(AttributeExclude = true)]
-        //public static void InitializeLoggingBackend()
-        //{
-        //    log4net.Config.XmlConfigurator.Configure();
-        //    var log4NetLoggingBackend = new Log4NetLoggingBackend();
-        //    LoggingServices.DefaultBackend = log4NetLoggingBackend;
-        //}
+        [Log(AttributeExclude = true)]
+        public static void InitializeLoggingBackend()
+        {
+            log4net.Config.XmlConfigurator.Configure();
+            var log4NetLoggingBackend = new Log4NetLoggingBackend();
+            LoggingServices.DefaultBackend = log4NetLoggingBackend;
+        }
 
     }
 }

@@ -11,11 +11,15 @@ using System.Net.Http;
 using System.Collections.Concurrent;
 using System.ServiceModel.Web;
 using System.Text.RegularExpressions;
+using WcfLogger;
+using PostSharp.Patterns.Diagnostics;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace ShellTrasferServer
 {
+    [WcfLogging]
+    [Log(AttributeExclude = true)]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     public class ShellTransfer : IActiveShell, IPassiveShell , IAletCallBack , IRestService , IActiveShellPassiveshell
     {
@@ -46,14 +50,16 @@ namespace ShellTrasferServer
             }
         }
 
-        bool IActiveShell.DeleteClientTask(string id, bool shellTask, int taksNumber)
+        public bool DeleteClientTask(string id, bool shellTask, int taksNumber)
         {
             return DeleteClientTask(id, shellTask, taksNumber);
         }
 
-        public static bool DeleteClientTask(string id, bool shellTask, int taksNumber,bool safeToPassLock = false)
+        public bool DeleteClientTask(string id, bool shellTask, int taksNumber,bool safeToPassLock = false)
         {
-            return AtomicOperation.PerformAsAtomicFunction<bool>(() =>
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+
+            return currentUserAtomicOperation.PerformAsAtomicFunction<bool>(() =>
             {
                 if (shellTask)
                 {
@@ -85,9 +91,11 @@ namespace ShellTrasferServer
             }, safeToPassLock);
         }
 
-       public bool ClearAllData(string id)
+        public bool ClearAllData(string id)
         {
-          return AtomicOperation.PerformAsAtomicFunction<bool>(() =>
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+
+            return currentUserAtomicOperation.PerformAsAtomicFunction<bool>(() =>
             {
                 ClientManager.Instance.CurretUserClientManager.Deleted.Clear();
                 ClientManager.Instance.CurretUserClientManager.SelectedClient = null;
@@ -106,7 +114,9 @@ namespace ShellTrasferServer
 
         public bool ActiveCloseClient(string id)
         {
-            return AtomicOperation.PerformAsAtomicFunction<bool>(() =>
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+
+            return currentUserAtomicOperation.PerformAsAtomicFunction<bool>(() =>
             {
                 if (ClientManager.Instance.CurretUserClientManager.CallBacks.ContainsKey(id))
                 {
@@ -119,7 +129,9 @@ namespace ShellTrasferServer
 
         public bool SelectClient(string id)
         {
-            return AtomicOperation.PerformAsAtomicFunction<bool>(() =>
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+
+            return currentUserAtomicOperation.PerformAsAtomicFunction<bool>(() =>
             {
                 var clients = ClientManager.Instance.CurretUserClientManager.CallBacks;
                 if (!clients.ContainsKey(id))
@@ -138,7 +150,9 @@ namespace ShellTrasferServer
 
         public string GetStatus()
         {
-            return AtomicOperation.PerformAsAtomicFunction<string>(() =>
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+
+            return currentUserAtomicOperation.PerformAsAtomicFunction<string>(() =>
             {
                 var clients = ClientManager.Instance.CurretUserClientManager.CallBacks.ToList();
                 var status = new StringBuilder();
@@ -230,7 +244,9 @@ namespace ShellTrasferServer
 
         public void ClearQueue()
         {
-            AtomicOperation.PerformAsAtomicFunction(() =>
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+
+            currentUserAtomicOperation.PerformAsAtomicFunction(() =>
             { 
                 foreach (var client in TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue.Keys)
                 {
@@ -257,13 +273,7 @@ namespace ShellTrasferServer
             return EnqueueWaitAndReturnBaseLine(run, "");
         }
 
-
-        //[LoggingBehavior(LogAfterCall = false, 
-        //                 LogBeforeCall = false, 
-        //                 LogErrors = false, 
-        //                 LoggingStrategyType = typeof(ConsoleLoggingStrategy), 
-        //                 LogInformation = false, 
-        //                 LogWarnings = false)]
+        [WcfLogging(LogArguments = false)]
         public RemoteFileInfo ActiveDownloadFile(DownloadRequest request)
         {
             var currentFileManager = FileMannager.Instance.CurrentUserFileMannager;
@@ -363,12 +373,7 @@ namespace ShellTrasferServer
             }
         }
 
-        //[LoggingBehavior(LogAfterCall = false,
-        //                 LogBeforeCall = false,
-        //                 LogErrors = false,
-        //                 LoggingStrategyType = typeof(ConsoleLoggingStrategy),
-        //                 LogInformation = false,
-        //                 LogWarnings = false)]
+        [WcfLogging(LogArguments = false)]
         public RemoteFileInfo ActiveUploadFile(RemoteFileInfo request)
         {
             var currentFileManager = FileMannager.Instance.CurrentUserFileMannager;
@@ -475,131 +480,6 @@ namespace ShellTrasferServer
             }
         }
 
-        //This function should not be executed as paralel. after we got response from the passive client
-        //we do not need to block the other users since the selected client preformed his action
-        private static string EnqueueWaitAndReturnBaseLine(string command, string args)
-        {
-            var currentUserCallbacks = ClientManager.Instance.CurretUserClientManager.CallBacks;
-            var currentUserManager = ClientManager.Instance.CurretUserClientManager;
-            var shellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
-            var deletedTasks = ClientManager.Instance.CurretUserClientManager.DeletedTasks;
-
-            var clientNotExcecuetedCommand = true;
-            var currentSelectedClient = string.Empty;
-            var retBaseLine = string.Empty;
-            var taskId = string.Empty;
-            var selectedClient = string.Empty;
-            ICallBack clientCallBack = null;
-            AtomicOperation.PerformAsAtomicFunction(() =>
-            {
-                selectedClient = currentUserManager.SelectedClient;
-                if (selectedClient == null || !currentUserCallbacks.ContainsKey(selectedClient))
-                {
-                    retBaseLine = "Error: Client does not exsits";
-                    clientNotExcecuetedCommand = false;
-                    return;
-                }
-                taskId = Guid.NewGuid().ToString();
-                currentSelectedClient = currentUserManager.SelectedClient;
-                shellQueue[currentUserManager.SelectedClient].Enqueue( new ShellTask(command, args,
-                    (str) =>
-                    {
-                        retBaseLine = str;
-                        clientNotExcecuetedCommand = false;
-                    }, taskId));
-
-                clientCallBack = currentUserCallbacks[selectedClient];
-            });
-            
-            if (clientCallBack != null)
-                try
-                {
-                    clientCallBack.CallBackFunction(selectedClient);
-                }
-                catch(Exception e)
-                {
-                    return e.Message;
-                }
-            else
-                return "Client CallBack is Not Found";
-            while (clientNotExcecuetedCommand)
-            {
-                if (deletedTasks.Contains(taskId))
-                {
-                    clientNotExcecuetedCommand = false;
-                    retBaseLine = "Task were deleted";
-                }
-            }
-            return retBaseLine;
-        }
-
-        //This function should not be executed as paralel. after we got response from the passive client
-        //we do not need to block the other users since the selected client preformed his action
-        private static string EnqueueWaitAndReturnBaseLine(TaskType command, DownloadRequest downloadRequest, RemoteFileInfo uploadRequest)
-        {
-            var currentUserManager = ClientManager.Instance.CurretUserClientManager;
-            var currentUserFileManager = FileMannager.Instance.CurrentUserFileMannager;
-            var currentUserCallbacks = currentUserManager.CallBacks;
-            var currentUserTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
-
-            object retRequest = null;
-            var currentSelectedClient = string.Empty;
-            var taskId = string.Empty;
-            var selectedClient = string.Empty;
-            ICallBack clientCallBack = null;
-            AtomicOperation.PerformAsAtomicFunction(() => 
-            {
-            selectedClient = currentSelectedClient = currentUserManager.SelectedClient;
-            if (selectedClient == null || !currentUserCallbacks.ContainsKey(selectedClient))
-            {
-                retRequest = "Client does not exsits";
-                return;
-            }
-                taskId = Guid.NewGuid().ToString();
-                if (downloadRequest != null)
-                    downloadRequest.taskId = taskId;
-                if (uploadRequest != null)
-                    uploadRequest.taskId = taskId;
-                currentUserTransferQueue[currentUserManager.SelectedClient].Enqueue(
-                    new TransferTask(command, downloadRequest, uploadRequest,
-                (obj) =>
-                {
-                    retRequest = obj;
-                    if (obj is string)
-                    {
-                        currentUserFileManager.Error = true;
-                        currentUserFileManager.ErrorMessage = (string)obj;
-                    }
-                    else
-                    {
-                        currentUserFileManager.IsDownloding = true;
-                        currentUserFileManager.UploadingEnded = true;
-                        currentUserFileManager.IsUploading = false;
-                    }
-                    currentUserFileManager.Buffering = false;
-                    currentUserFileManager.ReadSoFar = 0;
-                }));
-                clientCallBack = currentUserCallbacks[selectedClient];
-                currentUserFileManager.Buffering = true;
-                currentUserFileManager.IsUploading = true;
-                currentUserFileManager.UploadingEnded = false;
-            });
-            if (clientCallBack != null)
-                try
-                {
-                    clientCallBack.CallBackFunction(selectedClient);
-                }
-                catch (Exception e)
-                {
-                    return e.Message;
-                }
-            else
-            {
-                if(!(retRequest is string))
-                    retRequest =  "Error: Client CallBack is Not Found";
-            }
-            return retRequest != null ? (string) retRequest : "Buffering";
-        }
         #endregion IActiveShell Implemantations
 
         #region IPassiveShell Implemantations
@@ -656,20 +536,20 @@ namespace ShellTrasferServer
         {
             var currentUserDeletedTasks = ClientManager.Instance.CurretUserClientManager.Deleted;
             var currentShellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
-
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
 
             if (baseLine == "CleanId")
             {
                 //unique case that the passive client got some exception and he want to start over, so he delete his
                 //previous id and start fresh 
-                
+
                 //This is not part of ActiveClient command process. this was promoted by the passiveClient so there is
                 //no conflict in the locks.
 
                 //prevent the active user using the Selected Client or the CallBack Dictionary when in the mean time 
                 //is been deleted by the passive client func. Let the first caller finish his operation and then perform
                 //the second call
-                AtomicOperation.PerformAsAtomicFunction(() =>
+                currentUserAtomicOperation.PerformAsAtomicFunction(() =>
                 {
 
                     RemoveClient(id, true);
@@ -712,12 +592,7 @@ namespace ShellTrasferServer
                    false;
         }
 
-        //[LoggingBehavior(LogAfterCall = false,
-        //                 LogBeforeCall = false,
-        //                 LogErrors = false,
-        //                 LoggingStrategyType = typeof(ConsoleLoggingStrategy),
-        //                 LogInformation = false,
-        //                 LogWarnings = false)]
+        [WcfLogging(LogArguments = false)]
         public DownloadRequest PassiveGetDownloadFile(DownloadRequest id)
         {
             var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
@@ -735,13 +610,7 @@ namespace ShellTrasferServer
             return req;
         }
 
-
-        //[LoggingBehavior(LogAfterCall = false,
-        //                 LogBeforeCall = false,
-        //                 LogErrors = false,
-        //                 LoggingStrategyType = typeof(ConsoleLoggingStrategy),
-        //                 LogInformation = false,
-        //                 LogWarnings = false)]
+        [WcfLogging(LogArguments = false)]
         public void PassiveDownloadedFile(RemoteFileInfo request)
         {
             var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
@@ -787,16 +656,12 @@ namespace ShellTrasferServer
 
         }
 
-        //[LoggingBehavior(LogAfterCall = false,
-        //                 LogBeforeCall = false,
-        //                 LogErrors = false,
-        //                 LoggingStrategyType = typeof(ConsoleLoggingStrategy),
-        //                 LogInformation = false,
-        //                 LogWarnings = false)]
+        [WcfLogging(LogArguments = false)]
         public RemoteFileInfo PassiveGetUploadFile(DownloadRequest id)
         {
             var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
             var currentFileManager = FileMannager.Instance.CurrentUserFileMannager;
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
 
             //In case that between the has command and the passive client get command the task has been deleted
             if (!currentTransferQueue.ContainsKey(id.id) || !currentTransferQueue[id.id].Any())
@@ -816,7 +681,7 @@ namespace ShellTrasferServer
             var req = uploadTask.RemoteFileInfo;
 
             //We dont want pices of byte in the wrong order
-            return AtomicOperation.PerformAsAtomicUpload<RemoteFileInfo>(() =>
+            return currentUserAtomicOperation.PerformAsAtomicUpload<RemoteFileInfo>(() =>
             {
                //We have still download in process and we have chunks to send
                //Must be in this order. the MoveNext() first in order to load the first chunk
@@ -898,7 +763,7 @@ namespace ShellTrasferServer
             callback(response);
         }
 
-        void IPassiveShell.ErrorNextCommand(string id,string taskId, string response)
+        public void ErrorNextCommand(string id,string taskId, string response)
         {
             var currentShellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
             var currentDeletedTasks = ClientManager.Instance.CurretUserClientManager.Deleted;
@@ -928,7 +793,10 @@ namespace ShellTrasferServer
         {
             if (version != Version)
                 return false;
-            return AtomicOperation.PerformAsAtomicSubscribe(() =>
+
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+
+            return currentUserAtomicOperation.PerformAsAtomicSubscribe(() =>
              {
                  var currentClientManager = ClientManager.Instance.CurretUserClientManager;
                  var currentShellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
@@ -952,6 +820,7 @@ namespace ShellTrasferServer
                  }
              });
         }
+
         #endregion IPassiveShell Implemantations
 
         #region IActiveShellPassiveshell Implementations
@@ -960,17 +829,147 @@ namespace ShellTrasferServer
         //then we get a timeout exception
         public bool IsTransferingData()
         {
-            return AtomicOperation.isTransferingData;
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+            return currentUserAtomicOperation.isTransferingData;
         }
 
         public void StartTransferData()
         {
-            AtomicOperation.isTransferingData = true;
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+            currentUserAtomicOperation.isTransferingData = true;
         }
 
         #endregion IActiveShellPassiveshell Implementations
 
         #region Server Private functions
+
+        //This function should not be executed as paralel. after we got response from the passive client
+        //we do not need to block the other users since the selected client preformed his action
+        private string EnqueueWaitAndReturnBaseLine(string command, string args)
+        {
+            var currentUserCallbacks = ClientManager.Instance.CurretUserClientManager.CallBacks;
+            var currentUserManager = ClientManager.Instance.CurretUserClientManager;
+            var shellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
+            var deletedTasks = ClientManager.Instance.CurretUserClientManager.DeletedTasks;
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+
+            var clientNotExcecuetedCommand = true;
+            var currentSelectedClient = string.Empty;
+            var retBaseLine = string.Empty;
+            var taskId = string.Empty;
+            var selectedClient = string.Empty;
+            ICallBack clientCallBack = null;
+            currentUserAtomicOperation.PerformAsAtomicFunction(() =>
+            {
+                selectedClient = currentUserManager.SelectedClient;
+                if (selectedClient == null || !currentUserCallbacks.ContainsKey(selectedClient))
+                {
+                    retBaseLine = "Error: Client does not exsits";
+                    clientNotExcecuetedCommand = false;
+                    return;
+                }
+                taskId = Guid.NewGuid().ToString();
+                currentSelectedClient = currentUserManager.SelectedClient;
+                shellQueue[currentUserManager.SelectedClient].Enqueue(new ShellTask(command, args,
+                    (str) =>
+                    {
+                        retBaseLine = str;
+                        clientNotExcecuetedCommand = false;
+                    }, taskId));
+
+                clientCallBack = currentUserCallbacks[selectedClient];
+            });
+
+            if (clientCallBack != null)
+                try
+                {
+                    clientCallBack.CallBackFunction(selectedClient);
+                }
+                catch (Exception e)
+                {
+                    return e.Message;
+                }
+            else
+                return "Client CallBack is Not Found";
+            while (clientNotExcecuetedCommand)
+            {
+                if (deletedTasks.Contains(taskId))
+                {
+                    clientNotExcecuetedCommand = false;
+                    retBaseLine = "Task were deleted";
+                }
+            }
+            return retBaseLine;
+        }
+
+        //This function should not be executed as paralel. after we got response from the passive client
+        //we do not need to block the other users since the selected client preformed his action
+        private string EnqueueWaitAndReturnBaseLine(TaskType command, DownloadRequest downloadRequest, RemoteFileInfo uploadRequest)
+        {
+            var currentUserManager = ClientManager.Instance.CurretUserClientManager;
+            var currentUserFileManager = FileMannager.Instance.CurrentUserFileMannager;
+            var currentUserCallbacks = currentUserManager.CallBacks;
+            var currentUserTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+
+            object retRequest = null;
+            var currentSelectedClient = string.Empty;
+            var taskId = string.Empty;
+            var selectedClient = string.Empty;
+            ICallBack clientCallBack = null;
+            currentUserAtomicOperation.PerformAsAtomicFunction(() =>
+            {
+                selectedClient = currentSelectedClient = currentUserManager.SelectedClient;
+                if (selectedClient == null || !currentUserCallbacks.ContainsKey(selectedClient))
+                {
+                    retRequest = "Client does not exsits";
+                    return;
+                }
+                taskId = Guid.NewGuid().ToString();
+                if (downloadRequest != null)
+                    downloadRequest.taskId = taskId;
+                if (uploadRequest != null)
+                    uploadRequest.taskId = taskId;
+                currentUserTransferQueue[currentUserManager.SelectedClient].Enqueue(
+                    new TransferTask(command, downloadRequest, uploadRequest,
+                (obj) =>
+                {
+                    retRequest = obj;
+                    if (obj is string)
+                    {
+                        currentUserFileManager.Error = true;
+                        currentUserFileManager.ErrorMessage = (string)obj;
+                    }
+                    else
+                    {
+                        currentUserFileManager.IsDownloding = true;
+                        currentUserFileManager.UploadingEnded = true;
+                        currentUserFileManager.IsUploading = false;
+                    }
+                    currentUserFileManager.Buffering = false;
+                    currentUserFileManager.ReadSoFar = 0;
+                }));
+                clientCallBack = currentUserCallbacks[selectedClient];
+                currentUserFileManager.Buffering = true;
+                currentUserFileManager.IsUploading = true;
+                currentUserFileManager.UploadingEnded = false;
+            });
+            if (clientCallBack != null)
+                try
+                {
+                    clientCallBack.CallBackFunction(selectedClient);
+                }
+                catch (Exception e)
+                {
+                    return e.Message;
+                }
+            else
+            {
+                if (!(retRequest is string))
+                    retRequest = "Error: Client CallBack is Not Found";
+            }
+            return retRequest != null ? (string)retRequest : "Buffering";
+        }
 
         private bool AllowOnlySelectedClient(string id)
         {
@@ -982,7 +981,7 @@ namespace ShellTrasferServer
             ClientManager.Instance.CurretUserClientManager.SelectedClient = id;
         }
 
-        private static void RemoveClient(string id,bool onlyFromServer = false)
+        private void RemoveClient(string id,bool onlyFromServer = false)
         {
             var currentClientManager = ClientManager.Instance.CurretUserClientManager;
             var currentShellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
@@ -1005,7 +1004,7 @@ namespace ShellTrasferServer
             if(shelElement != null)
                 foreach(var element in shelElement)
                 {
-                    //In all removeClient invokes its in AtomicOperation so in order to get into the Deletetask we need to 
+                    //In all removeClient invokes its in UserAtomicOperation so in order to get into the Deletetask we need to 
                     //pass the lock
                     DeleteClientTask(id, true, 1,true);
                 }
@@ -1015,7 +1014,7 @@ namespace ShellTrasferServer
             if (transferElement != null)
                 foreach (var element in transferElement)
                 {
-                    //In all removeClient invokes its in AtomicOperation so in order to get into the Deletetask we need to 
+                    //In all removeClient invokes its in UserAtomicOperation so in order to get into the Deletetask we need to 
                     //pass the lock
                     DeleteClientTask(id, false, 1,true);
                 }
@@ -1262,195 +1261,5 @@ namespace ShellTrasferServer
             return str.ToString();
         }
         #endregion REST Implementation
-
-
-
     }
-}
-
-
-namespace Data
-{
-
-
-    public class TaskQueue
-    {
-        private static volatile TaskQueue instance;
-        private static object syncRoot = new Object();
-        private TaskQueue() { }
-
-        private ConcurrentDictionary<string, UserTaskQueue> _userToUserTaskQueue = new ConcurrentDictionary<string, UserTaskQueue>();
-        public UserTaskQueue CurrentUserTaskQueue
-        {
-            get
-            {
-                var endpoint = OperationContext.Current.EndpointDispatcher.EndpointAddress.ToString();
-                var activeUserId = endpoint.Split('/').Last();
-                if (!_userToUserTaskQueue.ContainsKey(activeUserId))
-                {
-                    _userToUserTaskQueue[activeUserId] = new UserTaskQueue();
-                }
-                return _userToUserTaskQueue[activeUserId];
-            }
-        }
-
-        public static TaskQueue Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (syncRoot)
-                    {
-                        if (instance == null)
-                            instance = new TaskQueue();
-                    }
-                }
-
-                return instance;
-            }
-        }
-
-    }
-
-    public class ClientManager
-    {
-
-        private static volatile ClientManager instance;
-        private static object syncRoot = new Object();
-        private ClientManager() { }
-
-        private ConcurrentDictionary<string, UserClientManager> _userToUserClientManager = new ConcurrentDictionary<string, UserClientManager>();
-        public UserClientManager CurretUserClientManager
-        {
-            get
-            {
-                var endpoint = OperationContext.Current.EndpointDispatcher.EndpointAddress.ToString();
-                var activeUserId = endpoint.Split('/').Last();
-                if (!_userToUserClientManager.ContainsKey(activeUserId))
-                    _userToUserClientManager[activeUserId] = new UserClientManager();
-                return _userToUserClientManager[activeUserId];
-            }
-        }
-
-        public static ClientManager Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (syncRoot)
-                    {
-                        if (instance == null)
-                            instance = new ClientManager();
-                    }
-                }
-
-                return instance;
-            }
-        }
-
-    }
-
-    public static class AtomicOperation
-    {
-        private static object AtomicOperationLock = new Object();
-        private static object AtomicSubscribeLock = new Object();
-        private static object AtomicDownloadLock = new Object();
-        private static object AtomicUploadLock = new Object();
-        public static bool isTransferingData = false;
-        private static T PerformAsAtomicFunction<T>(Func<T> func, object lockobj, bool safeToPassLock = false)
-        {
-            if (!safeToPassLock)
-                Monitor.Enter(lockobj);
-            T ret = default(T);
-            try
-            {
-                ret = func();
-            }
-            catch { }
-            if (!safeToPassLock)
-                Monitor.Exit(lockobj);
-            return ret;
-        }
-        public static T PerformAsAtomicFunction<T>(Func<T> func, bool safeToPassLock = false)
-        {
-            return PerformAsAtomicFunction<T>(func, AtomicOperationLock);
-        }
-        public static void PerformAsAtomicFunction(Action func, bool safeToPassLock = false)
-        {
-            if(!safeToPassLock)
-                Monitor.Enter(AtomicOperationLock);
-            try
-            {
-                func();
-            }
-            catch { }
-            if (!safeToPassLock)
-                Monitor.Exit(AtomicOperationLock);
-        }
-        public static void PerformAsAtomicDownload(Action func)
-        {
-
-            Monitor.Enter(AtomicDownloadLock);
-            try
-            {
-                func();
-            }
-            catch { }
-            Monitor.Exit(AtomicDownloadLock);
-            isTransferingData = false;
-
-        }
-
-        public static T PerformAsAtomicUpload<T>(Func<T> func)
-        {
-            return PerformAsAtomicFunction<T>(func, AtomicUploadLock);
-        }
-
-        public static bool PerformAsAtomicSubscribe(Func<bool> func)
-        {
-            return PerformAsAtomicFunction<bool>(func, AtomicSubscribeLock);
-        }
-    }
-
-    public class FileMannager
-    {
-        private static object syncRoot = new Object();
-        private static volatile FileMannager instance;
-        private FileMannager() { }
-
-
-        private ConcurrentDictionary<string, UserFileManager> _userToUserFileMannager = new ConcurrentDictionary<string, UserFileManager>();
-        public UserFileManager CurrentUserFileMannager
-        {
-            get
-            {
-                var endpoint = OperationContext.Current.EndpointDispatcher.EndpointAddress.ToString();
-                var activeUserId = endpoint.Split('/').Last();
-                if (!_userToUserFileMannager.ContainsKey(activeUserId))
-                    _userToUserFileMannager[activeUserId] = new UserFileManager();
-                return _userToUserFileMannager[activeUserId];
-            }
-        }
-
-        public static FileMannager Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (syncRoot)
-                    {
-                        if (instance == null)
-                            instance = new FileMannager();
-                    }
-                }
-
-                return instance;
-            }
-        }
-
-    }
-
 }

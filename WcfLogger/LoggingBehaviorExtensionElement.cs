@@ -5,20 +5,23 @@ using System.Text;
 using System.ServiceModel.Configuration;
 using System.Configuration;
 using System.Reflection;
+using PostSharp.Patterns.Diagnostics;
 
 namespace WcfLogger
 {
+    [Log(AttributeExclude = true)]
     public class LoggingBehaviorExtensionElement : BehaviorExtensionElement
     {
         public override Type BehaviorType
         {
-            get { return typeof(LoggingBehaviorAttribute); }
+            get { return typeof(WcfLoggingAttribute); }
         }
 
         protected override object CreateBehavior()
         {
-            return new LoggingBehaviorAttribute
+            return new WcfLoggingAttribute
             {
+                Log = Log,
                 LogBeforeCall = LogBeforeCall,
                 LogAfterCall = LogAfterCall,
                 LogErrors = LogErrors,
@@ -61,12 +64,27 @@ namespace WcfLogger
 
         #region Properties
 
+        [ConfigurationProperty("Log", DefaultValue = true)]
+        public bool Log
+        {
+            get { return (bool)this["Log"]; }
+            set { this["Log"] = value; }
+        }
+
+        [ConfigurationProperty("LogArguments", DefaultValue = true)]
+        public bool LogArguments
+        {
+            get { return (bool)this["LogArguments"]; }
+            set { this["LogArguments"] = value; }
+        }
+
         [ConfigurationProperty("logBeforeCall", DefaultValue = true)]
         public bool LogBeforeCall
         {
             get { return (bool)this["logBeforeCall"]; }
             set { this["logBeforeCall"] = value; }
         }
+
 
         [ConfigurationProperty("logAfterCall", DefaultValue = true)]
         public bool LogAfterCall

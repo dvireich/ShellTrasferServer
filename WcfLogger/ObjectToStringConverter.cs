@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using System.Reflection;
+using PostSharp.Patterns.Diagnostics;
 
 namespace WcfLogger
 {
+    [Log(AttributeExclude = true)]
     public static class ObjectToStringConverter
     {
         public static string ConvertSomeToString(string[] valuesNames, object[] values)

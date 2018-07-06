@@ -1,12 +1,14 @@
-﻿using System;
+﻿using PostSharp.Patterns.Diagnostics;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShellTrasferServer
+namespace Data
 {
+    [Log(AttributeExclude = true)]
     public class UserTaskQueue
     {
         private ConcurrentDictionary<string, Queue<ShellTask>> _shellTaskQueue = new ConcurrentDictionary<string, Queue<ShellTask>>();

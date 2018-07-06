@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
+using PostSharp.Patterns.Diagnostics;
 
 namespace WcfLogger
 {
+    [Log(AttributeExclude = true)]
     public class LoggingOutputsData
     {
         public ParameterInfo[] OutputParameters { get; set; }

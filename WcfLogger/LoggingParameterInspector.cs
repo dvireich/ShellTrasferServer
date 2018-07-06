@@ -6,9 +6,11 @@ using System.ServiceModel.Dispatcher;
 using System.Reflection;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using PostSharp.Patterns.Diagnostics;
 
 namespace WcfLogger
 {
+    [Log(AttributeExclude = true)]
     class LoggingParameterInspector : IParameterInspector
     {
         #region IParameterInspector Members
@@ -16,6 +18,11 @@ namespace WcfLogger
         public void AfterCall(string operationName, object[] outputs, object returnValue, object correlationState)
         {
             LoggingContext.ClearCurrentContextDetails();
+
+            if(!Log)
+            {
+                return;
+            }
 
             if (!LogAfterCall)
             {
@@ -27,12 +34,17 @@ namespace WcfLogger
                 return;
             }
 
+            if (!LogArguments)
+            {
+                outputs = null;
+            }
+
             MethodInfo mi = ServiceType.GetMethod(operationName);
             if (mi == null)
             {
                 return;
             }
-
+            
             LoggingArgument arg = CreateArgumentForResultLog(mi, outputs, returnValue);
 
             LoggingStrategy.Log(arg);
@@ -93,11 +105,13 @@ namespace WcfLogger
         }
         #endregion
 
+        public bool Log { get; set; }
         public bool LogBeforeCall { get; set; }
         public bool LogAfterCall { get; set; }
         public bool LogErrors { get; set; }
         public bool LogWarnings { get; set; }
         public bool LogInformation { get; set; }
+        public bool LogArguments { get; set; }
 
         #endregion
 

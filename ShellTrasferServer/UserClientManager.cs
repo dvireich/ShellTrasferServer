@@ -1,12 +1,15 @@
-﻿using System;
+﻿using PostSharp.Patterns.Diagnostics;
+using ShellTrasferServer;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShellTrasferServer
+namespace Data
 {
+    [Log(AttributeExclude = true)]
     public class UserClientManager
     {
         private ConcurrentDictionary<string, ICallBack> _statusCallBacks = new ConcurrentDictionary<string, ICallBack>();

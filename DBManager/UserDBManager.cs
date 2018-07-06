@@ -1,4 +1,5 @@
 ﻿
+using PostSharp.Patterns.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,15 @@ namespace DBManager
             Schema.Columns.SecurityQuestion.ToString(),
             Schema.Columns.SecurityAnswer.ToString(),
         };
+
+        [Log(AttributeExclude = true)]
         public UserDBManager()
         {
             sql = new SqlManager();
             sql.Connect();
         }
 
+        [Log(AttributeExclude = true)]
         public void Exit()
         {
             if (sql != null)
@@ -101,6 +105,7 @@ namespace DBManager
             };
         }
 
+        [Log(AttributeExclude = true)]
         public void Dispose()
         {
             Exit();

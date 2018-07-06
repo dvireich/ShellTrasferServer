@@ -8,12 +8,14 @@ using System.ServiceModel.Description;
 using UserAuthentication;
 using UserLoader;
 using ShellTrasferServer;
-using ServiceLoader;
+using PostSharp.Patterns.Diagnostics;
+using PostSharp.Extensibility;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace Program
 {
+    [Log(AttributeTargetElements = MulticastTargets.Method, AttributeTargetTypeAttributes = MulticastAttributes.Public, AttributeTargetMemberAttributes = MulticastAttributes.Public)]
     public static class ServiceLoader
     {
         private static List<ServiceHost> OpenChnnels = new List<ServiceHost>();

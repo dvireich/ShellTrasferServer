@@ -1,7 +1,9 @@
-﻿using System;
+﻿using PostSharp.Patterns.Diagnostics;
+using System;
 
-namespace ShellTrasferServer
+namespace Data
 {
+    [Log(AttributeExclude = true)]
     public class ShellTask
     {
         public string Command;
