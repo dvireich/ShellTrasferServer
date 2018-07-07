@@ -39,6 +39,11 @@ namespace WcfLogger
                 outputs = null;
             }
 
+            if(!LogReturnVal)
+            {
+                returnValue = typeof(void);
+            }
+
             MethodInfo mi = ServiceType.GetMethod(operationName);
             if (mi == null)
             {
@@ -61,6 +66,11 @@ namespace WcfLogger
             if (mi == null)
             {
                 return null;
+            }
+
+            if (!LogArguments)
+            {
+                inputs = null;
             }
 
             SetLoggingContext(inputs, mi);
@@ -112,6 +122,7 @@ namespace WcfLogger
         public bool LogWarnings { get; set; }
         public bool LogInformation { get; set; }
         public bool LogArguments { get; set; }
+        public bool LogReturnVal { get; set; }
 
         #endregion
 

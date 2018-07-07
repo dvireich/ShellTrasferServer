@@ -26,6 +26,7 @@ namespace WcfLogger
             LogInformation = true;
             Log = true;
             LogArguments = true;
+            LogReturnVal = true;
         }
 
         #region IServiceBehavior Members
@@ -50,7 +51,8 @@ namespace WcfLogger
                 LogErrors = LogErrors,
                 LogWarnings = LogWarnings,
                 LogInformation = LogInformation,
-                LogArguments = LogArguments
+                LogArguments = LogArguments,
+                LogReturnVal = LogReturnVal
             };
 
             foreach (ChannelDispatcher chDisp in serviceHostBase.ChannelDispatchers)
@@ -71,7 +73,7 @@ namespace WcfLogger
         }
 
         #endregion
-
+        
         #region IOperationBehavior Members
 
         public void AddBindingParameters(OperationDescription operationDescription,
@@ -92,7 +94,8 @@ namespace WcfLogger
                 LogErrors = LogErrors,
                 LogWarnings = LogWarnings,
                 LogInformation = LogInformation,
-                LogArguments = LogArguments
+                LogArguments = LogArguments,
+                LogReturnVal = LogReturnVal
             };
 
             clientOperation.ParameterInspectors.Add(paramInspector);
@@ -122,7 +125,8 @@ namespace WcfLogger
                 LogErrors = LogErrors,
                 LogWarnings = LogWarnings,
                 LogInformation = LogInformation,
-                LogArguments = LogArguments
+                LogArguments = LogArguments,
+                LogReturnVal = LogReturnVal
             };
 
             dispatchOperation.ParameterInspectors.Add(paramInspector);
@@ -135,7 +139,7 @@ namespace WcfLogger
         #endregion
 
         #region Properties
-
+        
         public bool Log { get; set; }
         public bool LogBeforeCall { get; set; }
         public bool LogAfterCall { get; set; }
@@ -143,6 +147,7 @@ namespace WcfLogger
         public bool LogWarnings { get; set; }
         public bool LogInformation { get; set; }
         public bool LogArguments { get; set; }
+        public bool LogReturnVal { get; set; }
 
         #region LoggingStrategyType
         private Type _loggingStrategyType;

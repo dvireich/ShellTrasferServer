@@ -273,7 +273,7 @@ namespace ShellTrasferServer
             return EnqueueWaitAndReturnBaseLine(run, "");
         }
 
-        [WcfLogging(LogArguments = false)]
+        [WcfLogging(LogArguments = false, LogReturnVal = false)]
         public RemoteFileInfo ActiveDownloadFile(DownloadRequest request)
         {
             var currentFileManager = FileMannager.Instance.CurrentUserFileMannager;
@@ -373,7 +373,7 @@ namespace ShellTrasferServer
             }
         }
 
-        [WcfLogging(LogArguments = false)]
+        [WcfLogging(LogArguments = false, LogReturnVal = false)]
         public RemoteFileInfo ActiveUploadFile(RemoteFileInfo request)
         {
             var currentFileManager = FileMannager.Instance.CurrentUserFileMannager;
@@ -515,6 +515,7 @@ namespace ShellTrasferServer
                   currentTransferQueue.ContainsKey(id) && currentShellQueue[id].Count > 0 : 
                   false;
         }
+
         public Tuple<string, string, string> PassiveNextCommand(string id)
         {
             var currentUserDeletedTasks = ClientManager.Instance.CurretUserClientManager.Deleted;
@@ -592,7 +593,7 @@ namespace ShellTrasferServer
                    false;
         }
 
-        [WcfLogging(LogArguments = false)]
+        [WcfLogging(LogArguments = false, LogReturnVal = false)]
         public DownloadRequest PassiveGetDownloadFile(DownloadRequest id)
         {
             var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;
@@ -656,7 +657,7 @@ namespace ShellTrasferServer
 
         }
 
-        [WcfLogging(LogArguments = false)]
+        [WcfLogging(LogArguments = false, LogReturnVal = false)]
         public RemoteFileInfo PassiveGetUploadFile(DownloadRequest id)
         {
             var currentTransferQueue = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue;

@@ -27,6 +27,8 @@ namespace WcfLogger
                 LogErrors = LogErrors,
                 LogWarnings = LogWarnings,
                 LogInformation = LogInformation,
+                LogReturnVal = LogReturnVal,
+                LogArguments = LogArguments,
                 LoggingStrategyType = ConvertStringToType(LoggingStrategyType)
             };
         }
@@ -112,6 +114,13 @@ namespace WcfLogger
         {
             get { return (bool)this["logInformation"]; }
             set { this["logInformation"] = value; }
+        }
+
+        [ConfigurationProperty("logReturnVal", DefaultValue = true)]
+        public bool LogReturnVal
+        {
+            get { return (bool)this["logReturnVal"]; }
+            set { this["logReturnVal"] = value; }
         }
 
         [ConfigurationProperty("loggingStrategyType")]
