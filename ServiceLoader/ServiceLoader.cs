@@ -30,9 +30,9 @@ namespace Program
         public static void LoadShellTransferServices(string id)
         {
             if (OpenIds.Contains(id)) return;
-            InitializeBasicHttpServiceReferences<ShellTransfer, IActiveShell>(string.Format("ActiveShell/{0}", id));
-            InitializeBasicHttpServiceReferences<ShellTransfer, IPassiveShell>(string.Format("PassiveShell/{0}", id));
-            InitializeTCPServiceReferences<ShellTransfer, IAletCallBack>(string.Format("CallBack/{0}", id));
+            InitializeBasicHttpServiceReferences<ActiveShell, IActiveShell>(string.Format("ActiveShell/{0}", id));
+            InitializeBasicHttpServiceReferences<PassiveShell, IPassiveShell>(string.Format("PassiveShell/{0}", id));
+            InitializeTCPServiceReferences<AletCallBack, IAletCallBack>(string.Format("CallBack/{0}", id));
         }
 
         private static void InitializeBasicHttpServiceReferences<TC,TI>(string id)

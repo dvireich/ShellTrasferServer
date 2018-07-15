@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    [Log(AttributeTargetElements = MulticastTargets.Method, AttributeTargetTypeAttributes = MulticastAttributes.Public, AttributeTargetMemberAttributes = MulticastAttributes.Public)]
+    [Log(AttributeExclude = true)]
     public class AtomicOperation
     {
         private object AtomicOperationLock = new Object();

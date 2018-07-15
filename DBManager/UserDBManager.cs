@@ -100,8 +100,8 @@ namespace DBManager
                 Id = resp[0].Trim(),
                 UserName = resp[1].Trim(),
                 Password = resp[2].Trim(),
-                SecurityAnswer = resp[3].Trim(),
-                SecurityQuestion = resp[4].Trim()
+                SecurityQuestion = resp[3].Trim(),
+                SecurityAnswer = resp[4].Trim()
             };
         }
 
