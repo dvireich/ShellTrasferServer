@@ -39,7 +39,7 @@ namespace ShellTrasferServer
 
         public bool DeleteClientTask(string id, bool shellTask, int taksNumber)
         {
-            return DeleteClientTask(id, shellTask, taksNumber);
+            return DeleteClientTask(id, shellTask, taksNumber, false);
         }
 
         public bool ClearAllData(string id)
@@ -103,7 +103,7 @@ namespace ShellTrasferServer
         {
             var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
 
-            return currentUserAtomicOperation.PerformAsAtomicFunction<string>(() =>
+            return currentUserAtomicOperation.PerformAsAtomicFunction<string>((Func<string>)(() =>
             {
                 var clients = ClientManager.Instance.CurretUserClientManager.CallBacks.ToList();
                 var status = new StringBuilder();
@@ -118,60 +118,12 @@ namespace ShellTrasferServer
                         status.AppendLine(string.Format("Client number{0} id: {1}\tNickName:{3}\nIs Alive: {2}"
                                                           , clientCounter, client.Key, isAlive, nickName));
                         var taskCounter = 1;
-                        if (TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue.ContainsKey(client.Key))
-                        {
-                            status.AppendLine("Shell Tasks:");
-                            var clientTasks = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue[client.Key].ToList();
-                            if (clientTasks.Count > 0)
-                            {
-                                foreach (var task in clientTasks)
-                                {
-                                    status.AppendLine(string.Format("Task Number: {0}", taskCounter));
-                                    status.AppendLine(string.Format("{0} {1}", task.Command, task.Args));
-                                    taskCounter++;
-                                }
-                            }
-                            else
-                            {
-                                status.AppendLine("There is no shell tasks");
-                            }
-                        }
-                        if (TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue.ContainsKey(client.Key))
-                        {
-                            taskCounter = 1;
-                            status.AppendLine("Upload And Download Tasks:");
-                            var clientTasks = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue[client.Key].ToList();
-                            if (clientTasks.Count > 0)
-                            {
-                                foreach (var task in clientTasks)
-                                {
-                                    status.AppendLine(string.Format("Task Number: {0}", taskCounter));
 
-                                    if (task.TaskType == TaskType.Upload)
-                                    {
-                                        status.AppendLine(string.Format("{0} {1} {2}",
-                                                                         task.TaskType,
-                                                                         task.RemoteFileInfo.FileName,
-                                                                         task.RemoteFileInfo.PathToSaveOnServer));
-                                    }
-                                    if (task.TaskType == TaskType.Download)
-                                    {
-                                        status.AppendLine(string.Format("{0} {1} {2} {3}",
-                                                                        task.TaskType,
-                                                                        task.DownloadRequest.FileName,
-                                                                        task.DownloadRequest.PathInServer,
-                                                                        task.DownloadRequest.PathToSaveInClient));
-                                    }
+                        ParseShellTasks(status, client.Key, ref taskCounter);
+                        ParseUploadDownloadTasks(status, client, taskCounter);
 
-                                    taskCounter++;
-                                }
-                            }
-                            else
-                            {
-                                status.AppendLine("There is no Download or Upload tasks");
-                            }
-                        }
                         status.AppendLine(string.Format(""));
+
                         /*If the passiveClient computer is off the we dont want to delete the client. we want to wait 
                          * until his compueter be on again
                         if (!isAlive)
@@ -190,7 +142,70 @@ namespace ShellTrasferServer
                     status.AppendLine(string.Format("There is no clients connected"));
                 }
                 return status.ToString();
-            });
+            }));
+        }
+
+        private static int ParseUploadDownloadTasks(StringBuilder status, KeyValuePair<string, ICallBack> client, int taskCounter)
+        {
+            if (TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue.ContainsKey(client.Key))
+            {
+                taskCounter = 1;
+                status.AppendLine("Upload And Download Tasks:");
+                var clientTasks = TaskQueue.Instance.CurrentUserTaskQueue.TransferTaskQueue[client.Key].ToList();
+                if (clientTasks.Count > 0)
+                {
+                    foreach (var task in clientTasks)
+                    {
+                        status.AppendLine(string.Format("Task Number: {0}", taskCounter));
+
+                        if (task.TaskType == TaskType.Upload)
+                        {
+                            status.AppendLine(string.Format("{0} {1} {2}",
+                                                             task.TaskType,
+                                                             task.RemoteFileInfo.FileName,
+                                                             task.RemoteFileInfo.PathToSaveOnServer));
+                        }
+                        if (task.TaskType == TaskType.Download)
+                        {
+                            status.AppendLine(string.Format("{0} {1} {2} {3}",
+                                                            task.TaskType,
+                                                            task.DownloadRequest.FileName,
+                                                            task.DownloadRequest.PathInServer,
+                                                            task.DownloadRequest.PathToSaveInClient));
+                        }
+
+                        taskCounter++;
+                    }
+                }
+                else
+                {
+                    status.AppendLine("There is no Download or Upload tasks");
+                }
+            }
+
+            return taskCounter;
+        }
+
+        private static void ParseShellTasks(StringBuilder status, string client, ref int taskCounter)
+        {
+            if (TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue.ContainsKey(client))
+            {
+                status.AppendLine("Shell Tasks:");
+                var clientTasks = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue[client].ToList();
+                if (clientTasks.Count > 0)
+                {
+                    foreach (var task in clientTasks)
+                    {
+                        status.AppendLine(string.Format("Task Number: {0}", taskCounter));
+                        status.AppendLine(string.Format("{0} {1}", task.Command, task.Args));
+                        taskCounter++;
+                    }
+                }
+                else
+                {
+                    status.AppendLine("There is no shell tasks");
+                }
+            }
         }
 
         public void ClearQueue()
@@ -228,6 +243,7 @@ namespace ShellTrasferServer
         public RemoteFileInfo ActiveDownloadFile(DownloadRequest request)
         {
             var currentFileManager = FileMannager.Instance.CurrentUserFileMannager;
+
             if (currentFileManager.Error)
             {
                 currentFileManager.Error = false;
@@ -285,19 +301,15 @@ namespace ShellTrasferServer
                 };
             }
             //there is no download in process, so get files from passive client
+            return ClearFileManagerAndStartDownload(request, currentFileManager);
+        }
+
+        [WcfLogging(LogArguments = false, LogReturnVal = false)]
+        private RemoteFileInfo ClearFileManagerAndStartDownload(DownloadRequest request, UserFileManager currentFileManager)
+        {
             //Clear the File in FileMannager
-            if (currentFileManager.FileStream != null)
-            {
-                currentFileManager.FileStream.Close();
-                currentFileManager.FileStream = null;
-            }
-            try
-            {
-                var path = currentFileManager.Path;
-                if (File.Exists(path))
-                    File.Delete(path);
-            }
-            catch { }
+            ClearFileManager(currentFileManager);
+
             var retAns = EnqueueWaitAndReturnBaseLine(TaskType.Download, request, new RemoteFileInfo());
             //Check if Error happended
             if (retAns != "Buffering")
@@ -322,6 +334,23 @@ namespace ShellTrasferServer
                     PathToSaveOnServer = ""
                 };
             }
+        }
+
+        [WcfLogging(LogArguments = false, LogReturnVal = false)]
+        private static void ClearFileManager(UserFileManager currentFileManager)
+        {
+            if (currentFileManager.FileStream != null)
+            {
+                currentFileManager.FileStream.Close();
+                currentFileManager.FileStream = null;
+            }
+            try
+            {
+                var path = currentFileManager.Path;
+                if (File.Exists(path))
+                    File.Delete(path);
+            }
+            catch { }
         }
 
         [WcfLogging(LogArguments = false, LogReturnVal = false)]
@@ -364,8 +393,7 @@ namespace ShellTrasferServer
                     PathToSaveOnServer = ""
                 };
             }
-            //We will save all the byte chunks in temp file, its propebly will became to big with all the add actions
-            //for some data strcture so we probebly will get SystemOutOfMemory exception
+            //We will save all the byte chunks in temp file
 
             if (request.FreshStart && currentFileManager.FileStream != null)
             {
@@ -421,7 +449,6 @@ namespace ShellTrasferServer
             }
             else
             {
-
                 return new RemoteFileInfo()
                 {
                     FileByteStream = new byte[0],
