@@ -73,12 +73,12 @@ namespace Program
             wsd.SendTimeout = TimeSpan.MaxValue;
             EndpointAddress ea = new EndpointAddress(endPointAdress);
 
-
             var serviceHost = new ServiceHost(typeof(TC), endPointAdress);
             var smb = new ServiceMetadataBehavior();
             serviceHost.Description.Behaviors.Add(smb);
-
             serviceHost.AddServiceEndpoint(typeof(TI), wsd, endPointAdress);
+            Uri mexEndPointAdress = new Uri(string.Format("net.tcp://localhost/ShellTrasferServer/{0}/mex", path));
+            serviceHost.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexTcpBinding(), mexEndPointAdress);
             serviceHost.Open();
         }
 

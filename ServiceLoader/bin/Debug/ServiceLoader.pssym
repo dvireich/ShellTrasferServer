@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Symbols LinesOfCode="55" PostSharpLinesOfCode="0" EnhancedTypesCount="1" SchemaVersion="1" PostSharpVersion="5.0.52.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
+<Symbols LinesOfCode="57" PostSharpLinesOfCode="0" EnhancedTypesCount="1" SchemaVersion="1" PostSharpVersion="5.0.52.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
   <Class Class="#1=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogAttribute">
     <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="10" Column="6">
       <Target Target="#2=M:[ServiceLoader]Program.ServiceLoader::#cctor()">
@@ -18,7 +18,7 @@
     </Instance>
   </Class>
   <Class Class="#1">
-    <Instance Declaration="#7=T:[ServiceLoader]Program.ServiceLoader" Id="9cefc5af70ee9ced">
+    <Instance Declaration="#7=T:[ServiceLoader]Program.ServiceLoader" Id="9cefc5af3035132c">
       <Target Target="#8=M:[ServiceLoader]Program.ServiceLoader::LoadBasicServices()">
         <JoinPoint Advising="#1" Description="#3" Ordinal="0" LinesAvoided="5" />
       </Target>
