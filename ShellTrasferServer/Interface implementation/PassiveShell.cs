@@ -12,7 +12,7 @@ namespace ShellTrasferServer
     [WcfLogging]
     public class PassiveShell : ActiveShellPassiveshell, IPassiveShell
     {
-        string Version = "11";
+        readonly string version = "11";
         const string closeShell = "CloseShell";
 
         #region IPassiveShell Implemantations
@@ -325,7 +325,7 @@ namespace ShellTrasferServer
 
         public bool Subscribe(string id, string version, string name)
         {
-            if (version != Version)
+            if (version != this.version)
                 return false;
 
             var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;

@@ -31,7 +31,6 @@ namespace ShellTrasferServer
         {
             if (type == "status")
             {
-                
                 try
                 {
                     ICallBack callback = OperationContext.Current.GetCallbackChannel<ICallBack>();
