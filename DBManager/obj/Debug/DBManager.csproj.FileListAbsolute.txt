@@ -22,4 +22,3 @@ C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\DBMa
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\DBManager\bin\Debug\DBManager.pssym
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\DBManager\obj\Debug\DBManager.dll.postsharp
 C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\DBManager\obj\Debug\PostSharpHost.config
-C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\DBManager\obj\Debug\DBManager.csprojAssemblyReference.cache

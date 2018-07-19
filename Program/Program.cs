@@ -1,6 +1,7 @@
 ﻿using DBManager;
 using PostSharp.Patterns.Diagnostics;
 using PostSharp.Patterns.Diagnostics.Backends.Log4Net;
+using System.Threading;
 using UserLoader;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
@@ -27,7 +28,12 @@ namespace Program
             {
                 while (true)
                 {
-                    if (!TaskQueue.Instance.Any()) continue;
+                    if (!TaskQueue.Instance.Any())
+                    {
+                        Thread.Sleep(1000);
+                        continue;
+                    }
+                   
 
                     var id = TaskQueue.Instance.GetNextTask();
                     ServiceLoader.LoadShellTransferServices(id);

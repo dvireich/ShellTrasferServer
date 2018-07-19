@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Symbols LinesOfCode="41" PostSharpLinesOfCode="0" EnhancedTypesCount="1" SchemaVersion="1" PostSharpVersion="5.0.52.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
+<Symbols LinesOfCode="43" PostSharpLinesOfCode="0" EnhancedTypesCount="1" SchemaVersion="1" PostSharpVersion="5.0.52.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
   <Class Class="#1=T:[PostSharp.Patterns.Threading]PostSharp.Patterns.Threading.DeadlockDetectionPolicy">
     <Instance File="C:\Users\dvire\Documents\Visual Studio 2017\shell server\ShellTrasferServer\\ShellTrasferServer.pssln" Line="12" Column="6">
       <Target Target="#2=A:Program" />
     </Instance>
   </Class>
   <Class Class="#3=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogAttribute">
-    <Instance Declaration="#4=M:[Program]Program.Program::CreateDataBase()" Id="4886ae8a44a908cd">
+    <Instance Declaration="#4=M:[Program]Program.Program::CreateDataBase()" Id="4886ae8a342fa43d">
       <Target>
         <JoinPoint Advising="#3" Description="#5=Adds logging" Ordinal="0" LinesAvoided="5" />
       </Target>
     </Instance>
-    <Instance Declaration="#6=M:[Program]Program.Program::RunAsConsole()" Id="4886ae8ac621f57f">
+    <Instance Declaration="#6=M:[Program]Program.Program::RunAsConsole()" Id="4886ae8a57e31296">
       <Target>
         <JoinPoint Advising="#3" Description="#5" LinesAvoided="5" />
       </Target>
