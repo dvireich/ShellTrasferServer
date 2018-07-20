@@ -85,6 +85,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ActiveClientLocks.cs" />
+    <Compile Include="Data\ShellTaskLockManager.cs" />
     <Compile Include="Interface implementation\ActiveShell.cs" />
     <Compile Include="Interface implementation\ActiveShellPassiveshell.cs" />
     <Compile Include="Helpers\AtomicOperation.cs" />

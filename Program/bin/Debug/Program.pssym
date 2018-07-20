@@ -6,12 +6,12 @@
     </Instance>
   </Class>
   <Class Class="#3=T:[PostSharp.Patterns.Diagnostics]PostSharp.Patterns.Diagnostics.LogAttribute">
-    <Instance Declaration="#4=M:[Program]Program.Program::CreateDataBase()" Id="4886ae8a342fa43d">
+    <Instance Declaration="#4=M:[Program]Program.Program::CreateDataBase()" Id="4886ae8a43d8d73e">
       <Target>
         <JoinPoint Advising="#3" Description="#5=Adds logging" Ordinal="0" LinesAvoided="5" />
       </Target>
     </Instance>
-    <Instance Declaration="#6=M:[Program]Program.Program::RunAsConsole()" Id="4886ae8a57e31296">
+    <Instance Declaration="#6=M:[Program]Program.Program::RunAsConsole()" Id="4886ae8ae1044ca3">
       <Target>
         <JoinPoint Advising="#3" Description="#5" LinesAvoided="5" />
       </Target>

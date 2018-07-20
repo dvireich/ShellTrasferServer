@@ -1,9 +1,11 @@
 ﻿using Data;
+using ShellTrasferServer.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using WcfLogger;
 
@@ -469,8 +471,11 @@ namespace ShellTrasferServer
             var shellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
             var deletedTasks = ClientManager.Instance.CurretUserClientManager.DeletedTasks;
             var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+            var curretnLockManager = ShellTaskLockManager.Instance.CurrentUserLockMannager;
 
             var clientNotExcecuetedCommand = true;
+            var clientLock = new Object();
+            curretnLockManager.Add(clientLock);
             var currentSelectedClient = string.Empty;
             var retBaseLine = string.Empty;
             var taskId = string.Empty;
@@ -492,6 +497,11 @@ namespace ShellTrasferServer
                     {
                         retBaseLine = str;
                         clientNotExcecuetedCommand = false;
+                        lock (clientLock)
+                        {
+                            Monitor.PulseAll(clientLock);
+                        }
+                        curretnLockManager.Remove(clientLock);
                     }, taskId));
 
                 clientCallBack = currentUserCallbacks[selectedClient];
@@ -508,12 +518,18 @@ namespace ShellTrasferServer
                 }
             else
                 return "Client CallBack is Not Found";
+
             while (clientNotExcecuetedCommand)
             {
                 if (deletedTasks.Contains(taskId))
                 {
                     clientNotExcecuetedCommand = false;
                     retBaseLine = "Task were deleted";
+                }
+
+                lock (clientLock)
+                {
+                    Monitor.Wait(clientLock);
                 }
             }
             return retBaseLine;

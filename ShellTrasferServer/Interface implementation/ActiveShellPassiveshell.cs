@@ -1,4 +1,5 @@
 ﻿using Data;
+using ShellTrasferServer.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,6 +90,7 @@ namespace ShellTrasferServer
         public bool DeleteClientTask(string id, bool shellTask, int taksNumber, bool safeToPassLock = false)
         {
             var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+            var currentLockManager = ShellTaskLockManager.Instance.CurrentUserLockMannager;
 
             return currentUserAtomicOperation.PerformAsAtomicFunction<bool>(() =>
             {
@@ -101,6 +103,7 @@ namespace ShellTrasferServer
                         var deleted = currentUserShellQueue[id].ElementAt(taksNumber - 1);
                         currentUserShellQueue[id] = currentUserShellQueue[id].DeleteAt(taksNumber - 1);
                         deletedTasks.Add(deleted.TaskId);
+                        currentLockManager.PulseAll();
                         return true;
                     }
                 }
@@ -115,6 +118,7 @@ namespace ShellTrasferServer
                         //This is a hash set so it wont be added twice
                         deletedTasks.Add(deleted.DownloadRequest.taskId);
                         deletedTasks.Add(deleted.RemoteFileInfo.taskId);
+                        currentLockManager.PulseAll();
                         return true;
                     }
                 }
