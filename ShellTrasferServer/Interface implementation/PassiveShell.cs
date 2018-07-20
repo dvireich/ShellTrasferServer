@@ -72,24 +72,6 @@ namespace ShellTrasferServer
             var currentShellQueue = TaskQueue.Instance.CurrentUserTaskQueue.ShellQueue;
             var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
 
-            if (baseLine == "CleanId")
-            {
-                //unique case that the passive client got some exception and he want to start over, so he delete his
-                //previous id and start fresh 
-
-                //This is not part of ActiveClient command process. this was promoted by the passiveClient so there is
-                //no conflict in the locks.
-
-                //prevent the active user using the Selected Client or the CallBack Dictionary when in the mean time 
-                //is been deleted by the passive client func. Let the first caller finish his operation and then perform
-                //the second call
-                currentUserAtomicOperation.PerformAsAtomicFunction(() =>
-                {
-
-                    RemoveClient(id, true);
-                });
-                return;
-            }
             //When passive client been deleted, he get a signal from the callback and in hasCommand get true
             //and in NextCommand he get new mission that is not in the missionQueue so we dont need to dequeue
             if (currentUserDeletedTasks.Contains(id))
@@ -365,6 +347,26 @@ namespace ShellTrasferServer
         private void DefineSelectedClient(string id)
         {
             ClientManager.Instance.CurretUserClientManager.SelectedClient = id;
+        }
+
+        public void RemoveId(string id)
+        {
+            //unique case that the passive client got some exception and he want to start over, so he delete his
+            //previous id and start fresh 
+
+            //This is not part of ActiveClient command process. this was promoted by the passiveClient so there is
+            //no conflict in the locks.
+
+            //prevent the active user using the Selected Client or the CallBack Dictionary when in the mean time 
+            //is been deleted by the passive client func. Let the first caller finish his operation and then perform
+            //the second call
+            var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
+            currentUserAtomicOperation.PerformAsAtomicFunction(() =>
+            {
+
+                RemoveClient(id, true);
+            });
+            return;
         }
     }
 }

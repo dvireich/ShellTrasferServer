@@ -49,5 +49,8 @@ namespace ShellTrasferServer
         [OperationContract]
         void ErrorNextCommand(string id, string taskId, string response);
 
+        [OperationContract]
+        void RemoveId(string id);
+
     }
 }
