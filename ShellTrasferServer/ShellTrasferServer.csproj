@@ -99,11 +99,9 @@
     <Compile Include="Interfaces\IAletCallBack.cs" />
     <Compile Include="Interfaces\ICallBack.cs" />
     <Compile Include="Interfaces\IPassiveShell.cs" />
-    <Compile Include="Interfaces\IRestService.cs" />
     <Compile Include="Interface implementation\PassiveShell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\RemoteFileInfo.cs" />
-    <Compile Include="Interface implementation\RestService.cs" />
     <Compile Include="Interface implementation\AletCallBack.cs" />
     <Compile Include="Data\ShellTask.cs" />
     <Compile Include="Data\TaskQueue.cs" />
@@ -115,9 +113,6 @@
     <Compile Include="Data\UserTaskQueue.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
