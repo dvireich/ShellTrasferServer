@@ -71,13 +71,16 @@
   <ItemGroup>
     <Compile Include="CreateDBHandler.cs" />
     <Compile Include="GlobalAspects.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Interfaces\IUserRepositoryFactory.cs" />
     <Compile Include="Schema.cs" />
     <Compile Include="SchemaEntry.cs" />
     <Compile Include="SqlCommandAndLog.cs" />
     <Compile Include="SqlManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="UserDBManager.cs" />
+    <Compile Include="UserRepository.cs" />
+    <Compile Include="UserRepositoryFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

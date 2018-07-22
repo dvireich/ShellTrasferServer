@@ -80,8 +80,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAuthentication.cs" />
+    <Compile Include="Interfaces\ISignedInUsers.cs" />
+    <Compile Include="Interfaces\ISignedInUsersFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Authentication.cs" />
+    <Compile Include="SignedInUsersFactory.cs" />
     <Compile Include="SignInUsers.cs" />
     <Compile Include="UserConnection.cs" />
   </ItemGroup>

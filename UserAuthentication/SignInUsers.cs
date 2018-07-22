@@ -8,13 +8,14 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
+using UserAuthentication.Interfaces;
 
 namespace UserAuthentication
 {
     [Log(AttributeTargetElements = MulticastTargets.Method, AttributeTargetTypeAttributes = MulticastAttributes.Public, AttributeTargetMemberAttributes = MulticastAttributes.Public)]
-    public class SignInUsers
+    public class SignedInUsers : ISignedInUsers
     {
-        private static volatile SignInUsers instance;
+        private static volatile SignedInUsers instance;
         private static object syncRoot = new Object();
 
         private ConcurrentDictionary<string, List<UserConnection>> usersLoggedIn = new ConcurrentDictionary<string, List<UserConnection>>();
@@ -115,10 +116,10 @@ namespace UserAuthentication
         }
 
         [Log(AttributeExclude = true)]
-        private SignInUsers() { }
+        private SignedInUsers() { }
 
         [Log(AttributeExclude = true)]
-        public static SignInUsers Instance
+        public static SignedInUsers Instance
         {
             get
             {
@@ -127,7 +128,7 @@ namespace UserAuthentication
                     lock (syncRoot)
                     {
                         if (instance == null)
-                            instance = new SignInUsers();
+                            instance = new SignedInUsers();
                     }
                 }
 

@@ -1,4 +1,5 @@
 ﻿
+using DBManager.Interfaces;
 using PostSharp.Patterns.Diagnostics;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DBManager
 {
-     public class UserDBManager : IDisposable
+     public class UserRepository : IUserRepository
     {
         SqlManager sql;
 
@@ -22,7 +23,7 @@ namespace DBManager
         };
 
         [Log(AttributeExclude = true)]
-        public UserDBManager()
+        public UserRepository()
         {
             sql = new SqlManager();
             sql.Connect();
