@@ -10,13 +10,14 @@ using System.Threading.Tasks;
 namespace Data
 {
     [Log(AttributeExclude = true)]
-    public class AtomicOperation
+    public class AtomicOperation : IAtomicOperation
     {
         private object AtomicOperationLock = new Object();
         private object AtomicSubscribeLock = new Object();
         private object AtomicDownloadLock = new Object();
         private object AtomicUploadLock = new Object();
-        public bool isTransferingData = false;
+
+        public bool IsTransferingData { get; set; }
 
         private T PerformAsAtomicFunction<T>(Func<T> func, object lockobj, bool safeToPassLock = false)
         {
@@ -61,7 +62,7 @@ namespace Data
             }
             catch { }
             Monitor.Exit(AtomicDownloadLock);
-            isTransferingData = false;
+            IsTransferingData = false;
 
         }
 

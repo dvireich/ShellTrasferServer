@@ -86,7 +86,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\ActiveClientLocks.cs" />
+    <Compile Include="Data\interfaces\IActiveClientLocks.cs" />
+    <Compile Include="Data\interfaces\IUserClientManager.cs" />
+    <Compile Include="Data\interfaces\IUserTaskQueue.cs" />
+    <Compile Include="Data\interfaces\IUserFileManager.cs" />
     <Compile Include="Data\ShellTaskLockManager.cs" />
+    <Compile Include="Helpers\ActiveClientHelper.cs" />
+    <Compile Include="Helpers\ActiveManager.cs" />
+    <Compile Include="Helpers\ActiveManagerFactory.cs" />
+    <Compile Include="Helpers\ActiveShellHelper.cs" />
+    <Compile Include="Helpers\ActiveTransferDataHelper.cs" />
+    <Compile Include="Helpers\CommonOperations.cs" />
+    <Compile Include="Helpers\Constans.cs" />
+    <Compile Include="Helpers\DirectoryHelper.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\interfaces\IActiveManager.cs" />
+    <Compile Include="Helpers\interfaces\IActiveManagerFactory.cs" />
+    <Compile Include="Helpers\interfaces\IActiveShellHelper.cs" />
+    <Compile Include="Helpers\interfaces\IAtomicOperation.cs" />
+    <Compile Include="Helpers\interfaces\IActiveClientHelper.cs" />
+    <Compile Include="Helpers\interfaces\ICommonOperations.cs" />
+    <Compile Include="Helpers\interfaces\IDirectoryHelper.cs" />
+    <Compile Include="Helpers\interfaces\IFileHelper.cs" />
+    <Compile Include="Helpers\interfaces\IMonitorHelper.cs" />
+    <Compile Include="Helpers\interfaces\IActiveTransferDataHelper.cs" />
+    <Compile Include="Helpers\MonitorHelper.cs" />
     <Compile Include="Interface implementation\ActiveShell.cs" />
     <Compile Include="Interface implementation\ActiveShellPassiveshell.cs" />
     <Compile Include="Helpers\AtomicOperation.cs" />

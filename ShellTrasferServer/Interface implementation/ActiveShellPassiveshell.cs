@@ -15,13 +15,13 @@ namespace ShellTrasferServer
         public void StartTransferData()
         {
             var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
-            currentUserAtomicOperation.isTransferingData = true;
+            currentUserAtomicOperation.IsTransferingData = true;
         }
 
         public bool IsTransferingData()
         {
             var currentUserAtomicOperation = UserAtomicOperation.Instance.AtomicOperation;
-            return currentUserAtomicOperation.isTransferingData;
+            return currentUserAtomicOperation.IsTransferingData;
         }
 
         public void RemoveClient(string id, bool onlyFromServer = false)

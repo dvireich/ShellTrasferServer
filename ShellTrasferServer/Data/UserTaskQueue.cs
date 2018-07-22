@@ -9,13 +9,9 @@ using System.Threading.Tasks;
 namespace Data
 {
     [Log(AttributeExclude = true)]
-    public class UserTaskQueue
+    public class UserTaskQueue : IUserTaskQueue
     {
-        private ConcurrentDictionary<string, Queue<ShellTask>> _shellTaskQueue = new ConcurrentDictionary<string, Queue<ShellTask>>();
-        public ConcurrentDictionary<string, Queue<ShellTask>> ShellQueue { get { return _shellTaskQueue; } }
-
-
-        private ConcurrentDictionary<string, Queue<TransferTask>> _transferTaskQueue =  new ConcurrentDictionary<string, Queue<TransferTask>>();
-        public ConcurrentDictionary<string, Queue<TransferTask>> TransferTaskQueue { get { return _transferTaskQueue; } }
+        public ConcurrentDictionary<string, Queue<ShellTask>> ShellQueue { get; } = new ConcurrentDictionary<string, Queue<ShellTask>>();
+        public ConcurrentDictionary<string, Queue<TransferTask>> TransferTaskQueue { get; } = new ConcurrentDictionary<string, Queue<TransferTask>>();
     }
 }

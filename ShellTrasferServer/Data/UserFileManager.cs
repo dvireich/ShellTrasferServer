@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Data
 {
     [Log(AttributeExclude = true)]
-    public class UserFileManager
+    public class UserFileManager : IUserFileManager
     {
         public FileStream FileStream { get; set; }
         public bool IsDownloding { get; set; }

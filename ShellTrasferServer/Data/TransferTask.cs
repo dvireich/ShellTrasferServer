@@ -19,5 +19,26 @@ namespace Data
             RemoteFileInfo = remoteFileInfo;
             Callback = callback;
         }
+
+        public override string ToString()
+        {
+            if (TaskType == TaskType.Upload)
+            {
+                return string.Format("{0} {1} {2}",
+                                                 TaskType,
+                                                 RemoteFileInfo.FileName,
+                                                 RemoteFileInfo.PathToSaveOnServer);
+            }
+            else if (TaskType == TaskType.Download)
+            {
+                return string.Format("{0} {1} {2} {3}",
+                                                TaskType,
+                                                DownloadRequest.FileName,
+                                                DownloadRequest.PathInServer,
+                                                DownloadRequest.PathToSaveInClient);
+            }
+
+            return string.Empty;
+        }
     }
 }

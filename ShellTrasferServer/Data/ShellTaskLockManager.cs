@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShellTrasferServer.Helpers;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace ShellTrasferServer.Data
                 var endpoint = OperationContext.Current.EndpointDispatcher.EndpointAddress.ToString();
                 var activeUserId = endpoint.Split('/').Last();
                 if (!_userToLockObject.ContainsKey(activeUserId))
-                    _userToLockObject[activeUserId] = new ActiveClientLocks();
+                    _userToLockObject[activeUserId] = new ActiveClientLocks(new MonitorHelper());
                 return _userToLockObject[activeUserId];
             }
         }
