@@ -24,6 +24,7 @@ namespace UserAuthentication
         public Authentication()
         {
             userRepositoryFactory = new UserRepositoryFactory();
+            signedInUsersFactory = new SignedInUsersFactory();
         }
         public string AuthenticateAndSignIn(string userName, string userType, string password, out string error)
         {
