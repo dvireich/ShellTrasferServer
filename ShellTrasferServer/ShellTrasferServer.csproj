@@ -110,7 +110,17 @@
     <Compile Include="Helpers\interfaces\IFileHelper.cs" />
     <Compile Include="Helpers\interfaces\IMonitorHelper.cs" />
     <Compile Include="Helpers\interfaces\IActiveTransferDataHelper.cs" />
+    <Compile Include="Helpers\interfaces\IPassiveClientHelper.cs" />
+    <Compile Include="Helpers\interfaces\IPassiveManager.cs" />
+    <Compile Include="Helpers\interfaces\IPassiveManagerFactory.cs" />
+    <Compile Include="Helpers\interfaces\IPassiveShellHelper.cs" />
+    <Compile Include="Helpers\interfaces\IPassiveTransferDataHelper.cs" />
     <Compile Include="Helpers\MonitorHelper.cs" />
+    <Compile Include="Helpers\PassiveClientHelper.cs" />
+    <Compile Include="Helpers\PassiveManager.cs" />
+    <Compile Include="Helpers\PassiveManagerFactory.cs" />
+    <Compile Include="Helpers\PassiveShellHelper.cs" />
+    <Compile Include="Helpers\PassiveTransferDataHelper.cs" />
     <Compile Include="Interface implementation\ActiveShell.cs" />
     <Compile Include="Interface implementation\ActiveShellPassiveshell.cs" />
     <Compile Include="Helpers\AtomicOperation.cs" />

@@ -13,5 +13,6 @@ namespace ShellTrasferServer.Helpers
         public const string Download = "Download";
         public const string Upload = "Upload";
         public const string CloseShell = "CloseShell";
+        public const string Version = "11";
     }
 }
