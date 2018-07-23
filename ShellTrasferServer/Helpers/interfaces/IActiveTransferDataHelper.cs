@@ -11,5 +11,9 @@ namespace ShellTrasferServer.Helpers.interfaces
         RemoteFileInfo ActiveDownloadFile(DownloadRequest request);
 
         RemoteFileInfo ActiveUploadFile(RemoteFileInfo request);
+
+        bool IsTransferingData();
+
+        void StartTransferData();
     }
 }

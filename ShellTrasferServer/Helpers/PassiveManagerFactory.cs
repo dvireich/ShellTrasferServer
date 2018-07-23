@@ -31,7 +31,8 @@ namespace ShellTrasferServer.Helpers
                                                  FileMannager.Instance.CurrentUserFileMannager,
                                                  new FileHelper(),
                                                  UserAtomicOperation.Instance.AtomicOperation,
-                                                 new DirectoryHelper());
+                                                 new DirectoryHelper(),
+                                                 GetCommonOperations());
         }
 
         private IPassiveClientHelper GetPassiveClientHelper()

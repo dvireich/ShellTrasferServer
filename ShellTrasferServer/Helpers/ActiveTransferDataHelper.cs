@@ -18,6 +18,7 @@ namespace ShellTrasferServer.Helpers
         private readonly IUserFileManager userFileManager;
         private readonly IFileHelper fileHelper;
         private readonly IDirectoryHelper directoryHelper;
+        private readonly ICommonOperations commonOperations;
 
         public ActiveTransferDataHelper(IAtomicOperation atomicOperation,
                                         IUserClientManager userClientManager,
@@ -25,7 +26,8 @@ namespace ShellTrasferServer.Helpers
                                         IUserFileManager userFileManager,
                                         IMonitorHelper monitorHelper,
                                         IFileHelper fileHelper,
-                                        IDirectoryHelper directoryHelper)
+                                        IDirectoryHelper directoryHelper,
+                                        ICommonOperations commonOperations)
         {
             this.atomicOperation = atomicOperation;
             this.userClientManager = userClientManager;
@@ -33,6 +35,7 @@ namespace ShellTrasferServer.Helpers
             this.userFileManager = userFileManager;
             this.fileHelper = fileHelper;
             this.directoryHelper = directoryHelper;
+            this.commonOperations = commonOperations;
         }
 
         private bool CheckIfDownloadErrorAndReturn(out RemoteFileInfo result)
@@ -377,6 +380,16 @@ namespace ShellTrasferServer.Helpers
                     retRequest = "Error: Client CallBack is Not Found";
             }
             return retRequest != null ? (string)retRequest : "Buffering";
+        }
+
+        public bool IsTransferingData()
+        {
+            return commonOperations.IsTransferingData();
+        }
+
+        public void StartTransferData()
+        {
+            commonOperations.StartTransferData();
         }
     }
 }

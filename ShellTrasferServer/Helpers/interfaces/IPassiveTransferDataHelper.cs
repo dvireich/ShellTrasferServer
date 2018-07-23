@@ -21,5 +21,9 @@ namespace ShellTrasferServer.Helpers.interfaces
         void PassiveUploadedFile(string id, string taskId);
 
         void ErrorUploadDownload(string id, string taskId, string response);
+
+        bool IsTransferingData();
+
+        void StartTransferData();
     }
 }

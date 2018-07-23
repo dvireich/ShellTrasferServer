@@ -13,13 +13,18 @@ using WcfLogger;
 namespace ShellTrasferServer
 {
     [WcfLogging]
-    public class PassiveShell : ActiveShellPassiveshell, IPassiveShell
+    public class PassiveShell : IPassiveShell , IActiveShellPassiveshell
     {
         private IPassiveManagerFactory passiveManagerFactory;
 
         public PassiveShell()
         {
             passiveManagerFactory = new PassiveManagerFactory();
+        }
+
+        public PassiveShell(IPassiveManagerFactory passiveManagerFactory)
+        {
+            this.passiveManagerFactory = passiveManagerFactory;
         }
 
         public bool PassiveClientRun(string id, string taskId, string baseLine)
@@ -107,6 +112,16 @@ namespace ShellTrasferServer
         {
             var passiveManager = passiveManagerFactory.GetPassiveManager();
             passiveManager.PassiveClientHelper.RemoveId(id);
+        }
+
+        public bool IsTransferingData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StartTransferData()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -34,7 +34,8 @@ namespace ShellTrasferServer.Helpers
                                                 FileMannager.Instance.CurrentUserFileMannager,
                                                 new MonitorHelper(),
                                                 new FileHelper(),
-                                                new DirectoryHelper());
+                                                new DirectoryHelper(),
+                                                GetCommonOperations());
         }
 
         private IActiveShellHelper GetActiveShellHelper()

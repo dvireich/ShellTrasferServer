@@ -122,7 +122,6 @@
     <Compile Include="Helpers\PassiveShellHelper.cs" />
     <Compile Include="Helpers\PassiveTransferDataHelper.cs" />
     <Compile Include="Interface implementation\ActiveShell.cs" />
-    <Compile Include="Interface implementation\ActiveShellPassiveshell.cs" />
     <Compile Include="Helpers\AtomicOperation.cs" />
     <Compile Include="Data\ClientManager.cs" />
     <Compile Include="Data\DownloadRequest.cs" />

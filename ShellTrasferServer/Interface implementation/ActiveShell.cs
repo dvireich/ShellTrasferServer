@@ -14,12 +14,18 @@ using WcfLogger;
 namespace ShellTrasferServer
 {
     [WcfLogging]
-    public class ActiveShell : ActiveShellPassiveshell , IActiveShell
+    public class ActiveShell : IActiveShell, IActiveShellPassiveshell
     {
         IActiveManagerFactory activeManagerFactory;
+
         public ActiveShell()
         {
             activeManagerFactory = new ActiveManagerFactory();
+        }
+
+        public ActiveShell(IActiveManagerFactory activeManagerFactory)
+        {
+            this.activeManagerFactory = activeManagerFactory;
         }
 
         public bool ActiveSetNickName(string id, string nickName)
@@ -88,6 +94,18 @@ namespace ShellTrasferServer
         {
             var activeManager = activeManagerFactory.GetActiveManager();
             return activeManager.TransferDataHelper.ActiveUploadFile(request);
+        }
+
+        public bool IsTransferingData()
+        {
+            var activeManager = activeManagerFactory.GetActiveManager();
+            return activeManager.TransferDataHelper.IsTransferingData();
+        }
+
+        public void StartTransferData()
+        {
+            var activeManager = activeManagerFactory.GetActiveManager();
+            activeManager.TransferDataHelper.StartTransferData();
         }
     }
 }

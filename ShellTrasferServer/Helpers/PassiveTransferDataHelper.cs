@@ -17,13 +17,15 @@ namespace ShellTrasferServer.Helpers
         private readonly IFileHelper fileHelper;
         private readonly IAtomicOperation atomicOperation;
         private readonly IDirectoryHelper directoryHelper;
+        private readonly ICommonOperations commonOperations;
 
         public PassiveTransferDataHelper(IUserTaskQueue userTaskQueue,
                                          IUserClientManager userClientManager,
                                          IUserFileManager userFileManager,
                                          IFileHelper fileHelper,
                                          IAtomicOperation atomicOperation,
-                                         IDirectoryHelper directoryHelper)
+                                         IDirectoryHelper directoryHelper,
+                                         ICommonOperations commonOperations)
         {
             this.userTaskQueue = userTaskQueue;
             this.userClientManager = userClientManager;
@@ -31,6 +33,7 @@ namespace ShellTrasferServer.Helpers
             this.fileHelper = fileHelper;
             this.atomicOperation = atomicOperation;
             this.directoryHelper = directoryHelper;
+            this.commonOperations = commonOperations;
         }
 
         public bool HasUploadCommand(string id)
@@ -249,6 +252,16 @@ namespace ShellTrasferServer.Helpers
         private bool AllowOnlySelectedClient(string id)
         {
             return userClientManager.SelectedClient == id;
+        }
+
+        public bool IsTransferingData()
+        {
+            return commonOperations.IsTransferingData();
+        }
+
+        public void StartTransferData()
+        {
+            commonOperations.StartTransferData();
         }
     }
 }
