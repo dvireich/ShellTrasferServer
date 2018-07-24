@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace UserAuthentication
 {
-    public enum UserType
-    {
-        ActiveClient,
-        PassiveClient
-    }
     public class UserConnection
     {
-        public string UserName;
-        public UserType Type;
-        public string Ip;
-        public int Port;
+        private string _userName;
+
+        protected UserConnection(string userName)
+        {
+            _userName = userName;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is UserConnection other)) return false;
+            return other._userName == _userName;
+        }
     }
 }

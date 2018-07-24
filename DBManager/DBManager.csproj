@@ -78,9 +78,9 @@
     <Compile Include="SqlCommandAndLog.cs" />
     <Compile Include="SqlManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="UserRepository.cs" />
-    <Compile Include="UserRepositoryFactory.cs" />
+    <Compile Include="UserRepository\User.cs" />
+    <Compile Include="UserRepository\UserRepository.cs" />
+    <Compile Include="UserRepository\UserRepositoryFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

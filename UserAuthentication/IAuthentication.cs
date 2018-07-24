@@ -12,10 +12,16 @@ namespace UserAuthentication
     public interface IAuthentication
     {
         [OperationContract]
-        string AuthenticateAndSignIn(string userName, string userType , string password, out string error);
+        string AuthenticatePassiveClientAndSignIn(string userName, string password, out string error);
 
         [OperationContract]
-        bool Logout(string userName, string userType, out string error);
+        string AuthenticateActiveClientAndSignIn(string userName, string password, out string error);
+
+        [OperationContract]
+        bool ActiveLogout(string userName, string userType, out string error);
+
+        [OperationContract]
+        bool PassiveLogout(string userName, string userType, out string error);
 
         [OperationContract]
         bool SignUp(string userName, string password, out string error);
@@ -32,6 +38,4 @@ namespace UserAuthentication
         [OperationContract]
         string RestorePasswordFromUserNameAndSecurityQuestion(string userName, string answer, out string error);
     }
-
-
 }

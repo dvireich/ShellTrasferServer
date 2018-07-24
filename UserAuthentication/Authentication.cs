@@ -26,33 +26,70 @@ namespace UserAuthentication
             userRepositoryFactory = new UserRepositoryFactory();
             signedInUsersFactory = new SignedInUsersFactory();
         }
-        public string AuthenticateAndSignIn(string userName, string userType, string password, out string error)
+
+        public string AuthenticatePassiveClientAndSignIn(string userName, string password, out string error)
         {
             var signedInUsers = signedInUsersFactory.GetSignedInUsers();
-            if (signedInUsers.ExsitsInList(userName, userType))
-            {
-                error = $"The user name: {userName} is already signed in!, please logout first";
-                return null;
-            }
 
-
-            using (var userDBManager = userRepositoryFactory.GetUserRepository())
+            using (var userRepository = userRepositoryFactory.GetUserRepository())
             {
-                if (!userDBManager.CheckUserNameAndPassword(userName, password, out User user))
+                if (!CheckUserNameAndPassword(userRepository, userName, password, out User user, out string errorUsernameOrPassword))
                 {
-                    error = string.Format("The given user name {0} and password {1} does not exsits in the database", userName, password);
+                    error = errorUsernameOrPassword;
                     return null;
                 }
 
-                if(!signedInUsers.AddToList(userName , userType))
+                if (!signedInUsers.AddPassiveClient(userName))
                 {
-                    error = string.Format("Error in sign in with user name {0} and user type {1}. Check that the user type is correct", userName, userType);
+                    error = string.Format("Error in sign in with user name {0}. Check that the user type is correct", userName);
                     return null;
                 }
 
                 error = string.Empty;
                 return user.Id;
             }
+
+        }
+
+        public string AuthenticateActiveClientAndSignIn(string userName, string password, out string error)
+        {
+            var signedInUsers = signedInUsersFactory.GetSignedInUsers();
+            if (signedInUsers.ActiveClientExsitsInList(userName))
+            {
+                error = $"The user name: {userName} is already signed in!, please logout first";
+                return null;
+            }
+
+            using (var userRepository = userRepositoryFactory.GetUserRepository())
+            {
+                if(!CheckUserNameAndPassword(userRepository, userName, password, out User user, out string errorUsernameOrPassword))
+                {
+                    error = errorUsernameOrPassword;
+                    return null;
+                }
+
+                if (!signedInUsers.AddActiveClient(userName))
+                {
+                    error = string.Format("Error in sign in with user name {0}. Check that the user type is correct", userName);
+                    return null;
+                }
+
+                error = string.Empty;
+                return user.Id;
+            }
+        }
+
+        private bool CheckUserNameAndPassword(IUserRepository userRepository, string userName, string password, out User userResult, out string error)
+        {
+            userResult = null;
+            error = null;
+            if (!userRepository.CheckUserNameAndPassword(userName, password, out User user))
+            {
+                error = string.Format("The given user name {0} and password {1} does not exsits in the database", userName, password);
+                return false;
+            }
+            userResult = user;
+            return true;
         }
 
         public bool SignUp(string userName, string password, out string error)
@@ -156,15 +193,30 @@ namespace UserAuthentication
             }
         }
 
-        public bool Logout(string userName, string userType , out string error)
+        public bool ActiveLogout(string userName, string userType , out string error)
         {
             var signedInUsers = signedInUsersFactory.GetSignedInUsers();
             error = string.Empty;
             try
             {
-                return signedInUsers.RemoveFromList(userName, userType);
+                return signedInUsers.RemoveActiveClientFromList(userName);
             }
             catch(Exception e)
+            {
+                error = $"Error in Logout for: {userName} with the following error: {e.Message}";
+                return false;
+            }
+        }
+
+        public bool PassiveLogout(string userName, string userType, out string error)
+        {
+            var signedInUsers = signedInUsersFactory.GetSignedInUsers();
+            error = string.Empty;
+            try
+            {
+                return signedInUsers.RemovePassiveClientFormList(userName);
+            }
+            catch (Exception e)
             {
                 error = $"Error in Logout for: {userName} with the following error: {e.Message}";
                 return false;

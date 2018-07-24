@@ -21,97 +21,98 @@ namespace UserAuthentication
         private ConcurrentDictionary<string, List<UserConnection>> usersLoggedIn = new ConcurrentDictionary<string, List<UserConnection>>();
         private static object syncUsersListLoggedIn = new Object();
 
-        public bool AddToList(string username, string type)
+        public bool AddPassiveClient(string username)
         {
-            try
-            {
-                List<UserConnection> userConnections;
-                if (!usersLoggedIn.ContainsKey(username))
-                {
-                    usersLoggedIn.TryAdd(username, new List<UserConnection>());
-                }
+            if (!AddIfNotExistsAndValidate(username, out var userConnections)) return false;
 
-                if (!usersLoggedIn.TryGetValue(username, out userConnections)) return false;
-
-                OperationContext oOperationContext = OperationContext.Current;
-                MessageProperties oMessageProperties = oOperationContext.IncomingMessageProperties;
-                RemoteEndpointMessageProperty oRemoteEndpointMessageProperty = (RemoteEndpointMessageProperty)oMessageProperties[RemoteEndpointMessageProperty.Name];
-
-                string szAddress = oRemoteEndpointMessageProperty.Address;
-                int nPort = oRemoteEndpointMessageProperty.Port;
-
-                var userConnection = new UserConnection()
-                {
-                    Type = (UserType)Enum.Parse(typeof(UserType), type),
-                    UserName = username,
-                    Ip = szAddress,
-                    Port = nPort
-                };
-
-                lock (syncUsersListLoggedIn)
-                {
-                    userConnections.Add(userConnection);
-                }
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-
-        }
-
-        public bool RemoveFromList(string username, string type)
-        {
-            List<UserConnection> userConnections;
-            if (!usersLoggedIn.TryGetValue(username, out userConnections)) return false;
-
-            var enumType = (UserType)Enum.Parse(typeof(UserType), type);
             OperationContext oOperationContext = OperationContext.Current;
             MessageProperties oMessageProperties = oOperationContext.IncomingMessageProperties;
             RemoteEndpointMessageProperty oRemoteEndpointMessageProperty = (RemoteEndpointMessageProperty)oMessageProperties[RemoteEndpointMessageProperty.Name];
+
             string szAddress = oRemoteEndpointMessageProperty.Address;
             int nPort = oRemoteEndpointMessageProperty.Port;
+
+            var userConnection = new PassiveClientUserConnection(username, szAddress, nPort);
+
             lock (syncUsersListLoggedIn)
             {
-                userConnections.RemoveAll(user => user.Type == enumType &&
-                                          user.UserName == username &&
-                                          user.Ip == szAddress &&
-                                          user.Port == nPort);
+                userConnections.Add(userConnection);
+            }
+
+            return true;
+
+        }
+
+        public bool AddActiveClient(string username)
+        {
+            if (!AddIfNotExistsAndValidate(username, out var userConnections)) return false;
+
+            var userConnection = new ActiveClientUserConnection(username);
+
+            lock (syncUsersListLoggedIn)
+            {
+                userConnections.Add(userConnection);
             }
 
             return true;
         }
 
-        public bool ExsitsInList(string username, string type)
+        private bool AddIfNotExistsAndValidate(string username, out List<UserConnection> Connections)
         {
-            List<UserConnection> userConnections;
-            if (!usersLoggedIn.TryGetValue(username, out userConnections)) return false;
+            Connections = null;
+            if (!usersLoggedIn.ContainsKey(username))
+            {
+                usersLoggedIn.TryAdd(username, new List<UserConnection>());
+            }
 
-            var enumType = (UserType)Enum.Parse(typeof(UserType), type);
+            if (!usersLoggedIn.TryGetValue(username, out List<UserConnection> userConnections)) return false;
+            Connections = userConnections;
+            return true;
+        }
+
+        public bool RemoveActiveClientFromList(string userName)
+        {
+            if (!usersLoggedIn.TryGetValue(userName, out List<UserConnection> userConnections)) return false;
+
+            var activeClientToCompare = new ActiveClientUserConnection(userName);
+            lock (syncUsersListLoggedIn)
+            {
+                userConnections.RemoveAll(user => user.Equals(activeClientToCompare));
+            }
+
+            return true;
+
+        }
+
+        public bool RemovePassiveClientFormList(string userName)
+        {
+            if (!usersLoggedIn.TryGetValue(userName, out List<UserConnection> userConnections)) return false;
+
             OperationContext oOperationContext = OperationContext.Current;
             MessageProperties oMessageProperties = oOperationContext.IncomingMessageProperties;
             RemoteEndpointMessageProperty oRemoteEndpointMessageProperty = (RemoteEndpointMessageProperty)oMessageProperties[RemoteEndpointMessageProperty.Name];
             string szAddress = oRemoteEndpointMessageProperty.Address;
             int nPort = oRemoteEndpointMessageProperty.Port;
 
-            //We indentify PassiveClient with ip and port.
-            //We indentify Activeclient only with ip sience we not allow more that 1 ActiveClient
+            var passiveClientToCompare = new PassiveClientUserConnection(userName, szAddress, nPort);
+
             lock (syncUsersListLoggedIn)
             {
-                if (enumType == UserType.PassiveClient)
-                {
-                    return userConnections.Any(user => user.Type == enumType &&
-                                         user.UserName == username &&
-                                         user.Ip == szAddress &&
-                                         user.Port == nPort);
-                }
+                userConnections.RemoveAll(user => user.Equals(passiveClientToCompare));
+            }
 
-                return userConnections.Any(user => user.Type == enumType &&
-                                         user.UserName == username &&
-                                         user.Ip == szAddress);
+            return true;
+        }
 
+        public bool ActiveClientExsitsInList(string userName)
+        {
+            if (!usersLoggedIn.TryGetValue(userName, out List<UserConnection> userConnections)) return false;
+
+            var activeClientToCompare = new ActiveClientUserConnection(userName);
+
+            lock (syncUsersListLoggedIn)
+            {
+                return userConnections.Any(user => user.Equals(activeClientToCompare));
             }
         }
 

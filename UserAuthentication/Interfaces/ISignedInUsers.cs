@@ -8,10 +8,14 @@ namespace UserAuthentication.Interfaces
 {
     public interface ISignedInUsers
     {
-        bool AddToList(string username, string type);
+        bool AddPassiveClient(string username);
 
-        bool RemoveFromList(string username, string type);
+        bool AddActiveClient(string username);
 
-        bool ExsitsInList(string username, string type);
+        bool RemoveActiveClientFromList(string userName);
+
+        bool RemovePassiveClientFormList(string userName);
+
+        bool ActiveClientExsitsInList(string userName);
     }
 }
