@@ -1,4 +1,5 @@
 ﻿using Data;
+using ShellTrasferServer.Data;
 using ShellTrasferServer.Helpers.interfaces;
 using System;
 using System.Collections.Generic;
@@ -75,7 +76,7 @@ namespace ShellTrasferServer.Helpers
         private bool CheckWeStillDownloadingAndHaveChunksToRead(DownloadRequest request, out RemoteFileInfo result)
         {
             result = null;
-            if (request.NewStart || (userFileManager.IsDownloding && userFileManager.EnumerableChunk.MoveNext())) return false;
+            if (request.NewStart || !userFileManager.IsDownloding || userFileManager.EnumerableChunk.MoveNext()) return false;
 
             try
             {
@@ -118,7 +119,7 @@ namespace ShellTrasferServer.Helpers
             //Clear the File in FileMannager
             ClearFileManager(currentFileManager);
 
-            var retAns = EnqueueWaitAndReturnCurrentLine(TaskType.Download, request, new RemoteFileInfo());
+            var retAns = EnqueueWaitAndReturnCurrentLine(new DownloadTransferTask(), request, new RemoteFileInfo());
             //Check if Error happended
             if (retAns != "Buffering")
             {
@@ -279,7 +280,7 @@ namespace ShellTrasferServer.Helpers
 
         private RemoteFileInfo EnqueueInClientQueueAndReturnResult(RemoteFileInfo request)
         {
-            var retAns = EnqueueWaitAndReturnCurrentLine(TaskType.Upload, new DownloadRequest(), request);
+            var retAns = EnqueueWaitAndReturnCurrentLine(new UploadTransferTask(), new DownloadRequest(), request);
 
             if (retAns != "Buffering")
             {
@@ -316,9 +317,38 @@ namespace ShellTrasferServer.Helpers
             return EnqueueInClientQueueAndReturnResult(request);
         }
 
+        private void FillTransferTask(TransferTask emptyTransferTask, DownloadRequest downloadRequest, RemoteFileInfo uploadRequest)
+        {
+            var taskId = Guid.NewGuid().ToString();
+            if (downloadRequest != null)
+                downloadRequest.taskId = taskId;
+            if (uploadRequest != null)
+                uploadRequest.taskId = taskId;
+
+
+            emptyTransferTask.DownloadRequest = downloadRequest;
+            emptyTransferTask.RemoteFileInfo = uploadRequest;
+            emptyTransferTask.Callback = (obj) =>
+            {
+                if (obj is string)
+                {
+                    userFileManager.Error = true;
+                    userFileManager.ErrorMessage = (string)obj;
+                }
+                else
+                {
+                    userFileManager.IsDownloding = true;
+                    userFileManager.UploadingEnded = true;
+                    userFileManager.IsUploading = false;
+                }
+                userFileManager.Buffering = false;
+                userFileManager.ReadSoFar = 0;
+            };
+        }
+
         //This function should not be executed as paralel. after we got response from the passive client
         //we do not need to block the other users since the selected client preformed his action
-        private string EnqueueWaitAndReturnCurrentLine(TaskType command, DownloadRequest downloadRequest, RemoteFileInfo uploadRequest)
+        private string EnqueueWaitAndReturnCurrentLine(TransferTask emptyTransferTask, DownloadRequest downloadRequest, RemoteFileInfo uploadRequest)
         {
             var currentUserCallbacks = userClientManager.CallBacks;
             var currentUserTransferQueue = userTaskQueue.TransferTaskQueue;
@@ -336,30 +366,10 @@ namespace ShellTrasferServer.Helpers
                     retRequest = "Client does not exsits";
                     return;
                 }
-                taskId = Guid.NewGuid().ToString();
-                if (downloadRequest != null)
-                    downloadRequest.taskId = taskId;
-                if (uploadRequest != null)
-                    uploadRequest.taskId = taskId;
-                currentUserTransferQueue[userClientManager.SelectedClient].Enqueue(
-                    new TransferTask(command, downloadRequest, uploadRequest,
-                (obj) =>
-                {
-                    retRequest = obj;
-                    if (obj is string)
-                    {
-                        userFileManager.Error = true;
-                        userFileManager.ErrorMessage = (string)obj;
-                    }
-                    else
-                    {
-                        userFileManager.IsDownloding = true;
-                        userFileManager.UploadingEnded = true;
-                        userFileManager.IsUploading = false;
-                    }
-                    userFileManager.Buffering = false;
-                    userFileManager.ReadSoFar = 0;
-                }));
+
+                FillTransferTask(emptyTransferTask, downloadRequest, uploadRequest);
+                currentUserTransferQueue[userClientManager.SelectedClient].Enqueue(emptyTransferTask);
+
                 clientCallBack = currentUserCallbacks[selectedClient];
                 userFileManager.Buffering = true;
                 userFileManager.IsUploading = true;

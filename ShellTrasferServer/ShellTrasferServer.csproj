@@ -86,11 +86,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\ActiveClientLocks.cs" />
+    <Compile Include="Data\DownloadTransferTask.cs" />
     <Compile Include="Data\interfaces\IActiveClientLocks.cs" />
     <Compile Include="Data\interfaces\IUserClientManager.cs" />
     <Compile Include="Data\interfaces\IUserTaskQueue.cs" />
     <Compile Include="Data\interfaces\IUserFileManager.cs" />
     <Compile Include="Data\ShellTaskLockManager.cs" />
+    <Compile Include="Data\UploadTransferTask.cs" />
     <Compile Include="Helpers\ActiveClientHelper.cs" />
     <Compile Include="Helpers\ActiveManager.cs" />
     <Compile Include="Helpers\ActiveManagerFactory.cs" />

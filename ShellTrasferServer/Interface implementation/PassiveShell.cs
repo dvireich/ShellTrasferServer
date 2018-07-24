@@ -116,12 +116,14 @@ namespace ShellTrasferServer
 
         public bool IsTransferingData()
         {
-            throw new NotImplementedException();
+            var passiveManager = passiveManagerFactory.GetPassiveManager();
+            return passiveManager.PassiveTransferDataHelper.IsTransferingData();
         }
 
         public void StartTransferData()
         {
-            throw new NotImplementedException();
+            var passiveManager = passiveManagerFactory.GetPassiveManager();
+            passiveManager.PassiveTransferDataHelper.StartTransferData();
         }
     }
 }
