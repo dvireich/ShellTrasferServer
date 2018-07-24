@@ -23,7 +23,6 @@ namespace ShellTrasferServer.Helpers
         public bool HasShellCommand(string id)
         {
             var currentUserDeletedTasks = userClientManager.Deleted;
-            var currentTransferQueue = userTaskQueue.TransferTaskQueue;
             var currentShellQueue = userTaskQueue.ShellQueue;
 
             if (currentUserDeletedTasks.Contains(id))
@@ -31,7 +30,7 @@ namespace ShellTrasferServer.Helpers
                 return true;
             }
             return AllowOnlySelectedClient(id) ?
-                  currentTransferQueue.ContainsKey(id) && currentShellQueue[id].Count > 0 :
+                  currentShellQueue.ContainsKey(id) && currentShellQueue[id].Count > 0 :
                   false;
         }
 
