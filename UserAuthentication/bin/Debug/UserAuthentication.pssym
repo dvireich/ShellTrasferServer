@@ -75,7 +75,7 @@
     </Instance>
   </Class>
   <Class Class="#1">
-    <Instance Declaration="#30=T:[UserAuthentication]UserAuthentication.SignedInUsers" Id="f8e179ddb153ce7c">
+    <Instance Declaration="#30=T:[UserAuthentication]UserAuthentication.SignedInUsers" Id="f8e179dda2594f18">
       <Target Target="#31=M:[UserAuthentication]UserAuthentication.SignedInUsers::AddPassiveClient(System.String)">
         <JoinPoint Advising="#1" Description="#3" Ordinal="0" LinesAvoided="5" />
       </Target>

@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Odbc;
 using System.Data.SqlClient;
@@ -28,8 +29,7 @@ namespace DBManager
         public void Connect()
         {
             ValidateNoConnectionBeforeConnect();
-
-            var connectionString = @"Data Source=localhost;Initial Catalog=master;Integrated Security=True;";
+            var connectionString = ConfigurationManager.ConnectionStrings["SQLExpress"].ConnectionString;
             cnn = new SqlConnection(connectionString);
             try
             {
