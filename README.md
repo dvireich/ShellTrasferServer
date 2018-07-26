@@ -7,6 +7,8 @@ In order to start do the following:
 
 2.Open cmd as admin and navigate to "master/Program/bin/Debug".
 
+3.Change the connection string in the App.config on the Program folder from the defualt value to the relevant value
+
 3.Type in the cmd "Program /Createdb" -> this will create the DB tables that the server needs
 
 4.Type in the cmd "Program /Console" -> this will run the server as a console app.
